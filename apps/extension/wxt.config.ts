@@ -12,6 +12,7 @@ export default defineConfig({
     version: '0.1.0',
     permissions: ['storage'],
     host_permissions: [
+      'https://solana-rpc.publicnode.com/*',
       'https://api.mainnet-beta.solana.com/*',
       'https://*.helius-rpc.com/*',
       'https://lite-api.jup.ag/*',

@@ -1,4 +1,4 @@
-import { signerFromMnemonic, type KeyPairSigner } from '@marani/core';
+import { pickRpcUrl, signerFromMnemonic, type KeyPairSigner } from '@marani/core';
 import React, { useEffect, useState } from 'react';
 import { WalletProvider } from './lib/wallet';
 import { getSessionMnemonic, getSettings, getVault, clearSessionMnemonic } from './lib/storage';
@@ -18,7 +18,8 @@ export default function App() {
 
   const unlockWith = async (mnemonic: string) => {
     const [signer, settings] = await Promise.all([signerFromMnemonic(mnemonic), getSettings()]);
-    setPhase({ t: 'ready', signer, mnemonic, rpcUrl: settings.rpcUrl });
+    const rpcUrl = await pickRpcUrl(settings.rpcUrl || undefined);
+    setPhase({ t: 'ready', signer, mnemonic, rpcUrl });
   };
 
   useEffect(() => {

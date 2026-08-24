@@ -31,7 +31,16 @@ export default function Settings({ onBack }: { onBack: () => void }) {
       <div className="flex-1 overflow-y-auto px-4 pb-4 flex flex-col gap-3">
         <div className="card">
           <div className="label mb-1">RPC endpoint</div>
-          <input className="input font-mono text-xs" value={rpcUrl} onChange={(e) => setRpcUrl(e.target.value)} />
+          <input
+            className="input font-mono text-xs"
+            value={rpcUrl}
+            placeholder="auto — picks a working public RPC"
+            onChange={(e) => setRpcUrl(e.target.value)}
+          />
+          <p className="mt-1 text-[10px] text-zinc-500">
+            Leave empty for auto. Currently using: <span className="font-mono">{wallet.rpcUrl}</span>. For the smoothest
+            demo, paste a free helius.dev RPC URL.
+          </p>
           <button
             className="btn btn-ghost mt-2 text-xs"
             onClick={async () => {

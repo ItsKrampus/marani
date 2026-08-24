@@ -44,8 +44,8 @@ export const clearAll = async () => {
   await session?.clear().catch(() => {});
 };
 
-export const getSettings = async (): Promise<Settings> =>
-  (await getKey<Settings>(local, 'settings')) ?? { rpcUrl: 'https://api.mainnet-beta.solana.com' };
+/** rpcUrl '' means "auto — probe public endpoints and use the first that works". */
+export const getSettings = async (): Promise<Settings> => (await getKey<Settings>(local, 'settings')) ?? { rpcUrl: '' };
 export const setSettings = (s: Settings) => setKey(local, 'settings', s);
 
 export const getUserMarks = async (): Promise<UserMarks> => (await getKey<UserMarks>(local, 'userMarks')) ?? {};
