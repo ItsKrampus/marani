@@ -70,17 +70,14 @@ export default function Cellar() {
     venueName: string;
     apy: number | null;
   }
-  const positions: Position[] = [
-    ...LST_OPTIONS.map((lst) => {
-      const row = wallet.rows.find((r) => r.mint === lst.mint);
-      return row && row.amountRaw > 0n
-        ? { row, lst, venueName: lst.provider, apy: apyOf(venueFor(lst)) }
-        : null;
-    }).filter((p): p is Position => p !== null),
-    ...(jlUsdcRow && jlUsdcRow.amountRaw > 0n
-      ? [{ row: jlUsdcRow, lst: null, venueName: 'Jupiter Lend', apy: apyOf(yields.venues.jupiterLendUsdc) }]
-      : []),
-  ];
+  const positions: Position[] = [];
+  for (const lst of LST_OPTIONS) {
+    const row = wallet.rows.find((r) => r.mint === lst.mint);
+    if (row && row.amountRaw > 0n) positions.push({ row, lst, venueName: lst.provider, apy: apyOf(venueFor(lst)) });
+  }
+  if (jlUsdcRow && jlUsdcRow.amountRaw > 0n) {
+    positions.push({ row: jlUsdcRow, lst: null, venueName: 'Jupiter Lend', apy: apyOf(yields.venues.jupiterLendUsdc) });
+  }
   const totalStakedUsd = positions.reduce((s, p) => s + (p.row.usdValue ?? 0), 0);
   const blendedApy =
     totalStakedUsd > 0
