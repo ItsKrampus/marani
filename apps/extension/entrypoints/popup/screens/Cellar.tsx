@@ -44,23 +44,13 @@ type Flow =
 
 type Step = 'input' | 'confirm' | 'executing' | 'done' | 'error';
 
-function ApyChip({ venue }: { venue: Venue | null }) {
-  if (!venue) return null;
-  return (
-    <span className="rounded-full px-2 py-0.5 text-[10px] font-bold" style={{ background: '#0E2018', color: 'var(--green)', border: '1px solid #2E5A45' }}>
-      {venue.apyPct.toFixed(2)}% APY
-    </span>
-  );
-}
-
-function tvlText(venue: Venue | null): string {
-  if (!venue) return '';
-  return `$${(venue.tvlUsd / 1e6).toFixed(0)}M TVL`;
+function apyOf(v: Venue | null): number | null {
+  return v ? v.apyPct : null;
 }
 
 export default function Cellar() {
   const wallet = useWallet();
-  const { t } = usePrefs();
+  const { t, mask } = usePrefs();
   const [flow, setFlow] = useState<Flow | null>(null);
   const [step, setStep] = useState<Step>('input');
   const [amountStr, setAmountStr] = useState('');
@@ -71,9 +61,31 @@ export default function Cellar() {
   const solRow = wallet.rows.find((r) => r.mint === null) ?? null;
   const usdcRow = wallet.rows.find((r) => r.mint === USDC_MINT) ?? null;
   const jlUsdcRow = wallet.rows.find((r) => r.mint === JLUSDC_MINT) ?? null;
-  const lstRows = LST_OPTIONS.map((lst) => ({ lst, row: wallet.rows.find((r) => r.mint === lst.mint) ?? null }));
 
   const venueFor = (lst: LstOption): Venue | null => (lst.symbol === 'jitoSOL' ? yields.venues.jitosol : yields.venues.msol);
+
+  interface Position {
+    row: TokenRow;
+    lst: LstOption | null; // null = Jupiter Lend
+    venueName: string;
+    apy: number | null;
+  }
+  const positions: Position[] = [
+    ...LST_OPTIONS.map((lst) => {
+      const row = wallet.rows.find((r) => r.mint === lst.mint);
+      return row && row.amountRaw > 0n
+        ? { row, lst, venueName: lst.provider, apy: apyOf(venueFor(lst)) }
+        : null;
+    }).filter((p): p is Position => p !== null),
+    ...(jlUsdcRow && jlUsdcRow.amountRaw > 0n
+      ? [{ row: jlUsdcRow, lst: null, venueName: 'Jupiter Lend', apy: apyOf(yields.venues.jupiterLendUsdc) }]
+      : []),
+  ];
+  const totalStakedUsd = positions.reduce((s, p) => s + (p.row.usdValue ?? 0), 0);
+  const blendedApy =
+    totalStakedUsd > 0
+      ? positions.reduce((s, p) => s + (p.apy ?? 0) * (p.row.usdValue ?? 0), 0) / totalStakedUsd
+      : null;
 
   const reset = () => {
     setFlow(null);
@@ -90,7 +102,7 @@ export default function Cellar() {
     if (f.kind === 'withdraw') setStep('confirm');
   };
 
-  const inputDecimals = flow?.kind === 'stake' ? 9 : flow?.kind === 'unstake' ? 9 : 6;
+  const inputDecimals = flow?.kind === 'deposit' ? 6 : 9;
   const inputMax: bigint = useMemo(() => {
     if (!flow) return 0n;
     if (flow.kind === 'stake') {
@@ -334,52 +346,142 @@ export default function Cellar() {
     );
   }
 
-  // ---------------- main view ----------------
-  const positions = [
-    ...lstRows.filter((x) => x.row && x.row.amountRaw > 0n),
-    ...(jlUsdcRow && jlUsdcRow.amountRaw > 0n ? [{ lst: null as LstOption | null, row: jlUsdcRow }] : []),
+  // ---------------- main view (per "Marani Extension" design, Cellar screen) ----------------
+  const poolRows: Array<{
+    key: string;
+    symbol: string;
+    logoUri: string | null;
+    name: string;
+    term: string;
+    apy: number | null;
+    tvl: number | null;
+    cta: string;
+    disabled: boolean;
+    onClick?: () => void;
+    soon?: boolean;
+  }> = [
+    ...LST_OPTIONS.map((lst) => ({
+      key: lst.mint,
+      symbol: lst.symbol,
+      logoUri: wallet.rows.find((r) => r.mint === lst.mint)?.logoUri ?? null,
+      name: `${lst.provider} · ${lst.symbol}`,
+      term: t('poolsHint'),
+      apy: apyOf(venueFor(lst)),
+      tvl: venueFor(lst)?.tvlUsd ?? null,
+      cta: t('stake'),
+      disabled: !solRow || solRow.amountRaw <= STAKE_SOL_BUFFER,
+      onClick: () => start({ kind: 'stake', lst }),
+    })),
+    {
+      key: 'juplend',
+      symbol: 'USDC',
+      logoUri: usdcRow?.logoUri ?? null,
+      name: 'Jupiter Lend · USDC',
+      term: !usdcRow || usdcRow.amountRaw === 0n ? 'No USDC yet — grab some via Swap' : t('poolsHint'),
+      apy: apyOf(yields.venues.jupiterLendUsdc),
+      tvl: yields.venues.jupiterLendUsdc?.tvlUsd ?? null,
+      cta: t('deposit'),
+      disabled: !usdcRow || usdcRow.amountRaw === 0n,
+      onClick: () => start({ kind: 'deposit' }),
+    },
+    {
+      key: 'kamino',
+      symbol: 'USDC',
+      logoUri: null,
+      name: 'Kamino Lend · USDC',
+      term: 'SDK integration in progress',
+      apy: apyOf(yields.venues.kaminoLendUsdc),
+      tvl: yields.venues.kaminoLendUsdc?.tvlUsd ?? null,
+      cta: t('soon'),
+      disabled: true,
+      soon: true,
+    },
   ];
 
   return (
-    <div className="flex flex-col gap-3 pt-1">
-      <div
-        className="flex items-center gap-3 rounded-2xl px-4 py-3"
-        style={{ background: 'linear-gradient(160deg, #2A0D1B, #1F161E)', border: '1px solid var(--border-accent)' }}
-      >
-        <Logo size={28} />
-        <div className="flex flex-col">
-          <span className="font-display text-sm">{t('cellarTitle')}</span>
-          <span className="text-[11px]" style={{ color: 'var(--text-2)' }}>
-            {t('cellarBody')}
+    <div className="flex flex-col gap-4 pt-1">
+      {/* total staked */}
+      <div className="flex flex-col items-center gap-1 pt-1">
+        <span className="label">{t('totalStaked')}</span>
+        <span className="font-display text-[32px] leading-[1.1]">
+          {mask(totalStakedUsd > 0 ? fmtUsd(totalStakedUsd) : '$0.00')}
+        </span>
+        {blendedApy !== null && (
+          <span className="text-xs" style={{ color: 'var(--green)' }}>
+            ≈ {blendedApy.toFixed(2)}% APY
           </span>
-        </div>
+        )}
       </div>
 
-      {positions.length > 0 && (
-        <>
-          <span className="label">{t('positions')}</span>
-          {positions.map(({ lst, row }) => (
-            <div key={row!.mint} className="card flex items-center gap-2.5 !py-3">
-              <TokenIcon symbol={row!.symbol} logoUri={row!.logoUri} size={28} />
-              <div className="flex flex-1 flex-col">
-                <span className="text-[13px] font-semibold">{row!.symbol}</span>
-                <span className="truncate text-[11px]" style={{ color: 'var(--text-3)' }}>
-                  {formatAmountCompact(row!.amountRaw, row!.decimals)}
-                  {row!.usdValue !== null ? ` · ${fmtUsd(row!.usdValue)}` : ''}
+      {/* position cards */}
+      {positions.map((p, i) => {
+        const sharePct = totalStakedUsd > 0 ? Math.round(((p.row.usdValue ?? 0) / totalStakedUsd) * 100) : 100;
+        return (
+          <div
+            key={p.row.mint}
+            className="flex flex-col gap-3 rounded-[14px] p-3.5"
+            style={{ background: 'linear-gradient(160deg, #2A0D1B, #1F161E)', border: '1px solid var(--border-accent)' }}
+          >
+            <div className="flex items-center gap-3">
+              <Logo size={26} />
+              <div className="flex flex-1 flex-col gap-0.5">
+                <span className="font-display text-sm">Your Qvevri #{i + 1}</span>
+                <span className="text-[11px]" style={{ color: 'var(--text-2)' }} title={formatRawAmount(p.row.amountRaw, p.row.decimals)}>
+                  {mask(`${formatAmountCompact(p.row.amountRaw, p.row.decimals)} ${p.row.symbol}`)} aging
                 </span>
               </div>
+              <div className="flex flex-col items-end gap-0.5">
+                {p.apy !== null && (
+                  <span className="text-[13px] font-semibold" style={{ color: 'var(--green)' }}>
+                    {p.apy.toFixed(1)}% APY
+                  </span>
+                )}
+                <span className="text-[10px]" style={{ color: 'var(--text-3)' }}>
+                  {p.venueName}
+                </span>
+              </div>
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <div className="flex h-1.5 overflow-hidden rounded-full" style={{ background: 'var(--bg)' }}>
+                <span
+                  className="flex rounded-full"
+                  style={{ width: `${Math.max(sharePct, 4)}%`, background: 'linear-gradient(90deg, #7A1533, #E0A458)' }}
+                />
+              </div>
+              <div className="flex justify-between text-[10px]">
+                <span style={{ color: 'var(--text-3)' }}>
+                  {t('shareOfCellar')} · {sharePct}%
+                </span>
+                <span style={{ color: 'var(--text-2)' }}>{mask(p.row.usdValue !== null ? fmtUsd(p.row.usdValue) : '')}</span>
+              </div>
+            </div>
+            <div className="flex gap-2">
               <button
-                className="btn btn-ghost !py-1.5 text-xs"
-                onClick={() => (lst ? start({ kind: 'unstake', lst, row: row! }) : start({ kind: 'withdraw', row: row! }))}
+                className="flex-1 rounded-full py-2 text-[11px] font-semibold cursor-pointer"
+                style={{ border: '1px solid var(--border-accent)', color: 'var(--text)' }}
+                onClick={() => (p.lst ? start({ kind: 'stake', lst: p.lst }) : start({ kind: 'deposit' }))}
               >
-                {lst ? t('unstake') : t('withdrawAll')}
+                {t('addMore')}
+              </button>
+              <button
+                className="flex-1 rounded-full py-2 text-[11px] font-semibold cursor-pointer"
+                style={{ border: '1px solid var(--border)', color: 'var(--text-3)' }}
+                onClick={() => (p.lst ? start({ kind: 'unstake', lst: p.lst, row: p.row }) : start({ kind: 'withdraw', row: p.row }))}
+              >
+                {p.lst ? t('unstake') : t('withdrawAll')}
               </button>
             </div>
-          ))}
-        </>
-      )}
+          </div>
+        );
+      })}
 
-      <span className="label">{t('stake')} SOL</span>
+      {/* pools */}
+      <div className="flex items-center justify-between">
+        <span className="label">{t('pools')}</span>
+        <span className="text-[11px]" style={{ color: 'var(--text-3)' }}>
+          {t('poolsHint')}
+        </span>
+      </div>
       {(!solRow || solRow.amountRaw <= STAKE_SOL_BUFFER) && (
         <div className="rounded-xl px-3 py-2 text-[11px] leading-relaxed" style={{ background: '#2A2010', border: '1px solid #6B4E1F', color: 'var(--gold)' }}>
           Staking needs a little working SOL: your amount <span style={{ color: 'var(--text-2)' }}>plus ~0.003 SOL</span>{' '}
@@ -387,66 +489,36 @@ export default function Cellar() {
           {formatRawAmount(solRow?.amountRaw ?? 0n, 9, 5)} SOL — top up to at least ~0.005 SOL to try it.
         </div>
       )}
-      {LST_OPTIONS.map((lst) => {
-        const venue = venueFor(lst);
-        return (
-          <div key={lst.mint} className="card flex items-center gap-2.5 !py-3">
-            <div className="flex flex-1 flex-col gap-0.5">
-              <span className="flex items-center gap-2 text-[13px] font-semibold">
-                {lst.provider} · {lst.symbol} <ApyChip venue={venue} />
-              </span>
-              <span className="text-[11px]" style={{ color: 'var(--text-3)' }}>
-                Instant stake & unstake · {tvlText(venue)}
+      <div className="flex flex-col gap-2">
+        {poolRows.map((pool) => (
+          <div key={pool.key} className="card flex items-center gap-2.5 !py-2.5" style={pool.soon ? { opacity: 0.7 } : undefined}>
+            <TokenIcon symbol={pool.symbol} logoUri={pool.logoUri} size={30} />
+            <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+              <span className="text-[13px] font-semibold">{pool.name}</span>
+              <span className="truncate text-[10px]" style={{ color: 'var(--text-3)' }}>
+                {pool.term}
+                {pool.tvl ? ` · $${(pool.tvl / 1e6).toFixed(0)}M TVL` : ''}
               </span>
             </div>
+            {pool.apy !== null && (
+              <span className="pr-1 text-[13px] font-semibold" style={{ color: 'var(--green)' }}>
+                {pool.apy.toFixed(1)}%
+              </span>
+            )}
             <button
-              className="btn btn-primary !py-1.5 text-xs"
-              disabled={!solRow || solRow.amountRaw <= STAKE_SOL_BUFFER}
-              onClick={() => start({ kind: 'stake', lst })}
+              className="rounded-full px-3 py-1.5 text-[11px] font-semibold cursor-pointer disabled:cursor-default disabled:opacity-50"
+              style={{ background: 'var(--gold)', color: '#14090E' }}
+              disabled={pool.disabled}
+              onClick={pool.onClick}
             >
-              {t('stake')}
+              {pool.cta}
             </button>
           </div>
-        );
-      })}
-
-      <span className="label">Earn USDC</span>
-      <div className="card flex items-center gap-2.5 !py-3">
-        <div className="flex flex-1 flex-col gap-0.5">
-          <span className="flex items-center gap-2 text-[13px] font-semibold">
-            Jupiter Lend <ApyChip venue={yields.venues.jupiterLendUsdc} />
-          </span>
-          <span className="text-[11px]" style={{ color: 'var(--text-3)' }}>
-            {!usdcRow || usdcRow.amountRaw === 0n
-              ? 'No USDC in this wallet yet — grab some via Swap first'
-              : `Largest USDC pool on Solana · ${tvlText(yields.venues.jupiterLendUsdc)}`}
-          </span>
-        </div>
-        <button
-          className="btn btn-primary !py-1.5 text-xs"
-          disabled={!usdcRow || usdcRow.amountRaw === 0n}
-          onClick={() => start({ kind: 'deposit' })}
-        >
-          {t('deposit')}
-        </button>
-      </div>
-      <div className="card flex items-center gap-2.5 !py-3" style={{ opacity: 0.75 }}>
-        <div className="flex flex-1 flex-col gap-0.5">
-          <span className="flex items-center gap-2 text-[13px] font-semibold">
-            Kamino Lend <ApyChip venue={yields.venues.kaminoLendUsdc} />
-          </span>
-          <span className="text-[11px]" style={{ color: 'var(--text-3)' }}>
-            SDK integration in progress · {tvlText(yields.venues.kaminoLendUsdc)}
-          </span>
-        </div>
-        <span className="rounded-full px-2.5 py-1 text-[10px] font-bold" style={{ background: 'var(--gold)', color: '#14090E' }}>
-          {t('soon')}
-        </span>
+        ))}
       </div>
 
-      <p className="px-1 pb-1 text-[10px] leading-relaxed" style={{ color: 'var(--text-3)' }}>
-        Staking = holding jitoSOL/mSOL — yield accrues in the token's price; unstake instantly any time. Rates from
-        DefiLlama, updated {yields.updatedAt.slice(0, 10)}. Yield is variable and never guaranteed.
+      <p className="px-2 pb-1 text-center text-[10px] leading-relaxed" style={{ color: 'var(--inactive)' }}>
+        {t('cellarFootnote')} Rates: DefiLlama, {yields.updatedAt.slice(0, 10)}.
       </p>
     </div>
   );

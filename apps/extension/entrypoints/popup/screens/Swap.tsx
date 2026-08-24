@@ -1,5 +1,6 @@
 import {
   executeSwapWithFreshRetry,
+  explainTxError,
   fetchTokenMeta,
   fetchUsdPrices,
   formatAmountCompact,
@@ -17,7 +18,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { usePrefs } from '../lib/prefs';
 import { getMetaCache, putMetaCache } from '../lib/storage';
 import { useWallet, type TokenRow } from '../lib/wallet';
-import { ErrorNote, fmtUsd, Header, Spinner, TokenIcon } from '../lib/ui';
+import { fmtUsd, Logo, TokenIcon } from '../lib/ui';
 
 const SWAP_SOL_FEE_BUFFER = 3_000_000n; // fee + temp wSOL wrap rent
 
@@ -32,6 +33,8 @@ const TO_OPTIONS: Array<{ mint: string; symbol: string; name: string; decimals: 
   { mint: '6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN', symbol: 'TRUMP', name: 'Official Trump', decimals: 6 },
 ];
 
+type Result = null | { phase: 'pending' } | { phase: 'success'; sig: string; paid: string; received: string } | { phase: 'fail'; reason: string };
+
 export default function Swap({ onBack, presetFrom }: { onBack: () => void; presetFrom?: { mint: string | null; amountRaw: bigint } | null }) {
   const wallet = useWallet();
   const { t } = usePrefs();
@@ -43,10 +46,8 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
   const [amountStr, setAmountStr] = useState('');
   const [quote, setQuote] = useState<JupQuote | null>(null);
   const [quoting, setQuoting] = useState(false);
-  const [executing, setExecuting] = useState(false);
-  const [error, setError] = useState('');
-  const [sig, setSig] = useState('');
-  const [done, setDone] = useState(false);
+  const [quoteError, setQuoteError] = useState('');
+  const [result, setResult] = useState<Result>(null);
   const [picker, setPicker] = useState<'from' | 'to' | null>(null);
   const [logos, setLogos] = useState<Record<string, string | null>>({});
   const [prices, setPrices] = useState<Record<string, UsdPrice>>({});
@@ -56,7 +57,6 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
   const fromInputMint = from ? (from.mint ?? WSOL_MINT) : null;
   const to = TO_OPTIONS.find((o) => o.mint === toMint)!;
 
-  // Logos + USD prices for the fixed "to" options (cache-first, one fetch each).
   useEffect(() => {
     let cancelled = false;
     (async () => {
@@ -106,10 +106,9 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
   const overMax = amountRaw !== null && amountRaw > maxRaw;
   const tinySol = from?.mint === null && amountRaw !== null && !overMax && amountRaw < 10_000_000n;
 
-  // Live quoting, debounced.
   useEffect(() => {
     setQuote(null);
-    setError('');
+    setQuoteError('');
     if (!fromInputMint || amountRaw === null || overMax || fromInputMint === toMint) {
       setQuoting(false);
       return;
@@ -125,7 +124,7 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
         }
       } catch (e) {
         if (quoteSeq.current === seq) {
-          setError((e as Error).message);
+          setQuoteError((e as Error).message);
           setQuoting(false);
         }
       }
@@ -149,10 +148,18 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
     setAmountStr('');
   };
 
+  const rateLine = useMemo(() => {
+    if (!quote || !from) return null;
+    const inAmt = Number(quote.inAmountRaw) / 10 ** from.decimals;
+    const outAmt = Number(quote.outAmountRaw) / 10 ** to.decimals;
+    if (inAmt <= 0) return null;
+    const rate = outAmt / inAmt;
+    return `1 ${from.symbol} = ${rate >= 100 ? rate.toFixed(2) : rate.toPrecision(4)} ${to.symbol}`;
+  }, [quote, from, to]);
+
   const execute = async () => {
-    if (!quote || !fromInputMint) return;
-    setExecuting(true);
-    setError('');
+    if (!quote || !fromInputMint || !from) return;
+    setResult({ phase: 'pending' });
     try {
       const res = await executeSwapWithFreshRetry(wallet.rpc, wallet.signer, {
         inputMint: fromInputMint,
@@ -162,70 +169,125 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
         initialQuote: quote,
       });
       if (!res.confirmed) throw new Error('Swap not confirmed — check Activity');
-      setSig(res.signature);
-      setDone(true);
+      setResult({
+        phase: 'success',
+        sig: res.signature,
+        paid: `${formatRawAmount(quote.inAmountRaw, from.decimals, 6)} ${from.symbol}`,
+        received: `+≈${formatRawAmount(quote.outAmountRaw, to.decimals, 6)} ${to.symbol}`,
+      });
+      wallet.refresh();
     } catch (e) {
-      setError((e as Error).message);
-    } finally {
-      setExecuting(false);
+      setResult({ phase: 'fail', reason: (e as Error).message });
     }
   };
 
-  if (done) {
+  // ---------------- result screens (per design) ----------------
+  if (result) {
+    const circle = (border: string, bg: string, inner: React.ReactNode) => (
+      <span className="flex h-[78px] w-[78px] items-center justify-center rounded-full" style={{ background: bg, border }}>
+        {inner}
+      </span>
+    );
     return (
-      <div className="flex h-full flex-col">
-        <Header title={t('swap')} onBack={onBack} />
-        <div className="m-auto flex w-full flex-col items-center gap-3 px-4 text-center">
-          <div className="text-4xl">✅</div>
-          <div className="text-sm font-bold">
-            Swapped {from?.symbol} → {to.symbol}
+      <div className="flex h-full flex-col items-center gap-4 px-5 pb-4 pt-10">
+        {result.phase === 'pending' &&
+          circle('1px solid var(--border-accent)', 'var(--card)', <span className="animate-pulse"><Logo size={34} /></span>)}
+        {result.phase === 'success' &&
+          circle('2px solid #9FE8C1', 'rgba(159,232,193,0.08)', (
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#9FE8C1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12.5l5 5 11-11" /></svg>
+          ))}
+        {result.phase === 'fail' &&
+          circle('2px solid #FF7A8A', 'rgba(255,122,138,0.08)', (
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FF7A8A" strokeWidth="2.5" strokeLinecap="round"><path d="M6 6l12 12 M18 6L6 18" /></svg>
+          ))}
+
+        <div className="flex flex-col items-center gap-1.5">
+          <span className="font-display text-[22px] text-center">
+            {result.phase === 'pending' ? t('pendingTitle') : result.phase === 'success' ? t('successTitle') : t('failTitle')}
+          </span>
+          <span className="max-w-[260px] text-center text-xs leading-relaxed" style={{ color: 'var(--text-2)' }}>
+            {result.phase === 'pending' ? t('pendingSub') : result.phase === 'success' ? t('successSub') : ''}
+          </span>
+        </div>
+
+        {result.phase === 'success' && (
+          <div className="card flex w-full flex-col gap-2.5 !p-3.5 text-xs">
+            <div className="flex justify-between"><span style={{ color: 'var(--text-3)' }}>{t('paid')}</span><span className="font-semibold">{result.paid}</span></div>
+            <div className="flex justify-between"><span style={{ color: 'var(--text-3)' }}>{t('received')}</span><span className="font-semibold" style={{ color: 'var(--green)' }}>{result.received}</span></div>
+            <div className="flex justify-between"><span style={{ color: 'var(--text-3)' }}>{t('networkFee')}</span><span style={{ color: 'var(--text-2)' }}>~0.0002 SOL</span></div>
+            <div className="flex justify-between">
+              <span style={{ color: 'var(--text-3)' }}>{t('txId')}</span>
+              <a href={`https://solscan.io/tx/${result.sig}`} target="_blank" rel="noreferrer" style={{ color: 'var(--gold)' }}>
+                {shortAddress(result.sig, 4)} ↗
+              </a>
+            </div>
           </div>
-          <a className="card w-full !py-2 text-xs" style={{ color: 'var(--gold)' }} href={`https://solscan.io/tx/${sig}`} target="_blank" rel="noreferrer">
-            View on Solscan ↗
-            <div className="mt-0.5 font-mono text-[10px]" style={{ color: 'var(--text-3)' }}>{shortAddress(sig, 10)}</div>
-          </a>
+        )}
+        {result.phase === 'fail' && (
+          <div className="w-full rounded-[14px] px-3.5 py-3" style={{ background: 'rgba(255,122,138,0.06)', border: '1px solid rgba(255,122,138,0.35)' }}>
+            <span className="selectable text-[11px] leading-relaxed" style={{ color: '#F3B7BE' }}>
+              {explainTxError(result.reason) ?? result.reason.slice(0, 220)}
+            </span>
+          </div>
+        )}
+
+        <div className="flex-1" />
+        {result.phase === 'success' && (
           <button className="btn btn-primary w-full" onClick={onBack}>
             {t('done')}
           </button>
-        </div>
+        )}
+        {result.phase === 'fail' && (
+          <div className="flex w-full flex-col gap-2">
+            <button className="btn btn-primary" onClick={() => setResult(null)}>
+              {t('tryAgain')}
+            </button>
+            <button className="btn btn-ghost" onClick={onBack}>
+              {t('cancel')}
+            </button>
+          </div>
+        )}
       </div>
     );
   }
 
+  // ---------------- swap form (per design) ----------------
   const pill = (symbol: string, logoUri: string | null, onClick: () => void) => (
     <button
-      className="flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 cursor-pointer"
+      className="flex shrink-0 items-center gap-1.5 rounded-full py-1.5 pl-1.5 pr-3 cursor-pointer"
       style={{ background: 'var(--bg)', border: '1px solid var(--border)' }}
       onClick={onClick}
     >
       <TokenIcon symbol={symbol} logoUri={logoUri} size={22} />
-      <span className="text-[13px] font-bold">{symbol}</span>
-      <span className="text-[10px]" style={{ color: 'var(--text-3)' }}>
-        ▾
-      </span>
+      <span className="text-[13px] font-semibold">{symbol}</span>
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
     </button>
   );
 
   return (
     <div className="relative flex h-full flex-col">
-      <Header title={t('swap')} onBack={onBack} />
-      <div className="flex flex-1 flex-col gap-2.5 overflow-y-auto px-4 pb-4 pt-1">
+      {/* header: back chip · title · slippage pill */}
+      <div className="flex items-center gap-2.5 px-4 pb-2 pt-4">
+        <button
+          className="flex h-[30px] w-[30px] items-center justify-center rounded-[10px] cursor-pointer"
+          style={{ background: 'var(--card)', border: '1px solid var(--border)' }}
+          onClick={onBack}
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-2)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+        </button>
+        <span className="font-display flex-1 text-[17px]">{t('swap')}</span>
+        <span className="rounded-full px-2.5 py-1.5 text-[11px]" style={{ background: 'var(--card)', border: '1px solid var(--border)', color: 'var(--text-2)' }}>
+          {t('slippage')} {((quote?.slippageBps ?? 50) / 100).toFixed(1)}%
+        </span>
+      </div>
+
+      <div className="flex flex-1 flex-col gap-3 overflow-y-auto px-4 pb-4 pt-1">
         {/* pay card */}
-        <div className="flex flex-col gap-2.5 rounded-2xl p-3.5" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
-          <div className="flex items-center justify-between text-[10px]" style={{ color: 'var(--text-3)' }}>
-            <span className="label">{t('youPay')}</span>
-            {from && (
-              <span title={formatRawAmount(from.amountRaw, from.decimals)}>
-                {t('balanceWord')} {formatAmountCompact(from.amountRaw, from.decimals)} ·{' '}
-                <button className="cursor-pointer font-semibold" style={{ color: 'var(--gold)' }} onClick={() => setAmountStr(formatRawAmount(maxRaw, from.decimals))}>
-                  {t('max')}
-                </button>
-              </span>
-            )}
-          </div>
+        <div className="flex flex-col gap-2.5 rounded-[14px] p-3.5" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
+          <span className="label">{t('youPay')}</span>
           <div className="flex items-center gap-2.5">
             <input
-              className="font-display min-w-0 flex-1 bg-transparent text-[30px] leading-tight outline-none"
+              className="font-display min-w-0 flex-1 bg-transparent text-[28px] leading-tight outline-none"
               style={{ color: 'var(--text)' }}
               placeholder="0"
               inputMode="decimal"
@@ -234,46 +296,63 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
             />
             {from && pill(from.symbol, from.logoUri, () => setPicker('from'))}
           </div>
-          <span className="text-[10px]" style={{ color: 'var(--inactive)' }}>
-            {amountRaw !== null && fromInputMint ? (usdOf(fromInputMint, amountRaw, from!.decimals) ?? ' ') : ' '}
-          </span>
+          <div className="flex items-center justify-between text-[11px]">
+            <span style={{ color: 'var(--text-3)' }} title={from ? formatRawAmount(from.amountRaw, from.decimals) : ''}>
+              {from ? `${t('balanceWord')}: ${formatAmountCompact(from.amountRaw, from.decimals)} ${from.symbol}` : ''}
+              {amountRaw !== null && fromInputMint && usdOf(fromInputMint, amountRaw, from!.decimals)
+                ? ` · ≈ ${usdOf(fromInputMint, amountRaw, from!.decimals)}`
+                : ''}
+            </span>
+            {from && (
+              <button className="cursor-pointer font-semibold" style={{ color: 'var(--gold)' }} onClick={() => setAmountStr(formatRawAmount(maxRaw, from.decimals))}>
+                {t('max')}
+              </button>
+            )}
+          </div>
         </div>
 
         {/* flip */}
-        <div className="z-10 -my-[22px] flex justify-center">
+        <div className="z-10 -my-[24px] flex justify-center">
           <button
-            className="flex h-[34px] w-[34px] items-center justify-center rounded-full text-sm cursor-pointer disabled:opacity-40"
-            style={{ background: 'var(--bg)', border: '1px solid var(--border-accent)', color: 'var(--gold)' }}
+            className="flex h-[34px] w-[34px] items-center justify-center rounded-[12px] cursor-pointer disabled:opacity-40"
+            style={{ background: 'var(--bg)', border: '1px solid var(--border-accent)' }}
             disabled={!canFlip}
             onClick={flip}
             title={canFlip ? 'Flip' : 'Flip needs a held token on the receive side'}
           >
-            ↓
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14 M19 12l-7 7-7-7" /></svg>
           </button>
         </div>
 
         {/* receive card */}
-        <div className="flex flex-col gap-2.5 rounded-2xl p-3.5" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
+        <div className="flex flex-col gap-2.5 rounded-[14px] p-3.5" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
           <span className="label">{t('youReceive')}</span>
           <div className="flex items-center gap-2.5">
-            <span className="font-display min-w-0 flex-1 truncate text-[30px] leading-tight" style={{ color: quote ? 'var(--green)' : 'var(--inactive)' }}>
+            <span className="font-display min-w-0 flex-1 truncate text-[28px] leading-tight" style={{ color: quote ? 'var(--text)' : 'var(--inactive)' }}>
               {quoting ? '…' : quote ? formatRawAmount(quote.outAmountRaw, to.decimals, 6) : '—'}
             </span>
             {pill(to.symbol, logos[to.mint] ?? null, () => setPicker('to'))}
           </div>
-          <span className="text-[10px]" style={{ color: 'var(--inactive)' }}>
-            {quote ? `${usdOf(to.mint, quote.outAmountRaw, to.decimals) ?? ''} · ${t('impact')} ${(quote.priceImpactPct * 100).toFixed(2)}%` : ' '}
+          <span className="text-[11px]" style={{ color: 'var(--text-3)' }}>
+            {toRow
+              ? `${t('balanceWord')}: ${formatAmountCompact(toRow.amountRaw, toRow.decimals)} ${to.symbol}`
+              : quote && usdOf(to.mint, quote.outAmountRaw, to.decimals)
+                ? `≈ ${usdOf(to.mint, quote.outAmountRaw, to.decimals)}`
+                : ' '}
           </span>
         </div>
 
-        {/* route / slippage */}
-        <div className="flex items-center justify-between px-1.5 text-[10px]" style={{ color: 'var(--text-3)' }}>
-          <span className="truncate">
-            {t('route')}: {quote ? quote.routeLabels.slice(0, 3).join(' · ') || 'Jupiter' : 'Jupiter'}
-          </span>
-          <span>
-            {t('slippage')}: {((quote?.slippageBps ?? 50) / 100).toFixed(1)}%
-          </span>
+        {/* details */}
+        <div className="flex flex-col gap-1.5 px-1.5 text-[11px]">
+          <div className="flex justify-between"><span style={{ color: 'var(--text-3)' }}>{t('rate')}</span><span style={{ color: 'var(--text-2)' }}>{rateLine ?? '—'}</span></div>
+          <div className="flex justify-between"><span style={{ color: 'var(--text-3)' }}>{t('networkFee')}</span><span style={{ color: 'var(--text-2)' }}>~0.0002 SOL</span></div>
+          <div className="flex justify-between">
+            <span style={{ color: 'var(--text-3)' }}>{t('route')}</span>
+            <span className="truncate pl-4" style={{ color: 'var(--text-2)' }}>
+              {quote ? `Jupiter · ${Math.max(quote.routeLabels.length, 1)} hop${quote.routeLabels.length > 1 ? 's' : ''}` : 'Jupiter'}
+              {quote && quote.priceImpactPct > 0.001 ? ` · ${t('impact')} ${(quote.priceImpactPct * 100).toFixed(2)}%` : ''}
+            </span>
+          </div>
         </div>
 
         {overMax && (
@@ -286,10 +365,13 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
             Very small swaps often fail to route — 0.01 SOL or more is reliable.
           </div>
         )}
-        {error && <ErrorNote text={error} />}
-        {executing && <Spinner label={`Swapping ${from?.symbol} → ${to.symbol}…`} />}
+        {quoteError && (
+          <div className="text-[11px]" style={{ color: 'var(--red)' }}>
+            {explainTxError(quoteError) ?? quoteError.slice(0, 160)}
+          </div>
+        )}
 
-        <button className="btn btn-primary mt-auto" disabled={!quote || quoting || executing || overMax} onClick={execute}>
+        <button className="btn btn-primary mt-auto !py-3.5" disabled={!quote || quoting || overMax} onClick={execute}>
           {t('swap')} {from ? `${from.symbol} → ${to.symbol}` : ''}
         </button>
       </div>
