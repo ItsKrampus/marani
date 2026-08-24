@@ -63,6 +63,30 @@ export function safeJson(value: unknown, max = 200): string {
   }
 }
 
+/** Translate raw chain/API errors into a human explanation with a suggested fix. Null when unknown. */
+export function explainTxError(raw: string): string | null {
+  const r = raw.toLowerCase();
+  if (/insufficientfundsforrent|insufficient funds for rent/.test(r)) {
+    return 'Not enough SOL left to satisfy rent rules. Top up a little SOL, or send Max / leave at least 0.00089 SOL.';
+  }
+  if (/insufficient lamports|insufficient funds/.test(r)) {
+    return 'Not enough SOL to cover the amount plus fees. Top up a little SOL and retry.';
+  }
+  if (/slippage|0x1771|exceeds desired slippage/.test(r)) {
+    return 'The price moved beyond your slippage limit while executing. Nothing was lost — just try again.';
+  }
+  if (/blockhash|block height exceeded|expired/.test(r)) {
+    return 'The network took too long and the transaction expired unsent. Safe to try again.';
+  }
+  if (/preflight|custom program error|#-32002/.test(r)) {
+    return 'The route failed on-chain simulation — nothing was sent. Routes go stale, and very small amounts route poorly. Try again, or use a slightly larger amount (≥ 0.01 SOL / ≥ $1).';
+  }
+  if (/429|too many requests|timed out|gateway|504|503/.test(r)) {
+    return 'A free public endpoint is rate-limiting or slow. Wait a few seconds and retry — a free helius.dev RPC key in Settings prevents this.';
+  }
+  return null;
+}
+
 /** Reject after `ms` so a hung connection can't freeze the UI forever. */
 export async function withTimeout<T>(promise: Promise<T>, ms: number, label = 'request'): Promise<T> {
   let timer: ReturnType<typeof setTimeout> | undefined;

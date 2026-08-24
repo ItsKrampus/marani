@@ -210,6 +210,11 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
                 Exceeds available balance{from?.mint === null ? ' (0.003 SOL kept for fees)' : ''}.
               </div>
             )}
+            {from?.mint === null && amountRaw !== null && !overMax && amountRaw < 10_000_000n && (
+              <div className="text-[11px]" style={{ color: 'var(--gold)' }}>
+                Very small swaps often fail to route — 0.01 SOL or more is reliable.
+              </div>
+            )}
 
             <span className="label">To</span>
             <div className="grid grid-cols-4 gap-2">

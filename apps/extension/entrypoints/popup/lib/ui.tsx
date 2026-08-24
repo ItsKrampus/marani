@@ -1,4 +1,4 @@
-import { shortAddress } from '@marani/core';
+import { explainTxError, shortAddress } from '@marani/core';
 import React, { useState } from 'react';
 import { usePrefs } from './prefs';
 
@@ -156,24 +156,35 @@ export function BottomNav({ active, onSelect }: { active: Tab; onSelect: (t: Tab
   );
 }
 
-/** Error display that can always be copied (the app disables text selection globally). */
+/** Error display: human explanation when we recognize the failure, raw details always copyable. */
 export function ErrorNote({ text }: { text: string }) {
   const [copied, setCopied] = useState(false);
+  const friendly = explainTxError(text);
   return (
-    <div className="flex items-start gap-2 rounded-xl p-2.5" style={{ background: '#2A0D1B', border: '1px solid #7A1533' }}>
-      <div className="selectable flex-1 break-words text-[11px] leading-relaxed" style={{ color: 'var(--red)' }}>
-        {text}
+    <div className="flex flex-col gap-1.5 rounded-xl p-2.5" style={{ background: '#2A0D1B', border: '1px solid #7A1533' }}>
+      {friendly && (
+        <div className="text-[12px] font-semibold leading-relaxed" style={{ color: 'var(--text)' }}>
+          {friendly}
+        </div>
+      )}
+      <div className="flex items-start gap-2">
+        <div
+          className="selectable flex-1 break-words leading-relaxed"
+          style={{ color: 'var(--red)', fontSize: friendly ? 10 : 11, opacity: friendly ? 0.8 : 1 }}
+        >
+          {text}
+        </div>
+        <button
+          className="btn btn-ghost !px-2 !py-1 text-[10px] shrink-0"
+          onClick={async () => {
+            await navigator.clipboard.writeText(text);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 1200);
+          }}
+        >
+          {copied ? '✓' : 'Copy'}
+        </button>
       </div>
-      <button
-        className="btn btn-ghost !px-2 !py-1 text-[10px] shrink-0"
-        onClick={async () => {
-          await navigator.clipboard.writeText(text);
-          setCopied(true);
-          setTimeout(() => setCopied(false), 1200);
-        }}
-      >
-        {copied ? '✓' : 'Copy'}
-      </button>
     </div>
   );
 }

@@ -31,6 +31,9 @@ interface YieldsData {
 const yields = yieldsJson as unknown as YieldsData;
 
 const STAKE_SOL_BUFFER = 3_000_000n; // swap fee + temp wSOL wrap rent
+/** Dust-sized swaps route through exotic venues and fail preflight — enforce sane floors. */
+const MIN_STAKE_LAMPORTS = 10_000_000n; // 0.01 SOL
+const MIN_DEPOSIT_USDC = 1_000_000n; // 1 USDC
 
 type Flow =
   | { kind: 'stake'; lst: LstOption }
@@ -107,6 +110,10 @@ export default function Cellar() {
       return null;
     }
   }, [amountStr, inputDecimals, inputMax]);
+
+  const minRaw = flow?.kind === 'stake' ? MIN_STAKE_LAMPORTS : flow?.kind === 'deposit' ? MIN_DEPOSIT_USDC : 0n;
+  const belowMin = amountRaw !== null && amountRaw < minRaw;
+  const smallUnstake = flow?.kind === 'unstake' && amountRaw !== null && amountRaw < MIN_STAKE_LAMPORTS;
 
   const getQuote = async () => {
     if (!flow || amountRaw === null || (flow.kind !== 'stake' && flow.kind !== 'unstake')) return;
@@ -195,9 +202,20 @@ export default function Cellar() {
                 {t('max')}
               </button>
             </div>
+            {belowMin && (
+              <div className="text-[11px]" style={{ color: 'var(--red)' }}>
+                Minimum {flow.kind === 'stake' ? '0.01 SOL' : '1 USDC'} — smaller amounts get unreliable routes and
+                usually fail.
+              </div>
+            )}
+            {smallUnstake && (
+              <div className="text-[11px]" style={{ color: 'var(--gold)' }}>
+                Very small unstakes can fail to route. If it errors, retry — nothing is sent on a failed attempt.
+              </div>
+            )}
             <button
               className="btn btn-primary mt-1"
-              disabled={amountRaw === null}
+              disabled={amountRaw === null || belowMin}
               onClick={() => (flow.kind === 'deposit' ? setStep('confirm') : getQuote())}
             >
               {t('continue')}
