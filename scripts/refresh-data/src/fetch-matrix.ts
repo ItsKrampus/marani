@@ -36,6 +36,13 @@ const here = dirname(fileURLToPath(import.meta.url));
 const OUT_PATH = join(here, '../../../packages/preflight/data/support-matrix.json');
 const KRAKEN_MANUAL = join(here, 'kraken-manual.json');
 
+// Optional read-only exchange API keys from repo-root .env (see .env.example).
+try {
+  process.loadEnvFile(join(here, '../../../.env'));
+} catch {
+  /* no .env — keyed exchanges are skipped */
+}
+
 const UA = { 'User-Agent': 'marani-refresh/0.1 (+https://github.com)' };
 
 async function getJson(url: string, init?: RequestInit): Promise<unknown> {
@@ -241,6 +248,96 @@ async function fetchBinanceSapi(): Promise<MatrixEntry[]> {
   return out;
 }
 
+// ---------------- Bybit (read-only key) ----------------
+async function fetchBybit(): Promise<MatrixEntry[]> {
+  const key = process.env.BYBIT_API_KEY;
+  const secret = process.env.BYBIT_API_SECRET;
+  if (!key || !secret) throw new Error('no BYBIT_API_KEY/SECRET in env');
+  const { createHmac } = await import('node:crypto');
+  const ts = Date.now().toString();
+  const recv = '10000';
+  const sign = createHmac('sha256', secret).update(ts + key + recv).digest('hex');
+  const body = (await getJson('https://api.bybit.com/v5/asset/coin/query-info', {
+    headers: { 'X-BAPI-API-KEY': key, 'X-BAPI-TIMESTAMP': ts, 'X-BAPI-RECV-WINDOW': recv, 'X-BAPI-SIGN': sign },
+  })) as {
+    result?: {
+      rows?: Array<{
+        coin?: string;
+        chains?: Array<{ chain?: string; chainDeposit?: string; chainWithdraw?: string; contractAddress?: string }>;
+      }>;
+    };
+  };
+  const out: MatrixEntry[] = [];
+  for (const c of body.result?.rows ?? []) {
+    for (const ch of c.chains ?? []) {
+      if (String(ch.chain ?? '').toUpperCase() !== 'SOL') continue;
+      pushEntry(out, 'bybit', c.coin ?? '', ch.contractAddress, ch.chainDeposit === '1', ch.chainWithdraw === '1');
+    }
+  }
+  return out;
+}
+
+// ---------------- MEXC (read-only key) ----------------
+async function fetchMexc(): Promise<MatrixEntry[]> {
+  const key = process.env.MEXC_API_KEY;
+  const secret = process.env.MEXC_API_SECRET;
+  if (!key || !secret) throw new Error('no MEXC_API_KEY/SECRET in env');
+  const { createHmac } = await import('node:crypto');
+  const qs = `timestamp=${Date.now()}&recvWindow=10000`;
+  const sig = createHmac('sha256', secret).update(qs).digest('hex');
+  const body = (await getJson(`https://api.mexc.com/api/v3/capital/config/getall?${qs}&signature=${sig}`, {
+    headers: { 'X-MEXC-APIKEY': key },
+  })) as Array<{
+    coin?: string;
+    networkList?: Array<{
+      netWork?: string;
+      network?: string;
+      depositEnable?: boolean;
+      withdrawEnable?: boolean;
+      contract?: string;
+      contractAddress?: string;
+    }>;
+  }>;
+  const out: MatrixEntry[] = [];
+  for (const c of body ?? []) {
+    for (const n of c.networkList ?? []) {
+      const net = String(n.netWork ?? n.network ?? '').toUpperCase();
+      if (!/^(SOL|SOLANA)/.test(net)) continue;
+      pushEntry(out, 'mexc', c.coin ?? '', n.contract ?? n.contractAddress, n.depositEnable === true, n.withdrawEnable === true);
+    }
+  }
+  return out;
+}
+
+// ---------------- OKX (read-only key; no contract addresses → consensus mints) ----------------
+async function fetchOkx(consensusMintBySymbol: Map<string, string>): Promise<MatrixEntry[]> {
+  const key = process.env.OKX_API_KEY;
+  const secret = process.env.OKX_API_SECRET;
+  const passphrase = process.env.OKX_API_PASSPHRASE;
+  if (!key || !secret || !passphrase) throw new Error('no OKX_API_KEY/SECRET/PASSPHRASE in env');
+  const { createHmac } = await import('node:crypto');
+  const ts = new Date().toISOString();
+  const path = '/api/v5/asset/currencies';
+  const sign = createHmac('sha256', secret).update(`${ts}GET${path}`).digest('base64');
+  const body = (await getJson(`https://www.okx.com${path}`, {
+    headers: {
+      'OK-ACCESS-KEY': key,
+      'OK-ACCESS-SIGN': sign,
+      'OK-ACCESS-TIMESTAMP': ts,
+      'OK-ACCESS-PASSPHRASE': passphrase,
+    },
+  })) as { data?: Array<{ ccy?: string; chain?: string; canDep?: boolean; canWd?: boolean; ctAddr?: string }> };
+  const out: MatrixEntry[] = [];
+  for (const c of body.data ?? []) {
+    if (!/-solana$/i.test(String(c.chain ?? ''))) continue;
+    const sym = normSymbol(c.ccy);
+    // OKX omits mint addresses — adopt the mint only when every other exchange agrees on it.
+    const mint = typeof c.ctAddr === 'string' && c.ctAddr ? c.ctAddr : consensusMintBySymbol.get(sym);
+    pushEntry(out, 'okx', sym, mint, c.canDep === true, c.canWd === true);
+  }
+  return out;
+}
+
 // ---------------- Kraken (manual) ----------------
 function fetchKrakenManual(): MatrixEntry[] {
   try {
@@ -291,6 +388,33 @@ async function main() {
       console.log(`✓ ${s.name}: ${rows.length} Solana assets`);
     } catch (e) {
       console.warn(`✗ ${s.name} failed: ${(e as Error).message}`);
+    }
+  }
+
+  // Keyed exchanges (optional): only run when read-only API keys are in .env.
+  const consensus = new Map<string, string>();
+  {
+    const bySymbol = new Map<string, Set<string>>();
+    for (const e of entries) {
+      if (e.mint === 'SOL') continue;
+      if (!bySymbol.has(e.symbol)) bySymbol.set(e.symbol, new Set());
+      bySymbol.get(e.symbol)!.add(e.mint);
+    }
+    for (const [sym, mints] of bySymbol) if (mints.size === 1) consensus.set(sym, [...mints][0]!);
+  }
+  const keyed: Array<{ id: ExchangeId; name: string; run: () => Promise<MatrixEntry[]>; source: string }> = [
+    { id: 'bybit', name: 'Bybit', run: fetchBybit, source: 'api.bybit.com (read-only key)' },
+    { id: 'mexc', name: 'MEXC', run: fetchMexc, source: 'api.mexc.com (read-only key)' },
+    { id: 'okx', name: 'OKX', run: () => fetchOkx(consensus), source: 'okx.com (read-only key, consensus mints)' },
+  ];
+  for (const s of keyed) {
+    try {
+      const rows = await s.run();
+      entries.push(...rows);
+      exchanges[s.id] = { name: s.name, assets: rows.length, source: s.source };
+      console.log(`✓ ${s.name}: ${rows.length} Solana assets`);
+    } catch (e) {
+      console.log(`· ${s.name} skipped: ${(e as Error).message}`);
     }
   }
 

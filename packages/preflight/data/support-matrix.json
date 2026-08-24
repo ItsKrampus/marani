@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-08-24T05:42:48.283Z",
+ "updatedAt": "2026-08-24T13:16:29.940Z",
  "exchanges": {
   "binance": {
    "name": "Binance",
@@ -4583,16 +4583,16 @@
   },
   {
    "exchange": "gate",
-   "mint": "HDa3zJc12ahykSsBRvgiWzr6WLEByf36yzKKbVvy4gnF",
-   "symbol": "1SOS",
-   "deposit": false,
+   "mint": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+   "symbol": "SPCXX",
+   "deposit": true,
    "withdraw": true
   },
   {
    "exchange": "gate",
-   "mint": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
-   "symbol": "SPCXX",
-   "deposit": true,
+   "mint": "HDa3zJc12ahykSsBRvgiWzr6WLEByf36yzKKbVvy4gnF",
+   "symbol": "1SOS",
+   "deposit": false,
    "withdraw": true
   },
   {
@@ -5437,15 +5437,15 @@
   },
   {
    "exchange": "gate",
-   "mint": "HLptm5e6rTgh4EKgDpYFrnRHbjpkMyVdEeREEa2G7rf9",
-   "symbol": "DUKO",
+   "mint": "sonarX4VtVkQemriJeLm6CKeW3GDMyiBnnAEMw1MRAE",
+   "symbol": "SONAR",
    "deposit": false,
    "withdraw": true
   },
   {
    "exchange": "gate",
-   "mint": "sonarX4VtVkQemriJeLm6CKeW3GDMyiBnnAEMw1MRAE",
-   "symbol": "SONAR",
+   "mint": "HLptm5e6rTgh4EKgDpYFrnRHbjpkMyVdEeREEa2G7rf9",
+   "symbol": "DUKO",
    "deposit": false,
    "withdraw": true
   },
@@ -5500,15 +5500,15 @@
   },
   {
    "exchange": "gate",
-   "mint": "ukHH6c7mMyiWCf1b9pnWe25TSpkDDt3H5pQZgZ74J82",
-   "symbol": "BOME",
+   "mint": "SonicxvLud67EceaEzCLRnMTBqzYUUYNr93DBkBdDES",
+   "symbol": "SONIC",
    "deposit": true,
    "withdraw": true
   },
   {
    "exchange": "gate",
-   "mint": "SonicxvLud67EceaEzCLRnMTBqzYUUYNr93DBkBdDES",
-   "symbol": "SONIC",
+   "mint": "ukHH6c7mMyiWCf1b9pnWe25TSpkDDt3H5pQZgZ74J82",
+   "symbol": "BOME",
    "deposit": true,
    "withdraw": true
   },

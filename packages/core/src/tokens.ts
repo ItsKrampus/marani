@@ -22,6 +22,20 @@ export const WELL_KNOWN_TOKENS: Record<string, TokenMeta> = {
   mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So: { symbol: 'mSOL', name: 'Marinade staked SOL', decimals: 9, verified: true },
   J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn: { symbol: 'jitoSOL', name: 'Jito staked SOL', decimals: 9, verified: true },
   So11111111111111111111111111111111111111112: { symbol: 'wSOL', name: 'Wrapped SOL', decimals: 9, verified: true },
+  // Mints below cross-verified against 5–7 exchanges' own listing data (see audit-coverage).
+  '6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN': { symbol: 'TRUMP', name: 'Official Trump', decimals: 6, verified: true },
+  '2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv': { symbol: 'PENGU', name: 'Pudgy Penguins', decimals: 6, verified: true },
+  pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn: { symbol: 'PUMP', name: 'Pump', decimals: 6, verified: true },
+  '9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump': { symbol: 'Fartcoin', name: 'Fartcoin', decimals: 6, verified: true },
+  '4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R': { symbol: 'RAY', name: 'Raydium', decimals: 6, verified: true },
+  KMNo3nJsBXfcpJTVhZcXLW7RmTwTt4GVFE7suUBo9sS: { symbol: 'KMNO', name: 'Kamino', decimals: 6, verified: true },
+  METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL: { symbol: 'MET', name: 'Meteora', decimals: 6, verified: true },
+  jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL: { symbol: 'JTO', name: 'Jito Governance', decimals: 9, verified: true },
+  HZ1JovNiVvGrGNiiYvEozEVgZ58xaU3RKwX8eACQBCt3: { symbol: 'PYTH', name: 'Pyth Network', decimals: 6, verified: true },
+  EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm: { symbol: 'WIF', name: 'dogwifhat', decimals: 6, verified: true },
+  '85VBFQZC9TZkfaptBWjvUw7YbZjy52A6mjtPGjstQAmQ': { symbol: 'W', name: 'Wormhole', decimals: 6, verified: true },
+  rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof: { symbol: 'RENDER', name: 'Render', decimals: 8, verified: true },
+  '27G8MtK7VtTcCHkpASjSDdkWWYfoqT6ggEuKidVJidD4': { symbol: 'JLP', name: 'Jupiter Perps LP', decimals: 6, verified: true },
 };
 
 export const USDC_MINT = 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v';

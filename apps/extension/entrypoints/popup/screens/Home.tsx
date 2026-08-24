@@ -10,8 +10,9 @@ import Activity from './Activity';
 import Settings from './Settings';
 import Cellar from './Cellar';
 import TokenDetail from './TokenDetail';
+import Buy from './Buy';
 
-type Route = Tab | 'send' | 'receive' | 'swap' | 'token';
+type Route = Tab | 'send' | 'receive' | 'swap' | 'token' | 'buy';
 
 const ACTION_ICONS = {
   send: 'M12 19V5 M5 12l7-7 7 7',
@@ -37,6 +38,7 @@ export default function Home() {
       />
     );
   if (route === 'receive') return <Receive onBack={() => setRoute('home')} />;
+  if (route === 'buy') return <Buy onBack={() => setRoute('home')} />;
   if (route === 'swap')
     return (
       <Swap
@@ -71,7 +73,7 @@ export default function Home() {
     { key: 'send', onClick: () => { setPresetToken(null); setRoute('send'); } },
     { key: 'receive', onClick: () => setRoute('receive') },
     { key: 'swap', onClick: () => setRoute('swap') },
-    { key: 'buy', soon: true },
+    { key: 'buy', onClick: () => setRoute('buy') },
   ];
 
   const homeBody = (

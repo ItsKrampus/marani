@@ -22,7 +22,11 @@ const TO_OPTIONS: Array<{ mint: string; symbol: string; decimals: number }> = [
   { mint: USDC_MINT, symbol: 'USDC', decimals: 6 },
   { mint: USDG_MINT, symbol: 'USDG', decimals: 6 },
   { mint: WSOL_MINT, symbol: 'SOL', decimals: 9 },
+  { mint: 'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB', symbol: 'USDT', decimals: 6 },
   { mint: 'JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN', symbol: 'JUP', decimals: 6 },
+  { mint: 'J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn', symbol: 'jitoSOL', decimals: 9 },
+  { mint: 'DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263', symbol: 'BONK', decimals: 5 },
+  { mint: '6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN', symbol: 'TRUMP', decimals: 6 },
 ];
 
 export default function Swap({ onBack, presetFrom }: { onBack: () => void; presetFrom?: { mint: string | null; amountRaw: bigint } | null }) {
