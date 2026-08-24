@@ -15,7 +15,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { usePrefs } from '../lib/prefs';
 import { getMetaCache, putMetaCache } from '../lib/storage';
 import { useWallet } from '../lib/wallet';
-import { Header, Spinner, TokenIcon } from '../lib/ui';
+import { ErrorNote, Header, Spinner, TokenIcon } from '../lib/ui';
 
 const SWAP_SOL_FEE_BUFFER = 3_000_000n; // fee + temp wSOL wrap rent
 
@@ -249,11 +249,7 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
               </div>
             )}
             {phase === 'swapping' && <Spinner label={`Swapping ${from?.symbol} → ${to.symbol}…`} />}
-            {error && (
-              <div className="text-xs break-words" style={{ color: 'var(--red)' }}>
-                {error}
-              </div>
-            )}
+            {error && <ErrorNote text={error} />}
 
             <div className="mt-auto flex flex-col gap-2">
               {phase === 'ready' && quote ? (

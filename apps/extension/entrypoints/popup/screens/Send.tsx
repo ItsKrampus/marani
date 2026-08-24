@@ -38,7 +38,7 @@ import labelsJson from '@marani/preflight/data/labels.json';
 import React, { useEffect, useMemo, useState } from 'react';
 import { getUserMarks, setUserMark } from '../lib/storage';
 import { useWallet, type TokenRow } from '../lib/wallet';
-import { FindingBadge, Header, Spinner } from '../lib/ui';
+import { ErrorNote, FindingBadge, Header, Spinner } from '../lib/ui';
 
 const matrix = matrixJson as unknown as SupportMatrix;
 const labels = labelsJson as unknown as LabelSet;
@@ -543,10 +543,10 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
               )}
               {simState === 'running' && <Spinner label="Simulating on mainnet…" />}
               {simState === 'ok' && <div className="text-xs text-emerald-400">✓ Simulation passed — {simDetail}</div>}
-              {simState === 'failed' && <div className="text-xs text-red-400">✗ Simulation failed: {simDetail}</div>}
+              {simState === 'failed' && <ErrorNote text={`Simulation failed: ${simDetail}`} />}
             </div>
 
-            {error && <div className="text-xs text-red-400">{error}</div>}
+            {error && <ErrorNote text={error} />}
             <button className="btn btn-primary mt-auto" disabled={simState !== 'ok' || sending} onClick={runSend}>
               {sending ? 'Sending…' : 'Confirm & send'}
             </button>
@@ -582,7 +582,7 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
             {rescuePhase === 'sending' && <Spinner label="Swap confirmed. Sending USDC…" />}
             {rescuePhase === 'error' && (
               <>
-                <div className="text-xs text-red-400 break-words">{rescueError}</div>
+                <ErrorNote text={rescueError} />
                 <button className="btn btn-ghost mt-auto" onClick={() => setStep('compose')}>
                   Back
                 </button>

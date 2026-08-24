@@ -17,7 +17,7 @@ import yieldsJson from '@marani/preflight/data/yields.json';
 import React, { useMemo, useState } from 'react';
 import { usePrefs } from '../lib/prefs';
 import { useWallet, type TokenRow } from '../lib/wallet';
-import { fmtUsd, Logo, Spinner, TokenIcon } from '../lib/ui';
+import { ErrorNote, fmtUsd, Logo, Spinner, TokenIcon } from '../lib/ui';
 
 interface Venue {
   apyPct: number;
@@ -298,9 +298,7 @@ export default function Cellar() {
         )}
         {step === 'error' && (
           <>
-            <div className="text-xs break-words" style={{ color: 'var(--red)' }}>
-              {error}
-            </div>
+            <ErrorNote text={error} />
             <button className="btn btn-ghost" onClick={() => setStep('input')}>
               {t('back')}
             </button>

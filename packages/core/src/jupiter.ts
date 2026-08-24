@@ -9,10 +9,28 @@ import type { SolanaRpc } from './rpc.js';
 import { sendWireTransaction, type SendResult } from './send.js';
 
 /**
- * Jupiter swap integration (keyless lite tier).
- * Verified live 2026-08-24: /swap/v1/quote routes USDG→USDC at ~0% impact.
+ * Jupiter swap integration (keyless). Both hosts serve /swap/v1 without a key
+ * (verified live 2026-08-24); the lite host hiccups under load, so every call
+ * walks the host list with per-request timeouts.
  */
-const JUP_BASE = 'https://lite-api.jup.ag/swap/v1';
+const JUP_SWAP_HOSTS = ['https://lite-api.jup.ag/swap/v1', 'https://api.jup.ag/swap/v1'];
+
+async function jupFetch(pathAndQuery: string, init: RequestInit | undefined, fetchImpl: typeof fetch): Promise<Response> {
+  let lastError: Error = new Error('no Jupiter host reachable');
+  for (let round = 0; round < 2; round++) {
+    for (const host of JUP_SWAP_HOSTS) {
+      try {
+        const res = await fetchImpl(`${host}${pathAndQuery}`, { ...init, signal: AbortSignal.timeout(12_000) });
+        if (res.ok) return res;
+        const text = await res.text().catch(() => '');
+        lastError = new Error(`Jupiter HTTP ${res.status}${text ? `: ${text.slice(0, 140)}` : ''}`);
+      } catch (e) {
+        lastError = e as Error;
+      }
+    }
+  }
+  throw lastError;
+}
 
 export interface JupQuote {
   inputMint: string;
@@ -34,11 +52,12 @@ export async function getSwapQuote(params: {
   fetchImpl?: typeof fetch;
 }): Promise<JupQuote> {
   const { inputMint, outputMint, amountRaw, slippageBps = 50, fetchImpl = fetch } = params;
-  const url =
-    `${JUP_BASE}/quote?inputMint=${encodeURIComponent(inputMint)}` +
-    `&outputMint=${encodeURIComponent(outputMint)}&amount=${amountRaw}&slippageBps=${slippageBps}`;
-  const res = await fetchImpl(url);
-  if (!res.ok) throw new Error(`Jupiter quote failed: HTTP ${res.status}`);
+  const res = await jupFetch(
+    `/quote?inputMint=${encodeURIComponent(inputMint)}` +
+      `&outputMint=${encodeURIComponent(outputMint)}&amount=${amountRaw}&slippageBps=${slippageBps}`,
+    undefined,
+    fetchImpl,
+  );
   const body = (await res.json()) as {
     inputMint?: string;
     outputMint?: string;
@@ -73,21 +92,21 @@ export async function buildSwapTransaction(params: {
   fetchImpl?: typeof fetch;
 }): Promise<string> {
   const { quote, userPublicKey, fetchImpl = fetch } = params;
-  const res = await fetchImpl(`${JUP_BASE}/swap`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      quoteResponse: quote.raw,
-      userPublicKey,
-      wrapAndUnwrapSol: true,
-      dynamicComputeUnitLimit: true,
-      prioritizationFeeLamports: 'auto',
-    }),
-  });
-  if (!res.ok) {
-    const text = await res.text().catch(() => '');
-    throw new Error(`Jupiter swap build failed: HTTP ${res.status} ${text.slice(0, 200)}`);
-  }
+  const res = await jupFetch(
+    '/swap',
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        quoteResponse: quote.raw,
+        userPublicKey,
+        wrapAndUnwrapSol: true,
+        dynamicComputeUnitLimit: true,
+        prioritizationFeeLamports: 'auto',
+      }),
+    },
+    fetchImpl,
+  );
   const body = (await res.json()) as { swapTransaction?: string; error?: string };
   if (!body.swapTransaction) throw new Error(`Jupiter swap build failed${body.error ? `: ${body.error}` : ''}`);
   return body.swapTransaction;

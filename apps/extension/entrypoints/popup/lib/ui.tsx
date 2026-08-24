@@ -156,6 +156,28 @@ export function BottomNav({ active, onSelect }: { active: Tab; onSelect: (t: Tab
   );
 }
 
+/** Error display that can always be copied (the app disables text selection globally). */
+export function ErrorNote({ text }: { text: string }) {
+  const [copied, setCopied] = useState(false);
+  return (
+    <div className="flex items-start gap-2 rounded-xl p-2.5" style={{ background: '#2A0D1B', border: '1px solid #7A1533' }}>
+      <div className="selectable flex-1 break-words text-[11px] leading-relaxed" style={{ color: 'var(--red)' }}>
+        {text}
+      </div>
+      <button
+        className="btn btn-ghost !px-2 !py-1 text-[10px] shrink-0"
+        onClick={async () => {
+          await navigator.clipboard.writeText(text);
+          setCopied(true);
+          setTimeout(() => setCopied(false), 1200);
+        }}
+      >
+        {copied ? '✓' : 'Copy'}
+      </button>
+    </div>
+  );
+}
+
 /** 24h price area chart in brand colors — green when up, red when down. */
 export function Sparkline({ points, width = 335, height = 92 }: { points: number[]; width?: number; height?: number }) {
   if (points.length < 2) return null;
