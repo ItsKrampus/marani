@@ -42,6 +42,8 @@ export interface WalletCtx {
   totalChangeUsd: number | null;
   loading: boolean;
   loadError: string | null;
+  /** null = prices OK; otherwise a human-readable reason USD values are missing. */
+  priceStatus: string | null;
   refresh: () => void;
   lock: () => void;
 }
@@ -120,6 +122,7 @@ export function WalletProvider(props: {
   const [rows, setRows] = useState<TokenRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
+  const [priceStatus, setPriceStatus] = useState<string | null>(null);
   const [nonce, setNonce] = useState(0);
   const failedOver = useRef(false);
 
@@ -156,10 +159,33 @@ export function WalletProvider(props: {
       setRows(buildRows(portfolio, cache, {}));
       setLoading(false);
 
-      // Phase 2 — enrich with logos and USD prices in the background (fail-soft).
+      // Phase 2 — enrich with USD prices first, then logos (both fail-soft).
+      const mints = [WSOL_MINT, ...portfolio.tokens.map((t) => t.mint)];
+      const unique = [...new Set(mints)];
       try {
-        const mints = [WSOL_MINT, ...portfolio.tokens.map((t) => t.mint)];
-        for (const mint of mints) {
+        let prices = await fetchUsdPrices(unique);
+        if (Object.keys(prices).length === 0 && !cancelled) {
+          // one quiet second-chance — the free price hosts hiccup under load
+          await new Promise((r) => setTimeout(r, 2000));
+          prices = await fetchUsdPrices(unique);
+        }
+        const gotAny = Object.keys(prices).length > 0;
+        for (const mint of unique) {
+          if (!prices[mint] && ONE_DOLLAR_STABLE_MINTS.has(mint)) {
+            prices[mint] = { usd: 1, change24hPct: null };
+          }
+        }
+        if (!cancelled) {
+          setRows(buildRows(portfolio, cache, prices));
+          setPriceStatus(gotAny ? null : 'price API returned no data (both hosts)');
+        }
+      } catch (e) {
+        if (!cancelled) setPriceStatus(`price fetch failed: ${(e as Error).message.slice(0, 120)}`);
+      }
+      try {
+        let logosChanged = false;
+        for (const mint of unique) {
+          if (cancelled) return;
           if (cache[mint]?.logoUri) continue;
           const fetched = await fetchTokenMeta(mint);
           if (fetched) {
@@ -170,24 +196,15 @@ export function WalletProvider(props: {
               logoUri: fetched.logoUri,
             };
             await putMetaCache(mint, cache[mint]!);
-          }
-          if (cancelled) return;
-        }
-        const unique = [...new Set(mints)];
-        let prices = await fetchUsdPrices(unique);
-        if (Object.keys(prices).length === 0 && !cancelled) {
-          // one quiet second-chance — the free price hosts hiccup under load
-          await new Promise((r) => setTimeout(r, 2000));
-          prices = await fetchUsdPrices(unique);
-        }
-        for (const mint of unique) {
-          if (!prices[mint] && ONE_DOLLAR_STABLE_MINTS.has(mint)) {
-            prices[mint] = { usd: 1, change24hPct: null };
+            logosChanged = true;
           }
         }
-        if (!cancelled) setRows(buildRows(portfolio, cache, prices));
+        if (logosChanged && !cancelled) {
+          const prices = await fetchUsdPrices(unique).catch(() => ({}));
+          setRows(buildRows(portfolio, cache, prices));
+        }
       } catch {
-        /* enrichment is best-effort */
+        /* logo enrichment is best-effort */
       }
     })();
     return () => {
@@ -217,6 +234,7 @@ export function WalletProvider(props: {
     totalChangeUsd,
     loading,
     loadError,
+    priceStatus,
     refresh,
     lock: onLock,
   };

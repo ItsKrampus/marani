@@ -136,6 +136,11 @@ export default function Home() {
           {t('refresh')}
         </button>
       </div>
+      {wallet.priceStatus && (
+        <div className="pb-2 text-[10px]" style={{ color: 'var(--red)' }}>
+          USD values unavailable — {wallet.priceStatus}
+        </div>
+      )}
       <div className="flex flex-col gap-2">
         {wallet.loading && <Spinner label="Reading balances…" />}
         {wallet.loadError && (
