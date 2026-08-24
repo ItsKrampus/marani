@@ -12,7 +12,7 @@
     "build": "pnpm -C apps/extension build",
     "zip": "pnpm -C apps/extension zip",
     "typecheck": "pnpm -r --no-bail exec tsc --noEmit",
-    "refresh-data": "tsx scripts/refresh-data/src/fetch-matrix.ts && tsx scripts/refresh-data/src/labels-seed.ts",
+    "refresh-data": "tsx scripts/refresh-data/src/fetch-matrix.ts && tsx scripts/refresh-data/src/labels-seed.ts && tsx scripts/refresh-data/src/fetch-yields.ts",
     "smoke": "tsx scripts/refresh-data/src/smoke-core.ts"
   },
   "devDependencies": {

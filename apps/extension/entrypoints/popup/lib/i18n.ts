@@ -41,6 +41,11 @@ const en = {
   recipient: 'Recipient',
   asset: 'Asset',
   lockWallet: 'Lock wallet',
+  stake: 'Stake',
+  unstake: 'Unstake',
+  deposit: 'Deposit',
+  withdrawAll: 'Withdraw all',
+  positions: 'Your positions',
 };
 
 const ka: typeof en = {
@@ -83,6 +88,11 @@ const ka: typeof en = {
   recipient: 'მიმღები',
   asset: 'აქტივი',
   lockWallet: 'საფულის ჩაკეტვა',
+  stake: 'ჩამარხვა',
+  unstake: 'ამოღება',
+  deposit: 'შეტანა',
+  withdrawAll: 'გამოტანა',
+  positions: 'შენი პოზიციები',
 };
 
 export type MsgKey = keyof typeof en;

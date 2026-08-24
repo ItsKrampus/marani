@@ -1,0 +1,25 @@
+{
+ "updatedAt": "2026-08-24T11:49:19.962Z",
+ "venues": {
+  "jitosol": {
+   "apyPct": 5.13,
+   "tvlUsd": 951676570,
+   "source": "defillama:0e7d0722-9054-4907-8593-567b353c0900"
+  },
+  "msol": {
+   "apyPct": 4.75,
+   "tvlUsd": 222942593,
+   "source": "defillama:b3f93865-5ec8-4662-90a0-11808e0aa2bd"
+  },
+  "jupiterLendUsdc": {
+   "apyPct": 5.04,
+   "tvlUsd": 441908241,
+   "source": "defillama:d783c8df-e2ed-44b4-8317-161ccc1b5f06"
+  },
+  "kaminoLendUsdc": {
+   "apyPct": 4.86,
+   "tvlUsd": 5227095,
+   "source": "defillama:d2141a59-c199-4be7-8d4b-c8223954836b"
+  }
+ }
+}

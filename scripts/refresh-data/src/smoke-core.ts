@@ -12,7 +12,10 @@ import {
   getPortfolio,
   getSwapQuote,
   isValidMnemonic,
+  JITOSOL_MINT,
   makeRpc,
+  MSOL_MINT,
+  quoteStake,
   newMnemonic,
   parseAmount,
   signerFromMnemonic,
@@ -123,6 +126,26 @@ async function testJupiter() {
   check('Jupiter quotes USDG→USDC', quote.outAmountRaw > 4_900_000n, `5 USDG → ${formatRawAmount(quote.outAmountRaw, 6)} USDC via ${quote.routeLabels.join('>')}`);
 }
 
+// ---------- 4b. Cellar: staking routes + yields data ----------
+async function testCellar() {
+  for (const [label, mint] of [
+    ['jitoSOL', JITOSOL_MINT],
+    ['mSOL', MSOL_MINT],
+  ] as const) {
+    const q = await quoteStake({ solLamports: 100_000_000n, lstMint: mint });
+    check(
+      `stake route SOL→${label}`,
+      q.outAmountRaw > 60_000_000n && q.outAmountRaw < 110_000_000n,
+      `0.1 SOL → ${formatRawAmount(q.outAmountRaw, 9)} ${label}`,
+    );
+  }
+  const yields = JSON.parse(readFileSync(join(here, '../../../packages/preflight/data/yields.json'), 'utf8')) as {
+    venues: Record<string, { apyPct?: number } | null>;
+  };
+  const live = Object.entries(yields.venues).filter(([, v]) => typeof v?.apyPct === 'number');
+  check('yields.json has live venues', live.length >= 3, live.map(([k, v]) => `${k}:${v!.apyPct}%`).join(' '));
+}
+
 // ---------- 5. Preflight engine on real generated data ----------
 function testPreflight() {
   const matrix = JSON.parse(
@@ -179,6 +202,8 @@ console.log('\n— mainnet reads —');
 await testMainnetReads();
 console.log('\n— Jupiter —');
 await testJupiter();
+console.log('\n— cellar —');
+await testCellar();
 console.log('\n— preflight engine —');
 testPreflight();
 

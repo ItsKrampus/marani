@@ -6,7 +6,8 @@
   "exports": {
     ".": "./src/index.ts",
     "./data/support-matrix.json": "./data/support-matrix.json",
-    "./data/labels.json": "./data/labels.json"
+    "./data/labels.json": "./data/labels.json",
+    "./data/yields.json": "./data/yields.json"
   },
   "dependencies": {
     "@marani/core": "workspace:*"
