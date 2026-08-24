@@ -156,33 +156,40 @@ export function BottomNav({ active, onSelect }: { active: Tab; onSelect: (t: Tab
   );
 }
 
-/** Error display: human explanation when we recognize the failure, raw details always copyable. */
+/** Error display: human explanation up front, raw details collapsed behind a toggle, always copyable. */
 export function ErrorNote({ text }: { text: string }) {
   const [copied, setCopied] = useState(false);
   const friendly = explainTxError(text);
+  const [showRaw, setShowRaw] = useState(!friendly);
   return (
-    <div className="flex flex-col gap-1.5 rounded-xl p-2.5" style={{ background: '#2A0D1B', border: '1px solid #7A1533' }}>
-      {friendly && (
-        <div className="text-[12px] font-semibold leading-relaxed" style={{ color: 'var(--text)' }}>
-          {friendly}
-        </div>
-      )}
-      <div className="flex items-start gap-2">
+    <div
+      className="flex min-w-0 flex-col gap-2 rounded-xl p-3"
+      style={{ background: '#2A0D1B', border: '1px solid #7A1533' }}
+    >
+      <div className="text-[12px] leading-relaxed" style={{ color: 'var(--text)' }}>
+        {friendly ?? 'Something went wrong.'}
+      </div>
+      {showRaw && (
         <div
-          className="selectable flex-1 break-words leading-relaxed"
-          style={{ color: 'var(--red)', fontSize: friendly ? 10 : 11, opacity: friendly ? 0.8 : 1 }}
+          className="selectable min-w-0 rounded-lg p-2 font-mono text-[10px] leading-relaxed"
+          style={{ color: 'var(--red)', background: 'rgba(0,0,0,0.35)', overflowWrap: 'anywhere' }}
         >
           {text}
         </div>
+      )}
+      <div className="flex gap-2">
+        <button className="btn btn-ghost !px-2.5 !py-1 text-[10px]" onClick={() => setShowRaw((v) => !v)}>
+          {showRaw ? 'Hide details' : 'Details'}
+        </button>
         <button
-          className="btn btn-ghost !px-2 !py-1 text-[10px] shrink-0"
+          className="btn btn-ghost !px-2.5 !py-1 text-[10px]"
           onClick={async () => {
             await navigator.clipboard.writeText(text);
             setCopied(true);
             setTimeout(() => setCopied(false), 1200);
           }}
         >
-          {copied ? '✓' : 'Copy'}
+          {copied ? 'Copied ✓' : 'Copy error'}
         </button>
       </div>
     </div>

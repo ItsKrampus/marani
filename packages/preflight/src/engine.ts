@@ -63,11 +63,16 @@ export function evaluateCexSend(
     const key = token.mint ?? 'SOL';
     const row = table.get(key);
     if (!row) {
+      const listedElsewhere = [...index.byExchange.entries()].filter(([, t]) => t.has(key)).length;
+      const elsewhereNote =
+        listedElsewhere === 0
+          ? ` In fact, NONE of the ${index.byExchange.size} exchanges we track accept ${token.symbol} — there is no exchange this can be safely deposited to.`
+          : ` (${listedElsewhere} other tracked exchange${listedElsewhere > 1 ? 's do' : ' does'} accept it.)`;
       findings.push({
         level: 'block',
         code: 'CEX_TOKEN_NOT_LISTED',
         title: `${exchangeName} does not support ${token.symbol} on Solana`,
-        detail: `${exchangeName} has no Solana deposit support for ${token.symbol} (checked against ${exchangeName}'s own listing data, ${coverage.assets} Solana assets, updated ${index.matrix.updatedAt.slice(0, 10)}). If you send it, it will NOT be credited — recovery means a support ticket, a fee, and weeks of waiting, with no guarantee.`,
+        detail: `${exchangeName} has no Solana deposit support for ${token.symbol} (checked against ${exchangeName}'s own listing data, ${coverage.assets} Solana assets, updated ${index.matrix.updatedAt.slice(0, 10)}). If you send it, it will NOT be credited — recovery means a support ticket, a fee, and weeks of waiting, with no guarantee.${elsewhereNote}`,
         rescue: token.mint && token.mint !== USDC_MINT ? { suggestedMints: [USDC_MINT] } : undefined,
       });
     } else if (!row.deposit) {

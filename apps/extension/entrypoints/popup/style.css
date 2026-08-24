@@ -46,6 +46,14 @@ body {
   user-select: text;
   -webkit-user-select: text;
   cursor: text;
+  overflow-wrap: anywhere;
+}
+
+/* long addresses/JSON must never push past the popup edge */
+.card,
+.font-mono {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 input,

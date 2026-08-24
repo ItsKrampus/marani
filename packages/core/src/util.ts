@@ -66,6 +66,9 @@ export function safeJson(value: unknown, max = 200): string {
 /** Translate raw chain/API errors into a human explanation with a suggested fix. Null when unknown. */
 export function explainTxError(raw: string): string | null {
   const r = raw.toLowerCase();
+  if (/not tradable|token_not_tradable|could_not_find_any_route|no route/.test(r)) {
+    return "This token has no live market on Jupiter, so it can't be swapped. If the exchange doesn't accept it either, there is no safe way to deposit it anywhere — keep it in your wallet, or sell it on the platform where it trades.";
+  }
   if (/insufficientfundsforrent|insufficient funds for rent/.test(r)) {
     return 'Not enough SOL left to satisfy rent rules. Top up a little SOL, or send Max / leave at least 0.00089 SOL.';
   }
