@@ -356,6 +356,13 @@ export default function Cellar() {
       )}
 
       <span className="label">{t('stake')} SOL</span>
+      {(!solRow || solRow.amountRaw <= STAKE_SOL_BUFFER) && (
+        <div className="rounded-xl px-3 py-2 text-[11px] leading-relaxed" style={{ background: '#2A2010', border: '1px solid #6B4E1F', color: 'var(--gold)' }}>
+          Staking needs a little working SOL: your amount <span style={{ color: 'var(--text-2)' }}>plus ~0.003 SOL</span>{' '}
+          for the temporary wrap rent (refunded) and fees. You have{' '}
+          {formatRawAmount(solRow?.amountRaw ?? 0n, 9, 5)} SOL — top up to at least ~0.005 SOL to try it.
+        </div>
+      )}
       {LST_OPTIONS.map((lst) => {
         const venue = venueFor(lst);
         return (
@@ -386,7 +393,9 @@ export default function Cellar() {
             Jupiter Lend <ApyChip venue={yields.venues.jupiterLendUsdc} />
           </span>
           <span className="text-[11px]" style={{ color: 'var(--text-3)' }}>
-            Largest USDC pool on Solana · {tvlText(yields.venues.jupiterLendUsdc)}
+            {!usdcRow || usdcRow.amountRaw === 0n
+              ? 'No USDC in this wallet yet — grab some via Swap first'
+              : `Largest USDC pool on Solana · ${tvlText(yields.venues.jupiterLendUsdc)}`}
           </span>
         </div>
         <button
