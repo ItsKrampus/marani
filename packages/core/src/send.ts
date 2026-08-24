@@ -23,7 +23,7 @@ import {
 } from '@solana/kit';
 import type { TokenProgramKind } from './balances.js';
 import type { SolanaRpc } from './rpc.js';
-import { sleep, withRetry } from './util.js';
+import { sleep, withRetry, withTimeout } from './util.js';
 
 export interface TransferSpec {
   signer: KeyPairSigner;
@@ -170,7 +170,7 @@ async function pollConfirmation(rpc: SolanaRpc, signature: Signature, timeoutMs 
   const startedAt = Date.now();
   while (Date.now() - startedAt < timeoutMs) {
     try {
-      const { value } = await rpc.getSignatureStatuses([signature]).send();
+      const { value } = await withTimeout(rpc.getSignatureStatuses([signature]).send(), 8_000, 'status poll');
       const status = value[0];
       if (status) {
         if (status.err) return { signature, confirmed: false, err: status.err };
@@ -192,7 +192,7 @@ export async function sendTransfer(rpc: SolanaRpc, spec: TransferSpec): Promise<
   const signed = await signTransactionMessageWithSigners(message);
   const wire = getBase64EncodedWireTransaction(signed);
   const signature = await withRetry(() =>
-    rpc.sendTransaction(wire, { encoding: 'base64', maxRetries: 3n }).send(),
+    withTimeout(rpc.sendTransaction(wire, { encoding: 'base64', maxRetries: 3n }).send(), 20_000, 'broadcast'),
   );
   return pollConfirmation(rpc, signature);
 }

@@ -40,7 +40,9 @@ export async function fetchUsdPrices(
 ): Promise<Record<string, UsdPrice>> {
   if (mints.length === 0) return {};
   try {
-    const res = await fetchImpl(`https://lite-api.jup.ag/price/v3?ids=${mints.map(encodeURIComponent).join(',')}`);
+    const res = await fetchImpl(`https://lite-api.jup.ag/price/v3?ids=${mints.map(encodeURIComponent).join(',')}`, {
+      signal: AbortSignal.timeout(8000),
+    });
     if (!res.ok) return {};
     const body = (await res.json()) as Record<string, { usdPrice?: number; priceChange24h?: number }>;
     const out: Record<string, UsdPrice> = {};
@@ -66,7 +68,7 @@ export async function fetchTokenMeta(
   fetchImpl: typeof fetch = fetch,
 ): Promise<TokenMeta | null> {
   try {
-    const res = await fetchImpl(JUP_TOKEN_SEARCH + encodeURIComponent(mint));
+    const res = await fetchImpl(JUP_TOKEN_SEARCH + encodeURIComponent(mint), { signal: AbortSignal.timeout(8000) });
     if (!res.ok) return null;
     const list = (await res.json()) as Array<{
       id?: string;

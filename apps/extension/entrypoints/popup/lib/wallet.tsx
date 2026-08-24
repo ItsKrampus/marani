@@ -3,15 +3,17 @@ import {
   fetchUsdPrices,
   getPortfolio,
   makeRpc,
+  pickRpcUrl,
   shortAddress,
   WELL_KNOWN_TOKENS,
   WSOL_MINT,
   type KeyPairSigner,
+  type Portfolio,
   type SolanaRpc,
   type UsdPrice,
 } from '@marani/core';
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { getMetaCache, putMetaCache } from './storage';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { getMetaCache, putMetaCache, setRpcPick, type CachedTokenMeta } from './storage';
 
 export interface TokenRow {
   /** null = native SOL */
@@ -55,19 +57,70 @@ function rowAmount(row: { amountRaw: bigint; decimals: number }): number {
   return Number(row.amountRaw) / 10 ** row.decimals;
 }
 
+function buildRows(
+  portfolio: Portfolio,
+  metaCache: Record<string, CachedTokenMeta>,
+  prices: Record<string, UsdPrice>,
+): TokenRow[] {
+  const priced = (mint: string | null, base: Omit<TokenRow, 'usdValue' | 'change24hPct'>): TokenRow => {
+    const p = prices[mint ?? WSOL_MINT];
+    return {
+      ...base,
+      usdValue: p ? rowAmount(base) * p.usd : null,
+      change24hPct: p?.change24hPct ?? null,
+    };
+  };
+
+  const rows: TokenRow[] = [
+    priced(null, {
+      mint: null,
+      symbol: 'SOL',
+      name: 'Solana',
+      amountRaw: portfolio.lamports,
+      decimals: 9,
+      program: null,
+      verified: true,
+      logoUri: metaCache[WSOL_MINT]?.logoUri ?? null,
+    }),
+  ];
+  for (const t of portfolio.tokens) {
+    const known = WELL_KNOWN_TOKENS[t.mint];
+    const cached = metaCache[t.mint];
+    rows.push(
+      priced(t.mint, {
+        mint: t.mint,
+        symbol: known?.symbol ?? cached?.symbol ?? shortAddress(t.mint),
+        name: known?.name ?? cached?.name ?? 'Unknown token',
+        amountRaw: t.amountRaw,
+        decimals: t.decimals,
+        program: t.program,
+        verified: known ? true : cached?.verified === true,
+        logoUri: cached?.logoUri ?? null,
+      }),
+    );
+  }
+  return rows;
+}
+
 export function WalletProvider(props: {
   signer: KeyPairSigner;
   mnemonic: string;
   rpcUrl: string;
+  /** true when the RPC was auto-picked (not pinned in Settings) — enables failover. */
+  rpcIsAuto: boolean;
   onLock: () => void;
   children: React.ReactNode;
 }) {
-  const { signer, mnemonic, rpcUrl, onLock } = props;
-  const rpc = useMemo(() => makeRpc(rpcUrl), [rpcUrl]);
+  const { signer, mnemonic, rpcIsAuto, onLock } = props;
+  const [activeRpcUrl, setActiveRpcUrl] = useState(props.rpcUrl);
+  useEffect(() => setActiveRpcUrl(props.rpcUrl), [props.rpcUrl]);
+  const rpc = useMemo(() => makeRpc(activeRpcUrl), [activeRpcUrl]);
+
   const [rows, setRows] = useState<TokenRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [nonce, setNonce] = useState(0);
+  const failedOver = useRef(false);
 
   const refresh = useCallback(() => setNonce((n) => n + 1), []);
 
@@ -76,83 +129,62 @@ export function WalletProvider(props: {
     (async () => {
       setLoading(true);
       setLoadError(null);
+      let portfolio: Portfolio;
       try {
-        const portfolio = await getPortfolio(rpc, signer.address);
-        const cache = await getMetaCache();
-
-        // Resolve a mint's display meta, hitting the Jupiter Token API once per
-        // mint (cached) — also for well-known tokens, to pick up real logos.
-        const resolveMeta = async (mint: string) => {
-          let meta = cache[mint] ?? null;
-          if (!meta || !meta.logoUri) {
-            const fetched = await fetchTokenMeta(mint);
-            if (fetched) {
-              meta = {
-                symbol: fetched.symbol,
-                name: fetched.name,
-                verified: fetched.verified,
-                logoUri: fetched.logoUri,
-              };
-              cache[mint] = meta;
-              await putMetaCache(mint, meta);
-            }
-          }
-          return meta;
-        };
-
-        const solMeta = await resolveMeta(WSOL_MINT);
-        const bare: Omit<TokenRow, 'usdValue' | 'change24hPct'>[] = [
-          {
-            mint: null,
-            symbol: 'SOL',
-            name: 'Solana',
-            amountRaw: portfolio.lamports,
-            decimals: 9,
-            program: null,
-            verified: true,
-            logoUri: solMeta?.logoUri ?? null,
-          },
-        ];
-        for (const t of portfolio.tokens) {
-          const known = WELL_KNOWN_TOKENS[t.mint];
-          const meta = await resolveMeta(t.mint);
-          bare.push({
-            mint: t.mint,
-            symbol: known?.symbol ?? meta?.symbol ?? shortAddress(t.mint),
-            name: known?.name ?? meta?.name ?? 'Unknown token',
-            amountRaw: t.amountRaw,
-            decimals: t.decimals,
-            program: t.program,
-            verified: known ? true : meta?.verified === true,
-            logoUri: meta?.logoUri ?? null,
-          });
-        }
-
-        const priceIds = bare.map((r) => r.mint ?? WSOL_MINT);
-        const prices: Record<string, UsdPrice> = await fetchUsdPrices([...new Set(priceIds)]);
-        const withPrices: TokenRow[] = bare.map((r) => {
-          const p = prices[r.mint ?? WSOL_MINT];
-          return {
-            ...r,
-            usdValue: p ? rowAmount(r) * p.usd : null,
-            change24hPct: p?.change24hPct ?? null,
-          };
-        });
-        if (!cancelled) setRows(withPrices);
+        portfolio = await getPortfolio(rpc, signer.address);
       } catch (e) {
-        if (!cancelled) setLoadError((e as Error).message);
-      } finally {
-        if (!cancelled) setLoading(false);
+        if (cancelled) return;
+        // Auto mode: the picked endpoint may have started hanging — re-probe once and switch.
+        if (rpcIsAuto && !failedOver.current) {
+          failedOver.current = true;
+          const fresh = await pickRpcUrl().catch(() => null);
+          if (!cancelled && fresh && fresh !== activeRpcUrl) {
+            await setRpcPick(fresh);
+            setActiveRpcUrl(fresh); // re-runs this effect with the new endpoint
+            return;
+          }
+        }
+        setLoadError((e as Error).message);
+        setLoading(false);
+        return;
+      }
+      if (cancelled) return;
+
+      // Phase 1 — show balances immediately from static + cached metadata.
+      const cache = await getMetaCache();
+      setRows(buildRows(portfolio, cache, {}));
+      setLoading(false);
+
+      // Phase 2 — enrich with logos and USD prices in the background (fail-soft).
+      try {
+        const mints = [WSOL_MINT, ...portfolio.tokens.map((t) => t.mint)];
+        for (const mint of mints) {
+          if (cache[mint]?.logoUri) continue;
+          const fetched = await fetchTokenMeta(mint);
+          if (fetched) {
+            cache[mint] = {
+              symbol: fetched.symbol,
+              name: fetched.name,
+              verified: fetched.verified,
+              logoUri: fetched.logoUri,
+            };
+            await putMetaCache(mint, cache[mint]!);
+          }
+          if (cancelled) return;
+        }
+        const prices = await fetchUsdPrices([...new Set(mints)]);
+        if (!cancelled) setRows(buildRows(portfolio, cache, prices));
+      } catch {
+        /* enrichment is best-effort */
       }
     })();
     return () => {
       cancelled = true;
     };
-  }, [rpc, signer.address, nonce]);
+  }, [rpc, signer.address, nonce]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const totalUsd = rows.length && rows.some((r) => r.usdValue !== null)
-    ? rows.reduce((s, r) => s + (r.usdValue ?? 0), 0)
-    : null;
+  const totalUsd =
+    rows.length && rows.some((r) => r.usdValue !== null) ? rows.reduce((s, r) => s + (r.usdValue ?? 0), 0) : null;
   const totalChangeUsd =
     totalUsd !== null
       ? rows.reduce((s, r) => {
@@ -166,7 +198,7 @@ export function WalletProvider(props: {
     address: signer.address,
     signer,
     rpc,
-    rpcUrl,
+    rpcUrl: activeRpcUrl,
     mnemonic,
     rows,
     totalUsd,

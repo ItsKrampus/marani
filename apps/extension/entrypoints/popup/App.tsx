@@ -12,7 +12,7 @@ type Phase =
   | { t: 'boot' }
   | { t: 'onboard' }
   | { t: 'locked' }
-  | { t: 'ready'; signer: KeyPairSigner; mnemonic: string; rpcUrl: string };
+  | { t: 'ready'; signer: KeyPairSigner; mnemonic: string; rpcUrl: string; rpcIsAuto: boolean };
 
 export default function App() {
   const [phase, setPhase] = useState<Phase>({ t: 'boot' });
@@ -20,7 +20,8 @@ export default function App() {
   const unlockWith = async (mnemonic: string) => {
     const [signer, settings] = await Promise.all([signerFromMnemonic(mnemonic), getSettings()]);
     let rpcUrl = settings.rpcUrl.trim();
-    if (!rpcUrl) {
+    const rpcIsAuto = rpcUrl === '';
+    if (rpcIsAuto) {
       // auto mode: probe once, then reuse the pick for 10 minutes across popup opens
       const cached = await getRpcPick();
       if (cached && Date.now() - cached.at < 10 * 60_000) {
@@ -30,7 +31,7 @@ export default function App() {
         await setRpcPick(rpcUrl);
       }
     }
-    setPhase({ t: 'ready', signer, mnemonic, rpcUrl });
+    setPhase({ t: 'ready', signer, mnemonic, rpcUrl, rpcIsAuto });
   };
 
   useEffect(() => {
@@ -66,6 +67,7 @@ export default function App() {
         signer={phase.signer}
         mnemonic={phase.mnemonic}
         rpcUrl={phase.rpcUrl}
+        rpcIsAuto={phase.rpcIsAuto}
         onLock={async () => {
           await clearSessionMnemonic();
           setPhase({ t: 'locked' });

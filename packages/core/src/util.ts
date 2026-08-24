@@ -63,6 +63,19 @@ export function safeJson(value: unknown, max = 200): string {
   }
 }
 
+/** Reject after `ms` so a hung connection can't freeze the UI forever. */
+export async function withTimeout<T>(promise: Promise<T>, ms: number, label = 'request'): Promise<T> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => reject(new Error(`${label} timed out after ${Math.round(ms / 1000)}s`)), ms);
+  });
+  try {
+    return await Promise.race([promise, timeout]);
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 /**
  * Retry an idempotent async operation (RPC reads, rebroadcasts) with backoff.
  * Free public RPC tiers throw 429s on small bursts — this smooths them over.
