@@ -25,6 +25,37 @@ export const WELL_KNOWN_TOKENS: Record<string, TokenMeta> = {
 
 export const USDC_MINT = 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v';
 export const USDG_MINT = '2u1tszSeqZ3qBWF3uNGPFc8TzMk2tdiwknnRMWGWjGWH';
+export const WSOL_MINT = 'So11111111111111111111111111111111111111112';
+
+export interface UsdPrice {
+  usd: number;
+  change24hPct: number | null;
+}
+
+/** Spot USD prices (and 24h change %) from the keyless Jupiter Price API v3. Empty map on failure. */
+export async function fetchUsdPrices(
+  mints: string[],
+  fetchImpl: typeof fetch = fetch,
+): Promise<Record<string, UsdPrice>> {
+  if (mints.length === 0) return {};
+  try {
+    const res = await fetchImpl(`https://lite-api.jup.ag/price/v3?ids=${mints.map(encodeURIComponent).join(',')}`);
+    if (!res.ok) return {};
+    const body = (await res.json()) as Record<string, { usdPrice?: number; priceChange24h?: number }>;
+    const out: Record<string, UsdPrice> = {};
+    for (const [mint, info] of Object.entries(body ?? {})) {
+      if (typeof info?.usdPrice === 'number' && Number.isFinite(info.usdPrice)) {
+        out[mint] = {
+          usd: info.usdPrice,
+          change24hPct: typeof info.priceChange24h === 'number' ? info.priceChange24h : null,
+        };
+      }
+    }
+    return out;
+  } catch {
+    return {};
+  }
+}
 
 const JUP_TOKEN_SEARCH = 'https://lite-api.jup.ag/tokens/v2/search?query=';
 

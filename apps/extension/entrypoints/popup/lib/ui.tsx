@@ -1,15 +1,21 @@
+import { shortAddress } from '@marani/core';
 import React, { useState } from 'react';
+import { usePrefs } from './prefs';
 
 export function Spinner({ label }: { label?: string }) {
   return (
-    <div className="flex items-center gap-2 text-sm text-zinc-400">
-      <div className="h-4 w-4 animate-spin rounded-full border-2 border-zinc-600 border-t-[#d9a441]" />
+    <div className="flex items-center gap-2 text-sm" style={{ color: 'var(--text-2)' }}>
+      <div
+        className="h-4 w-4 animate-spin rounded-full border-2"
+        style={{ borderColor: 'var(--border)', borderTopColor: 'var(--gold)' }}
+      />
       {label ?? 'Loading…'}
     </div>
   );
 }
 
 export function CopyButton({ text, small }: { text: string; small?: boolean }) {
+  const { t } = usePrefs();
   const [copied, setCopied] = useState(false);
   return (
     <button
@@ -20,7 +26,7 @@ export function CopyButton({ text, small }: { text: string; small?: boolean }) {
         setTimeout(() => setCopied(false), 1200);
       }}
     >
-      {copied ? 'Copied ✓' : 'Copy'}
+      {copied ? t('copied') : t('copy')}
     </button>
   );
 }
@@ -29,38 +35,171 @@ export function Header(props: { title: string; onBack?: () => void; right?: Reac
   return (
     <div className="flex items-center gap-2 px-4 pt-4 pb-2">
       {props.onBack && (
-        <button className="text-zinc-400 hover:text-white text-lg leading-none cursor-pointer" onClick={props.onBack}>
+        <button
+          className="text-lg leading-none cursor-pointer"
+          style={{ color: 'var(--text-3)' }}
+          onClick={props.onBack}
+        >
           ←
         </button>
       )}
-      <div className="text-base font-bold flex-1">{props.title}</div>
+      <div className="font-display text-base flex-1">{props.title}</div>
       {props.right}
     </div>
   );
 }
 
-export function Logo({ size = 28 }: { size?: number }) {
-  // Qvevri (Georgian wine vessel) mark — where you keep what's precious.
+/** Marani qvevri mark — from the brand design project. */
+export function Logo({ size = 24 }: { size?: number }) {
+  const h = Math.round((size * 140) / 120);
   return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="none">
+    <svg width={size} height={h} viewBox="0 0 120 140" fill="none">
       <path
-        d="M8 4h16c0 4-1 7-3 9.5 2 2.5 3 5.5 3 8.5 0 4-3.6 6-8 6s-8-2-8-6c0-3 1-6 3-8.5C9 11 8 8 8 4z"
-        fill="#8e2438"
-        stroke="#d9a441"
-        strokeWidth="1.5"
+        d="M45 12 h30 c2 0 3 1 3 3 v7 c16 8 26 24 26 44 c0 30 -18 54 -44 62 c-26 -8 -44 -32 -44 -62 c0 -20 10 -36 26 -44 v-7 c0 -2 1 -3 3 -3 z"
+        fill="#7A1533"
       />
-      <path d="M12 4.5h8" stroke="#d9a441" strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="60" cy="54" r="11" fill="#14090E" />
+      <circle cx="60" cy="54" r="11" stroke="#E0A458" strokeWidth="3" fill="none" />
+      <path d="M4 76 h18 M98 76 h18" stroke="#E0A458" strokeWidth="3" strokeLinecap="round" />
     </svg>
   );
 }
 
 export function FindingBadge({ level }: { level: 'block' | 'warn' | 'info' | 'ok' }) {
   const map = {
-    block: ['BLOCKED', 'bg-red-950 text-red-300 border-red-800'],
-    warn: ['CAUTION', 'bg-amber-950 text-amber-300 border-amber-800'],
-    info: ['INFO', 'bg-sky-950 text-sky-300 border-sky-800'],
-    ok: ['SAFE', 'bg-emerald-950 text-emerald-300 border-emerald-800'],
+    block: ['BLOCKED', { background: '#2A0D1B', color: '#FF7A8A', borderColor: '#7A1533' }],
+    warn: ['CAUTION', { background: '#2A2010', color: '#E0A458', borderColor: '#6B4E1F' }],
+    info: ['INFO', { background: '#1F161E', color: '#B7ACA8', borderColor: '#33272F' }],
+    ok: ['SAFE', { background: '#0E2018', color: '#9FE8C1', borderColor: '#2E5A45' }],
   } as const;
-  const [text, cls] = map[level];
-  return <span className={`rounded-md border px-1.5 py-0.5 text-[10px] font-bold tracking-wider ${cls}`}>{text}</span>;
+  const [text, style] = map[level];
+  return (
+    <span className="rounded-md border px-1.5 py-0.5 text-[10px] font-bold tracking-wider" style={style}>
+      {text}
+    </span>
+  );
+}
+
+/** Top chrome bar: mark, account pill, network pill, avatar → settings. */
+export function TopBar(props: { address: string; onAvatar: () => void }) {
+  const { t } = usePrefs();
+  const [copied, setCopied] = useState(false);
+  return (
+    <div
+      className="flex items-center justify-between px-4 py-3"
+      style={{ borderBottom: '1px solid var(--border-soft)' }}
+    >
+      <div className="flex items-center gap-2">
+        <Logo size={20} />
+        <button
+          className="pill"
+          onClick={async () => {
+            await navigator.clipboard.writeText(props.address);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 1200);
+          }}
+        >
+          <span className="flex h-[7px] w-[7px] rounded-full" style={{ background: 'var(--green)' }} />
+          <span className="text-xs font-semibold">{copied ? t('copied') : t('account')}</span>
+          <span className="text-[11px] font-mono" style={{ color: 'var(--text-3)' }}>
+            {shortAddress(props.address, 4)}
+          </span>
+        </button>
+      </div>
+      <div className="flex items-center gap-1.5">
+        <span className="pill !cursor-default" style={{ color: 'var(--text-2)' }}>
+          ◎ Solana
+        </span>
+        <button
+          className="h-7 w-7 rounded-full cursor-pointer"
+          style={{ background: 'linear-gradient(135deg, #7A1533, #E0A458)' }}
+          onClick={props.onAvatar}
+          title={t('settings')}
+        />
+      </div>
+    </div>
+  );
+}
+
+export type Tab = 'home' | 'cellar' | 'activity' | 'settings';
+
+const TAB_ICONS: Record<Tab, string> = {
+  home: 'M3 10.5 L12 3 l9 7.5 M5 9.5 V21 h14 V9.5',
+  cellar: 'M9 3 h6 v3 c4 2 6 5.5 6 9.5 c0 3 -4 5.5 -9 5.5 c-5 0 -9 -2.5 -9 -5.5 c0 -4 2 -7.5 6 -9.5 z',
+  activity: 'M3 12 h4 l3 -7 4 14 3 -7 h4',
+  settings:
+    'M12 8a4 4 0 1 0 0 8a4 4 0 0 0 0-8z M12 2v3 M12 19v3 M4.9 4.9l2.2 2.2 M16.9 16.9l2.2 2.2 M2 12h3 M19 12h3 M4.9 19.1l2.2-2.2 M16.9 7.1l2.2-2.2',
+};
+
+export function BottomNav({ active, onSelect }: { active: Tab; onSelect: (t: Tab) => void }) {
+  const { t } = usePrefs();
+  const tabs: Tab[] = ['home', 'cellar', 'activity', 'settings'];
+  return (
+    <div
+      className="grid grid-cols-4"
+      style={{ borderTop: '1px solid var(--border-soft)', background: 'var(--bg-nav)' }}
+    >
+      {tabs.map((tab) => {
+        const color = tab === active ? 'var(--gold)' : 'var(--inactive)';
+        return (
+          <button key={tab} className="flex flex-col items-center gap-[3px] pb-3 pt-2.5 cursor-pointer" onClick={() => onSelect(tab)}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d={TAB_ICONS[tab]} />
+            </svg>
+            <span className="text-[10px] font-semibold" style={{ color }}>
+              {t(tab)}
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+const usdFormat = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+export function fmtUsd(n: number): string {
+  return usdFormat.format(n);
+}
+
+export function pctText(pct: number | null): { text: string; color: string } {
+  if (pct === null || !Number.isFinite(pct)) return { text: '', color: 'var(--text-3)' };
+  const rounded = Math.abs(pct) < 0.05 ? 0 : pct;
+  const sign = rounded > 0 ? '+' : rounded < 0 ? '−' : '';
+  const color = rounded > 0 ? 'var(--green)' : rounded < 0 ? 'var(--red)' : 'var(--text-3)';
+  return { text: `${sign}${Math.abs(rounded).toFixed(1)}%`, color };
+}
+
+/** Brand colors for token circles, keyed by symbol (design palette). */
+export function tokenColor(symbol: string): string {
+  const map: Record<string, string> = {
+    SOL: '#B99AE8',
+    USDC: '#A8C4E8',
+    USDG: '#E0A458',
+    USDT: '#9FE8C1',
+    PYUSD: '#A8C4E8',
+    JUP: '#B99AE8',
+    BONK: '#F0B26B',
+  };
+  if (map[symbol]) return map[symbol];
+  const palette = ['#B99AE8', '#A8C4E8', '#E0A458', '#F0B26B', '#9FE8C1'];
+  let h = 0;
+  for (const c of symbol) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+  return palette[h % palette.length]!;
+}
+
+export function TokenCircle({ symbol, size = 32 }: { symbol: string; size?: number }) {
+  return (
+    <span
+      className="flex items-center justify-center rounded-full font-bold"
+      style={{
+        width: size,
+        height: size,
+        background: tokenColor(symbol),
+        color: '#14090E',
+        fontSize: size * 0.38,
+      }}
+    >
+      {symbol === 'SOL' || symbol === 'wSOL' ? '◎' : symbol.slice(0, 1)}
+    </span>
+  );
 }

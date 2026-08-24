@@ -41,10 +41,11 @@ function encodePng(width, height, rgba) {
   return Buffer.concat([sig, chunk('IHDR', ihdr), chunk('IDAT', deflateSync(raw, { level: 9 })), chunk('IEND', Buffer.alloc(0))]);
 }
 
-const WINE = [0x8e, 0x24, 0x38];
-const WINE_DEEP = [0x4a, 0x11, 0x1f];
-const GOLD = [0xd9, 0xa4, 0x41];
-const BG = [0x14, 0x0d, 0x11];
+// Brand palette from the Claude Design project
+const WINE = [0x7a, 0x15, 0x33];
+const WINE_DEEP = [0x2a, 0x0d, 0x1b];
+const GOLD = [0xe0, 0xa4, 0x58];
+const BG = [0x14, 0x09, 0x0e];
 
 function drawBase(size) {
   const px = Buffer.alloc(size * size * 4);
@@ -74,6 +75,12 @@ function drawBase(size) {
       if (inBody && dyb > bodyR * 0.35) c = WINE_DEEP;
       // gold rim at the mouth
       if (y >= rimTop && y < rimBottom && Math.abs(dx) <= neckHalf * 0.82) c = GOLD;
+      // gold side handles (from the brand mark)
+      if (
+        Math.abs(y - size * 0.55) <= Math.max(1, size * 0.018) &&
+        (Math.abs(dx) > bodyR * 1.08 && Math.abs(dx) < r * 0.92)
+      )
+        c = GOLD;
       // gold ring border of the disc
       const dist = Math.sqrt(dx * dx + dyc * dyc);
       if (dist >= r - Math.max(1.5, size * 0.02)) c = GOLD;

@@ -4,6 +4,8 @@ import { browser } from 'wxt/browser';
 
 export interface Settings {
   rpcUrl: string;
+  lang?: 'en' | 'ka';
+  privacy?: boolean;
 }
 
 export type UserMarks = Record<string, ExchangeId | 'not-cex'>;

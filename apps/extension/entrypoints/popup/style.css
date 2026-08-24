@@ -1,19 +1,40 @@
+@import '@fontsource/sora/400.css';
+@import '@fontsource/sora/600.css';
+@import '@fontsource/sora/700.css';
+@import '@fontsource/marcellus/400.css';
+@import '@fontsource/noto-sans-georgian/400.css';
+@import '@fontsource/noto-sans-georgian/600.css';
 @import 'tailwindcss';
 
+/* Marani design tokens — from "Marani Georgian web3 wallet branding" (Claude Design) */
 :root {
-  --marani-wine: #8e2438;
-  --marani-wine-deep: #5c1626;
-  --marani-gold: #d9a441;
+  --bg: #14090e;
+  --bg-nav: #120710;
+  --bg-input: #120710;
+  --card: #1f161e;
+  --border: #33272f;
+  --border-soft: #241820;
+  --border-accent: #4a2233;
+  --text: #f3eae0;
+  --text-2: #b7aca8;
+  --text-3: #8e8288;
+  --inactive: #695e66;
+  --gold: #e0a458;
+  --gold-hi: #f3c983;
+  --wine: #7a1533;
+  --wine-deep: #2a0d1b;
+  --green: #9fe8c1;
+  --red: #ff7a8a;
 }
 
 html,
 body {
-  width: 380px;
-  height: 600px;
+  width: 375px;
+  height: 640px;
   margin: 0;
-  background: #0c0a0e;
-  color: #ece7ea;
-  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Sora', 'Noto Sans Georgian', ui-sans-serif, system-ui, sans-serif;
 }
 
 #root {
@@ -23,29 +44,67 @@ body {
 }
 
 ::selection {
-  background: var(--marani-wine);
-  color: white;
+  background: var(--wine);
+  color: var(--text);
+}
+
+.font-display {
+  font-family: 'Marcellus', 'Noto Sans Georgian', serif;
 }
 
 .btn {
-  @apply rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer;
+  @apply rounded-full px-4 py-2.5 text-sm font-semibold transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer;
 }
 .btn-primary {
-  background: var(--marani-wine);
-  @apply text-white hover:brightness-110;
+  background: var(--gold);
+  color: #14090e;
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--gold-hi);
 }
 .btn-ghost {
-  @apply bg-white/5 text-zinc-200 hover:bg-white/10;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.btn-ghost:hover:not(:disabled) {
+  border-color: var(--border-accent);
 }
 .btn-danger {
-  @apply bg-red-900/60 text-red-200 hover:bg-red-900;
+  background: var(--wine-deep);
+  border: 1px solid var(--wine);
+  color: var(--red);
+}
+.btn-danger:hover:not(:disabled) {
+  background: #3a1225;
 }
 .card {
-  @apply rounded-2xl bg-white/[0.04] border border-white/[0.06] p-4;
+  background: var(--card);
+  border: 1px solid var(--border);
+  @apply rounded-2xl p-4;
 }
 .input {
-  @apply w-full rounded-xl bg-black/40 border border-white/10 px-3 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 outline-none focus:border-[#8e2438];
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  color: var(--text);
+  @apply w-full rounded-xl px-3 py-2.5 text-sm outline-none;
+}
+.input::placeholder {
+  color: var(--text-3);
+}
+.input:focus {
+  border-color: var(--gold);
 }
 .label {
-  @apply text-[11px] uppercase tracking-wider text-zinc-500 font-semibold;
+  color: var(--text-3);
+  letter-spacing: 0.18em;
+  @apply text-[10px] uppercase font-semibold;
+}
+.pill {
+  background: var(--card);
+  border: 1px solid var(--border);
+  @apply rounded-full flex items-center gap-1.5 px-2.5 py-1.5 text-[11px] cursor-pointer;
+}
+.pill:hover {
+  border-color: var(--border-accent);
 }

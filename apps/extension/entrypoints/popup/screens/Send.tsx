@@ -266,10 +266,13 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
   // ================= RENDER =================
   const destBadge = destState?.kind === 'cex' && (
     <div className="flex items-center gap-2 text-xs text-zinc-400">
-      <span className="rounded-md bg-[#5c1626] border border-[#8e2438] px-1.5 py-0.5 text-[10px] font-bold text-rose-200">
+      <span
+        className="rounded-md px-1.5 py-0.5 text-[10px] font-bold"
+        style={{ background: '#2A0D1B', border: '1px solid #7A1533', color: '#F3C983' }}
+      >
         {EXCHANGE_NAMES[destState.exchange]} DEPOSIT ADDRESS
       </span>
-      <span className="text-zinc-500">via {destState.via === 'user' ? 'your confirmation' : destState.via}</span>
+      <span style={{ color: 'var(--text-3)' }}>via {destState.via === 'user' ? 'your confirmation' : destState.via}</span>
     </div>
   );
 

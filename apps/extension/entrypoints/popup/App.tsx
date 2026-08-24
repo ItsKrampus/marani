@@ -1,6 +1,7 @@
 import { pickRpcUrl, signerFromMnemonic, type KeyPairSigner } from '@marani/core';
 import React, { useEffect, useState } from 'react';
 import { WalletProvider } from './lib/wallet';
+import { PrefsProvider } from './lib/prefs';
 import { getRpcPick, getSessionMnemonic, getSettings, getVault, clearSessionMnemonic, setRpcPick } from './lib/storage';
 import { Spinner, Logo } from './lib/ui';
 import Onboard from './screens/Onboard';
@@ -48,38 +49,45 @@ export default function App() {
     })();
   }, []);
 
+  let body: React.ReactNode;
   if (phase.t === 'boot') {
-    return (
+    body = (
       <div className="flex h-full items-center justify-center">
         <Spinner label="Opening the cellar…" />
       </div>
     );
+  } else if (phase.t === 'onboard') {
+    body = <Onboard onDone={unlockWith} />;
+  } else if (phase.t === 'locked') {
+    body = <Unlock onUnlocked={unlockWith} />;
+  } else {
+    body = (
+      <WalletProvider
+        signer={phase.signer}
+        mnemonic={phase.mnemonic}
+        rpcUrl={phase.rpcUrl}
+        onLock={async () => {
+          await clearSessionMnemonic();
+          setPhase({ t: 'locked' });
+        }}
+      >
+        <Home />
+      </WalletProvider>
+    );
   }
-  if (phase.t === 'onboard') return <Onboard onDone={unlockWith} />;
-  if (phase.t === 'locked') return <Unlock onUnlocked={unlockWith} />;
 
-  return (
-    <WalletProvider
-      signer={phase.signer}
-      mnemonic={phase.mnemonic}
-      rpcUrl={phase.rpcUrl}
-      onLock={async () => {
-        await clearSessionMnemonic();
-        setPhase({ t: 'locked' });
-      }}
-    >
-      <Home />
-    </WalletProvider>
-  );
+  return <PrefsProvider>{body}</PrefsProvider>;
 }
 
 export function Brand() {
   return (
-    <div className="flex items-center gap-2">
-      <Logo />
+    <div className="flex items-center gap-2.5">
+      <Logo size={26} />
       <div>
-        <div className="text-sm font-black tracking-wide">MARANI</div>
-        <div className="text-[10px] text-zinc-500 -mt-0.5">the wallet that won't let you lose money</div>
+        <div className="font-display text-base tracking-[0.08em]">MARANI</div>
+        <div className="-mt-0.5 text-[10px]" style={{ color: 'var(--text-3)' }}>
+          the wallet that won't let you lose money
+        </div>
       </div>
     </div>
   );

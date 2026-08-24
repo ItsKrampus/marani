@@ -1,11 +1,14 @@
 import {
+  fetchTokenMeta,
+  fetchUsdPrices,
   getPortfolio,
   makeRpc,
-  WELL_KNOWN_TOKENS,
-  fetchTokenMeta,
   shortAddress,
+  WELL_KNOWN_TOKENS,
+  WSOL_MINT,
   type KeyPairSigner,
   type SolanaRpc,
+  type UsdPrice,
 } from '@marani/core';
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { getMetaCache, putMetaCache } from './storage';
@@ -19,6 +22,9 @@ export interface TokenRow {
   decimals: number;
   program: 'token' | 'token-2022' | null;
   verified: boolean;
+  /** USD value of the row balance, when a price is known. */
+  usdValue: number | null;
+  change24hPct: number | null;
 }
 
 export interface WalletCtx {
@@ -28,6 +34,8 @@ export interface WalletCtx {
   rpcUrl: string;
   mnemonic: string;
   rows: TokenRow[];
+  totalUsd: number | null;
+  totalChangeUsd: number | null;
   loading: boolean;
   loadError: string | null;
   refresh: () => void;
@@ -40,6 +48,10 @@ export function useWallet(): WalletCtx {
   const ctx = useContext(Ctx);
   if (!ctx) throw new Error('useWallet outside provider');
   return ctx;
+}
+
+function rowAmount(row: { amountRaw: bigint; decimals: number }): number {
+  return Number(row.amountRaw) / 10 ** row.decimals;
 }
 
 export function WalletProvider(props: {
@@ -66,7 +78,7 @@ export function WalletProvider(props: {
       try {
         const portfolio = await getPortfolio(rpc, signer.address);
         const cache = await getMetaCache();
-        const out: TokenRow[] = [
+        const bare: Omit<TokenRow, 'usdValue' | 'change24hPct'>[] = [
           {
             mint: null,
             symbol: 'SOL',
@@ -87,7 +99,7 @@ export function WalletProvider(props: {
               await putMetaCache(t.mint, meta);
             }
           }
-          out.push({
+          bare.push({
             mint: t.mint,
             symbol: meta?.symbol ?? shortAddress(t.mint),
             name: meta?.name ?? 'Unknown token',
@@ -97,7 +109,18 @@ export function WalletProvider(props: {
             verified: meta?.verified === true,
           });
         }
-        if (!cancelled) setRows(out);
+
+        const priceIds = bare.map((r) => r.mint ?? WSOL_MINT);
+        const prices: Record<string, UsdPrice> = await fetchUsdPrices([...new Set(priceIds)]);
+        const withPrices: TokenRow[] = bare.map((r) => {
+          const p = prices[r.mint ?? WSOL_MINT];
+          return {
+            ...r,
+            usdValue: p ? rowAmount(r) * p.usd : null,
+            change24hPct: p?.change24hPct ?? null,
+          };
+        });
+        if (!cancelled) setRows(withPrices);
       } catch (e) {
         if (!cancelled) setLoadError((e as Error).message);
       } finally {
@@ -109,6 +132,18 @@ export function WalletProvider(props: {
     };
   }, [rpc, signer.address, nonce]);
 
+  const totalUsd = rows.length && rows.some((r) => r.usdValue !== null)
+    ? rows.reduce((s, r) => s + (r.usdValue ?? 0), 0)
+    : null;
+  const totalChangeUsd =
+    totalUsd !== null
+      ? rows.reduce((s, r) => {
+          if (r.usdValue === null || r.change24hPct === null) return s;
+          const prev = r.usdValue / (1 + r.change24hPct / 100);
+          return s + (r.usdValue - prev);
+        }, 0)
+      : null;
+
   const value: WalletCtx = {
     address: signer.address,
     signer,
@@ -116,6 +151,8 @@ export function WalletProvider(props: {
     rpcUrl,
     mnemonic,
     rows,
+    totalUsd,
+    totalChangeUsd,
     loading,
     loadError,
     refresh,
