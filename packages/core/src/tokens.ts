@@ -33,31 +33,48 @@ export interface UsdPrice {
   change24hPct: number | null;
 }
 
-/** Spot USD prices (and 24h change %) from the keyless Jupiter Price API v3. Empty map on failure. */
+/** Stablecoins safe to value at $1.00 when the price API is unreachable. */
+export const ONE_DOLLAR_STABLE_MINTS: ReadonlySet<string> = new Set([
+  'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v', // USDC
+  'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB', // USDT
+  '2u1tszSeqZ3qBWF3uNGPFc8TzMk2tdiwknnRMWGWjGWH', // USDG
+  '2b1kV6DkPAnxd5ixfnxCpjxmKwqjjaYmCZfHsFu24GXo', // PYUSD
+  '9BEcn9aPEmhSPbPQeFGjidRiEKki46fVQDyPpSQXPA2D', // jlUSDC (≈1, accrues slowly)
+]);
+
+const PRICE_HOSTS = ['https://lite-api.jup.ag', 'https://api.jup.ag'];
+
+/**
+ * Spot USD prices (and 24h change %) from the keyless Jupiter Price API v3,
+ * trying both hosts (the lite host is intermittently flaky). Empty map only
+ * when every host fails.
+ */
 export async function fetchUsdPrices(
   mints: string[],
   fetchImpl: typeof fetch = fetch,
 ): Promise<Record<string, UsdPrice>> {
   if (mints.length === 0) return {};
-  try {
-    const res = await fetchImpl(`https://lite-api.jup.ag/price/v3?ids=${mints.map(encodeURIComponent).join(',')}`, {
-      signal: AbortSignal.timeout(8000),
-    });
-    if (!res.ok) return {};
-    const body = (await res.json()) as Record<string, { usdPrice?: number; priceChange24h?: number }>;
-    const out: Record<string, UsdPrice> = {};
-    for (const [mint, info] of Object.entries(body ?? {})) {
-      if (typeof info?.usdPrice === 'number' && Number.isFinite(info.usdPrice)) {
-        out[mint] = {
-          usd: info.usdPrice,
-          change24hPct: typeof info.priceChange24h === 'number' ? info.priceChange24h : null,
-        };
+  const query = mints.map(encodeURIComponent).join(',');
+  for (const host of PRICE_HOSTS) {
+    try {
+      const res = await fetchImpl(`${host}/price/v3?ids=${query}`, { signal: AbortSignal.timeout(10_000) });
+      if (!res.ok) continue;
+      const body = (await res.json()) as Record<string, { usdPrice?: number; priceChange24h?: number }>;
+      const out: Record<string, UsdPrice> = {};
+      for (const [mint, info] of Object.entries(body ?? {})) {
+        if (typeof info?.usdPrice === 'number' && Number.isFinite(info.usdPrice)) {
+          out[mint] = {
+            usd: info.usdPrice,
+            change24hPct: typeof info.priceChange24h === 'number' ? info.priceChange24h : null,
+          };
+        }
       }
+      if (Object.keys(out).length > 0) return out;
+    } catch {
+      continue;
     }
-    return out;
-  } catch {
-    return {};
   }
+  return {};
 }
 
 const JUP_TOKEN_SEARCH = 'https://lite-api.jup.ag/tokens/v2/search?query=';

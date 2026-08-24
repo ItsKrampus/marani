@@ -3,6 +3,7 @@ import {
   fetchUsdPrices,
   getPortfolio,
   makeRpc,
+  ONE_DOLLAR_STABLE_MINTS,
   pickRpcUrl,
   shortAddress,
   WELL_KNOWN_TOKENS,
@@ -172,7 +173,18 @@ export function WalletProvider(props: {
           }
           if (cancelled) return;
         }
-        const prices = await fetchUsdPrices([...new Set(mints)]);
+        const unique = [...new Set(mints)];
+        let prices = await fetchUsdPrices(unique);
+        if (Object.keys(prices).length === 0 && !cancelled) {
+          // one quiet second-chance — the free price hosts hiccup under load
+          await new Promise((r) => setTimeout(r, 2000));
+          prices = await fetchUsdPrices(unique);
+        }
+        for (const mint of unique) {
+          if (!prices[mint] && ONE_DOLLAR_STABLE_MINTS.has(mint)) {
+            prices[mint] = { usd: 1, change24hPct: null };
+          }
+        }
         if (!cancelled) setRows(buildRows(portfolio, cache, prices));
       } catch {
         /* enrichment is best-effort */
