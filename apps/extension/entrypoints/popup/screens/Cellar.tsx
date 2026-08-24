@@ -19,7 +19,7 @@ import yieldsJson from '@marani/preflight/data/yields.json';
 import React, { useMemo, useState } from 'react';
 import { usePrefs } from '../lib/prefs';
 import { useWallet, type TokenRow } from '../lib/wallet';
-import { ErrorNote, fmtUsd, Logo, Spinner, TokenIcon } from '../lib/ui';
+import { ErrorNote, fmtUsd, Logo, Spinner, TokenIcon, WaitState } from '../lib/ui';
 
 interface Venue {
   apyPct: number;
@@ -311,7 +311,20 @@ export default function Cellar() {
           </>
         )}
 
-        {step === 'executing' && <Spinner label="Signing and sending…" />}
+        {step === 'executing' && (
+          <WaitState
+            title={
+              flow.kind === 'stake'
+                ? t('waitStake')
+                : flow.kind === 'unstake'
+                  ? t('waitUnstake')
+                  : flow.kind === 'deposit'
+                    ? t('waitDeposit')
+                    : t('waitWithdraw')
+            }
+            sub={t('pendingSub')}
+          />
+        )}
         {step === 'done' && (
           <div className="flex flex-col items-center gap-3 pt-4 text-center">
             <div className="text-4xl">🍇</div>

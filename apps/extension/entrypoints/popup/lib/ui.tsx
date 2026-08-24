@@ -14,6 +14,33 @@ export function Spinner({ label }: { label?: string }) {
   );
 }
 
+/** Full branded waiting state — breathing qvevri in a spinning gold ring. */
+export function WaitState({ title, sub, pad = true }: { title: string; sub?: string; pad?: boolean }) {
+  return (
+    <div className={`flex flex-col items-center gap-4 ${pad ? 'pt-10' : ''}`}>
+      <div className="relative flex h-[96px] w-[96px] items-center justify-center">
+        <div className="qvevri-ring absolute inset-0" />
+        <div
+          className="flex h-[76px] w-[76px] items-center justify-center rounded-full"
+          style={{ background: 'var(--card)', border: '1px solid var(--border-accent)' }}
+        >
+          <span className="qvevri-breathe flex">
+            <Logo size={32} />
+          </span>
+        </div>
+      </div>
+      <div className="flex flex-col items-center gap-1">
+        <span className="font-display text-center text-[20px]">{title}</span>
+        {sub && (
+          <span className="max-w-[250px] text-center text-xs leading-relaxed" style={{ color: 'var(--text-2)' }}>
+            {sub}
+          </span>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export function CopyButton({ text, small }: { text: string; small?: boolean }) {
   const { t } = usePrefs();
   const [copied, setCopied] = useState(false);

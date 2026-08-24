@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { WalletProvider } from './lib/wallet';
 import { PrefsProvider } from './lib/prefs';
 import { getRpcPick, getSessionMnemonic, getSettings, getVault, clearSessionMnemonic, setRpcPick } from './lib/storage';
-import { Spinner, Logo } from './lib/ui';
+import { Logo, WaitState } from './lib/ui';
 import Onboard from './screens/Onboard';
 import Unlock from './screens/Unlock';
 import Home from './screens/Home';
@@ -54,7 +54,7 @@ export default function App() {
   if (phase.t === 'boot') {
     body = (
       <div className="flex h-full items-center justify-center">
-        <Spinner label="Opening the cellar…" />
+        <WaitState title="Marani" sub="Opening the cellar…" pad={false} />
       </div>
     );
   } else if (phase.t === 'onboard') {

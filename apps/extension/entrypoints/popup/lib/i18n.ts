@@ -70,6 +70,13 @@ const en = {
   txId: 'Transaction',
   tryAgain: 'Try again',
   cancel: 'Cancel',
+  waitStake: 'Sealing your qvevri…',
+  waitUnstake: 'Opening the qvevri…',
+  waitDeposit: 'Storing in the cellar…',
+  waitWithdraw: 'Bringing it up…',
+  waitSend: 'Sending…',
+  waitAnalyze: 'Analyzing destination…',
+  waitAnalyzeSub: 'checking known exchange wallets and on-chain sweep patterns',
 };
 
 const ka: typeof en = {
@@ -141,6 +148,13 @@ const ka: typeof en = {
   txId: 'ტრანზაქცია',
   tryAgain: 'სცადე თავიდან',
   cancel: 'გაუქმება',
+  waitStake: 'ქვევრი ილუქება…',
+  waitUnstake: 'ქვევრი იხსნება…',
+  waitDeposit: 'ინახება მარანში…',
+  waitWithdraw: 'ამოგვაქვს…',
+  waitSend: 'იგზავნება…',
+  waitAnalyze: 'მისამართის ანალიზი…',
+  waitAnalyzeSub: 'მოწმდება ბირჟების საფულეები და ჯაჭვური კვალი',
 };
 
 export type MsgKey = keyof typeof en;

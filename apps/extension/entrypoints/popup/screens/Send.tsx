@@ -35,9 +35,10 @@ import {
 import matrixJson from '@marani/preflight/data/support-matrix.json';
 import labelsJson from '@marani/preflight/data/labels.json';
 import React, { useEffect, useMemo, useState } from 'react';
+import { usePrefs } from '../lib/prefs';
 import { getUserMarks, setUserMark } from '../lib/storage';
 import { useWallet, type TokenRow } from '../lib/wallet';
-import { ErrorNote, FindingBadge, Header, Spinner } from '../lib/ui';
+import { ErrorNote, FindingBadge, Header, Spinner, WaitState } from '../lib/ui';
 
 const matrix = matrixJson as unknown as SupportMatrix;
 const labels = labelsJson as unknown as LabelSet;
@@ -49,6 +50,7 @@ type Step = 'recipient' | 'classifying' | 'ask-exchange' | 'compose' | 'review' 
 
 export default function Send({ onBack, preset }: { onBack: () => void; preset: TokenRow | null }) {
   const wallet = useWallet();
+  const { t: tr } = usePrefs();
   const [step, setStep] = useState<Step>('recipient');
   const [destination, setDestination] = useState('');
   const [destState, setDestState] = useState<DestState | null>(null);
@@ -316,11 +318,8 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
 
         {/* ---------- STEP: classifying ---------- */}
         {step === 'classifying' && (
-          <div className="m-auto flex flex-col items-center gap-3">
-            <Spinner label="Analyzing destination…" />
-            <div className="text-[11px] text-zinc-600 text-center max-w-[240px]">
-              checking known exchange wallets and on-chain sweep patterns
-            </div>
+          <div className="m-auto">
+            <WaitState title={tr('waitAnalyze')} sub={tr('waitAnalyzeSub')} pad={false} />
           </div>
         )}
 
@@ -506,7 +505,12 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
         )}
 
         {/* ---------- STEP: review ---------- */}
-        {step === 'review' && token && amountRaw !== null && (
+        {step === 'review' && token && amountRaw !== null && sending && (
+          <div className="m-auto">
+            <WaitState title={tr('waitSend')} sub={tr('pendingSub')} pad={false} />
+          </div>
+        )}
+        {step === 'review' && token && amountRaw !== null && !sending && (
           <>
             <div className="card flex flex-col gap-2 text-sm">
               <Row k="Sending" v={`${formatRawAmount(amountRaw, token.decimals)} ${token.symbol}`} />
@@ -582,8 +586,12 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
                 </button>
               </>
             )}
-            {rescuePhase === 'swapping' && <Spinner label={`Swapping ${token.symbol} → USDC…`} />}
-            {rescuePhase === 'sending' && <Spinner label="Swap confirmed. Sending USDC…" />}
+            {rescuePhase === 'swapping' && (
+              <WaitState title={`${token.symbol} → USDC…`} sub={tr('pendingSub')} />
+            )}
+            {rescuePhase === 'sending' && (
+              <WaitState title="Swap confirmed — sending USDC…" sub={tr('pendingSub')} />
+            )}
             {rescuePhase === 'error' && (
               <>
                 <ErrorNote text={rescueError} />

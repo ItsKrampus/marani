@@ -18,7 +18,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { usePrefs } from '../lib/prefs';
 import { getMetaCache, putMetaCache } from '../lib/storage';
 import { useWallet, type TokenRow } from '../lib/wallet';
-import { fmtUsd, Logo, TokenIcon } from '../lib/ui';
+import { fmtUsd, TokenIcon, WaitState } from '../lib/ui';
 
 const SWAP_SOL_FEE_BUFFER = 3_000_000n; // fee + temp wSOL wrap rent
 
@@ -182,6 +182,13 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
   };
 
   // ---------------- result screens (per design) ----------------
+  if (result?.phase === 'pending') {
+    return (
+      <div className="flex h-full flex-col items-center justify-center px-5">
+        <WaitState title={t('pendingTitle')} sub={t('pendingSub')} pad={false} />
+      </div>
+    );
+  }
   if (result) {
     const circle = (border: string, bg: string, inner: React.ReactNode) => (
       <span className="flex h-[78px] w-[78px] items-center justify-center rounded-full" style={{ background: bg, border }}>
@@ -190,8 +197,6 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
     );
     return (
       <div className="flex h-full flex-col items-center gap-4 px-5 pb-4 pt-10">
-        {result.phase === 'pending' &&
-          circle('1px solid var(--border-accent)', 'var(--card)', <span className="animate-pulse"><Logo size={34} /></span>)}
         {result.phase === 'success' &&
           circle('2px solid #9FE8C1', 'rgba(159,232,193,0.08)', (
             <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#9FE8C1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12.5l5 5 11-11" /></svg>
@@ -203,10 +208,10 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
 
         <div className="flex flex-col items-center gap-1.5">
           <span className="font-display text-[22px] text-center">
-            {result.phase === 'pending' ? t('pendingTitle') : result.phase === 'success' ? t('successTitle') : t('failTitle')}
+            {result.phase === 'success' ? t('successTitle') : t('failTitle')}
           </span>
           <span className="max-w-[260px] text-center text-xs leading-relaxed" style={{ color: 'var(--text-2)' }}>
-            {result.phase === 'pending' ? t('pendingSub') : result.phase === 'success' ? t('successSub') : ''}
+            {result.phase === 'success' ? t('successSub') : ''}
           </span>
         </div>
 

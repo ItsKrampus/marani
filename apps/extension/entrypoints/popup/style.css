@@ -133,3 +133,30 @@ textarea {
 .pill:hover {
   border-color: var(--border-accent);
 }
+
+/* branded waiting state: breathing qvevri + spinning gold ring */
+@keyframes qvevri-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 5px rgba(224, 164, 88, 0.2));
+  }
+  50% {
+    transform: scale(1.07);
+    filter: drop-shadow(0 0 16px rgba(224, 164, 88, 0.55));
+  }
+}
+@keyframes ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.qvevri-breathe {
+  animation: qvevri-breathe 2.2s ease-in-out infinite;
+}
+.qvevri-ring {
+  border-radius: 999px;
+  border: 2px solid rgba(224, 164, 88, 0.12);
+  border-top-color: var(--gold);
+  animation: ring-spin 1.4s linear infinite;
+}
