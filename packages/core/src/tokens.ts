@@ -3,6 +3,7 @@ export interface TokenMeta {
   name: string;
   decimals?: number;
   verified?: boolean;
+  logoUri?: string;
 }
 
 /** Static metadata for common mints so the UI never depends on the network for majors. */
@@ -73,16 +74,22 @@ export async function fetchTokenMeta(
       name?: string;
       decimals?: number;
       isVerified?: boolean;
+      icon?: string;
+      logoURI?: string;
     }>;
     const hit = Array.isArray(list) ? list.find((t) => t.id === mint) : undefined;
     if (!hit || typeof hit.symbol !== 'string') return null;
     // On-chain metadata is untrusted input: cap lengths, strip control chars before display.
     const clean = (s: string, max: number) => s.replace(/[^\x20-\x7E]/g, '').slice(0, max);
+    const iconRaw = hit.icon ?? hit.logoURI;
+    const logoUri =
+      typeof iconRaw === 'string' && iconRaw.startsWith('https://') && iconRaw.length <= 300 ? iconRaw : undefined;
     return {
       symbol: clean(hit.symbol, 12) || 'UNKNOWN',
       name: clean(hit.name ?? '', 32) || 'Unknown token',
       decimals: typeof hit.decimals === 'number' ? hit.decimals : undefined,
       verified: hit.isVerified === true,
+      logoUri,
     };
   } catch {
     return null;

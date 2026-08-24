@@ -2,7 +2,7 @@ import { formatRawAmount } from '@marani/core';
 import React, { useState } from 'react';
 import { usePrefs } from '../lib/prefs';
 import { useWallet, type TokenRow } from '../lib/wallet';
-import { BottomNav, fmtUsd, Logo, pctText, Spinner, TokenCircle, TopBar, type Tab } from '../lib/ui';
+import { BottomNav, fmtUsd, Logo, pctText, Spinner, TokenIcon, TopBar, type Tab } from '../lib/ui';
 import Send from './Send';
 import Receive from './Receive';
 import Swap from './Swap';
@@ -156,7 +156,7 @@ export default function Home() {
                   setRoute('send');
                 }}
               >
-                <TokenCircle symbol={row.symbol} />
+                <TokenIcon symbol={row.symbol} logoUri={row.logoUri} />
                 <div className="flex min-w-0 flex-1 flex-col">
                   <span className="flex items-center gap-1.5 text-[13px] font-semibold">
                     {row.name}

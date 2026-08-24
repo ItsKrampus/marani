@@ -22,6 +22,7 @@ export interface TokenRow {
   decimals: number;
   program: 'token' | 'token-2022' | null;
   verified: boolean;
+  logoUri: string | null;
   /** USD value of the row balance, when a price is known. */
   usdValue: number | null;
   change24hPct: number | null;
@@ -78,6 +79,28 @@ export function WalletProvider(props: {
       try {
         const portfolio = await getPortfolio(rpc, signer.address);
         const cache = await getMetaCache();
+
+        // Resolve a mint's display meta, hitting the Jupiter Token API once per
+        // mint (cached) — also for well-known tokens, to pick up real logos.
+        const resolveMeta = async (mint: string) => {
+          let meta = cache[mint] ?? null;
+          if (!meta || !meta.logoUri) {
+            const fetched = await fetchTokenMeta(mint);
+            if (fetched) {
+              meta = {
+                symbol: fetched.symbol,
+                name: fetched.name,
+                verified: fetched.verified,
+                logoUri: fetched.logoUri,
+              };
+              cache[mint] = meta;
+              await putMetaCache(mint, meta);
+            }
+          }
+          return meta;
+        };
+
+        const solMeta = await resolveMeta(WSOL_MINT);
         const bare: Omit<TokenRow, 'usdValue' | 'change24hPct'>[] = [
           {
             mint: null,
@@ -87,26 +110,21 @@ export function WalletProvider(props: {
             decimals: 9,
             program: null,
             verified: true,
+            logoUri: solMeta?.logoUri ?? null,
           },
         ];
         for (const t of portfolio.tokens) {
           const known = WELL_KNOWN_TOKENS[t.mint];
-          let meta = known ?? cache[t.mint] ?? null;
-          if (!meta) {
-            const fetched = await fetchTokenMeta(t.mint);
-            if (fetched) {
-              meta = { symbol: fetched.symbol, name: fetched.name, verified: fetched.verified };
-              await putMetaCache(t.mint, meta);
-            }
-          }
+          const meta = await resolveMeta(t.mint);
           bare.push({
             mint: t.mint,
-            symbol: meta?.symbol ?? shortAddress(t.mint),
-            name: meta?.name ?? 'Unknown token',
+            symbol: known?.symbol ?? meta?.symbol ?? shortAddress(t.mint),
+            name: known?.name ?? meta?.name ?? 'Unknown token',
             amountRaw: t.amountRaw,
             decimals: t.decimals,
             program: t.program,
-            verified: meta?.verified === true,
+            verified: known ? true : meta?.verified === true,
+            logoUri: meta?.logoUri ?? null,
           });
         }
 

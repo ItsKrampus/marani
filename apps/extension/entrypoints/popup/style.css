@@ -27,11 +27,13 @@
   --red: #ff7a8a;
 }
 
+/* Chrome hard-caps popup height at 600px — anything taller pushes the bottom nav below the fold. */
 html,
 body {
   width: 375px;
-  height: 640px;
+  height: 600px;
   margin: 0;
+  overflow: hidden;
   background: var(--bg);
   color: var(--text);
   font-family: 'Sora', 'Noto Sans Georgian', ui-sans-serif, system-ui, sans-serif;

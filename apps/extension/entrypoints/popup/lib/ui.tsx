@@ -187,6 +187,23 @@ export function tokenColor(symbol: string): string {
   return palette[h % palette.length]!;
 }
 
+/** Real token logo when available (Jupiter Token API), branded circle fallback otherwise. */
+export function TokenIcon({ symbol, logoUri, size = 32 }: { symbol: string; logoUri?: string | null; size?: number }) {
+  const [failed, setFailed] = useState(false);
+  if (!logoUri || failed) return <TokenCircle symbol={symbol} size={size} />;
+  return (
+    <img
+      src={logoUri}
+      width={size}
+      height={size}
+      className="rounded-full"
+      style={{ background: 'var(--card)', width: size, height: size, objectFit: 'cover' }}
+      onError={() => setFailed(true)}
+      alt=""
+    />
+  );
+}
+
 export function TokenCircle({ symbol, size = 32 }: { symbol: string; size?: number }) {
   return (
     <span

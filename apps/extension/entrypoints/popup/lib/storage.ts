@@ -14,6 +14,7 @@ export interface CachedTokenMeta {
   symbol: string;
   name: string;
   verified?: boolean;
+  logoUri?: string;
 }
 
 const local = browser.storage.local;
