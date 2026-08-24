@@ -1,5 +1,6 @@
 import {
   buildSwapTransaction,
+  fetchTokenMeta,
   formatRawAmount,
   getSwapQuote,
   parseAmount,
@@ -10,10 +11,11 @@ import {
   WSOL_MINT,
   type JupQuote,
 } from '@marani/core';
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { usePrefs } from '../lib/prefs';
+import { getMetaCache, putMetaCache } from '../lib/storage';
 import { useWallet } from '../lib/wallet';
-import { Header, Spinner, TokenCircle } from '../lib/ui';
+import { Header, Spinner, TokenIcon } from '../lib/ui';
 
 const SWAP_SOL_FEE_BUFFER = 3_000_000n; // fee + temp wSOL wrap rent
 
@@ -41,6 +43,34 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
   const [phase, setPhase] = useState<'idle' | 'quoting' | 'ready' | 'swapping' | 'done' | 'error'>('idle');
   const [error, setError] = useState('');
   const [sig, setSig] = useState('');
+  const [toLogos, setToLogos] = useState<Record<string, string | null>>({});
+
+  // Resolve real logos for the fixed "to" options (wallet rows / cache / one-time fetch).
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const cache = await getMetaCache();
+      const out: Record<string, string | null> = {};
+      for (const o of TO_OPTIONS) {
+        const row = wallet.rows.find((r) => (o.mint === WSOL_MINT ? r.mint === null : r.mint === o.mint));
+        let logo = row?.logoUri ?? cache[o.mint]?.logoUri ?? null;
+        if (!logo) {
+          const meta = await fetchTokenMeta(o.mint);
+          if (meta?.logoUri) {
+            logo = meta.logoUri;
+            await putMetaCache(o.mint, { symbol: meta.symbol, name: meta.name, verified: meta.verified, logoUri: meta.logoUri });
+          }
+        }
+        out[o.mint] = logo;
+        if (cancelled) return;
+      }
+      if (!cancelled) setToLogos(out);
+    })();
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const from = fromRows.find((r) => (r.mint ?? 'SOL') === fromKey) ?? null;
   const fromInputMint = from ? (from.mint ?? WSOL_MINT) : null;
@@ -122,21 +152,34 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
         ) : (
           <>
             <span className="label">From</span>
-            <select
-              className="input"
-              value={fromKey}
-              onChange={(e) => {
-                setFromKey(e.target.value);
-                setQuote(null);
-                setPhase('idle');
-              }}
-            >
-              {fromRows.map((r) => (
-                <option key={r.mint ?? 'SOL'} value={r.mint ?? 'SOL'}>
-                  {r.symbol} — {formatRawAmount(r.amountRaw, r.decimals, 5)}
-                </option>
-              ))}
-            </select>
+            <div className="grid grid-cols-4 gap-2">
+              {fromRows.map((r) => {
+                const key = r.mint ?? 'SOL';
+                return (
+                  <button
+                    key={key}
+                    className="flex flex-col items-center gap-1 rounded-xl p-2 cursor-pointer"
+                    style={{
+                      background: 'var(--card)',
+                      border: `1px solid ${fromKey === key ? 'var(--gold)' : 'var(--border)'}`,
+                    }}
+                    onClick={() => {
+                      setFromKey(key);
+                      setQuote(null);
+                      setPhase('idle');
+                    }}
+                  >
+                    <TokenIcon symbol={r.symbol} logoUri={r.logoUri} size={24} />
+                    <span className="text-[10px] font-semibold">{r.symbol}</span>
+                  </button>
+                );
+              })}
+            </div>
+            {from && (
+              <div className="text-[11px]" style={{ color: 'var(--text-3)' }}>
+                Balance: {formatRawAmount(from.amountRaw, from.decimals, 5)} {from.symbol}
+              </div>
+            )}
 
             <div className="flex gap-2">
               <input
@@ -180,7 +223,7 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
                     setPhase('idle');
                   }}
                 >
-                  <TokenCircle symbol={o.symbol} size={24} />
+                  <TokenIcon symbol={o.symbol} logoUri={toLogos[o.mint]} size={24} />
                   <span className="text-[10px] font-semibold">{o.symbol}</span>
                 </button>
               ))}
