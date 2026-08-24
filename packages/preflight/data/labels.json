@@ -1,0 +1,407 @@
+{
+ "updatedAt": "2026-08-24T05:44:17.114Z",
+ "entries": [
+  {
+   "address": "5tzFkiKscXHK5ZXCGbXZxdw7gTjjD1mBwuoFbhUvuAi9",
+   "exchange": "binance",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM",
+   "exchange": "binance",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "Amf2mf2Ciap5wYAEKDtGoQHfHPWaKbyFYhutMK46hTRF",
+   "exchange": "binance",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "2ojv9BAiHUrvsm9gxDe7fJSzbNZSJcxZvf8dqmWGHG8S",
+   "exchange": "binance",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "DRpbCBMxVnDK7maPM5tGv6MvB3v1sRMC86PZ8okm21hy",
+   "exchange": "binance",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "13VagdYbCRMSBSbmz4UivPpS9SwmTTRiPtMkjoEHRm8v",
+   "exchange": "binance",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "887234fe5ed5e77272465317978ae86c25a71531d933",
+   "exchange": "binance",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "G9RCBaYb8aBRxoe8QBC2ucGrVqjuZFysRhY8d56cnNT1",
+   "exchange": "binance",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "HXsKP7wrBWaQ8T2Vtjry3Nj3oUgwYcqq9vrHDM12G664",
+   "exchange": "binance",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "Edbef6Xi35u6iYEmeGAFmThCZrgj6MxzYAgAmZFYPmFF",
+   "exchange": "binance",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "3gd3dqgtJ4jWfBfLYTX67DALFetjc5iS72sCgRhCkW2u",
+   "exchange": "binance",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "3yFwqXBfZY4jBVUafQ1YEXw189y2dN3V5KQq9uzBDy1E",
+   "exchange": "binance",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "6QJzieMYfp7yr3EdrePaQoG3Ghxs2wM98xSLRu8Xh56U",
+   "exchange": "binance",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "GBrURzmtWujJRTA3Bkvo7ZgWuZYLMMwPCwre7BejJXnK",
+   "exchange": "binance",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "6oCa9Tz8VXVp63WiFyruE5PD6yXz3pCsv6oGzUGvg9TP",
+   "exchange": "binance",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "GK35nWN6ZHSGZrRTf8kTQd8RkFCighChPEb41XwSFVAC",
+   "exchange": "binance",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "EPauhjQjjTBCpeBtszS3xGRASLpEJFM1cspSiFRXZa9Z",
+   "exchange": "binance",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "H8sMJSCQxfKiFTCfDR3DUMLPwcRbM61LGFJ8N4dK3WjS",
+   "exchange": "coinbase",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "2AQdpHJ2JpcEgPiATUXjQxA8QmafFegfQwSLWSprPicm",
+   "exchange": "coinbase",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "GJRs4FwHtemZ5ZE9x3FNvJ8TMwitKTh21yxdRPqn7npE",
+   "exchange": "coinbase",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "FWznbcNXWQuHTawe9RxvQ2LdCENssh12dsznf4RiouN5",
+   "exchange": "kraken",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "krakeNd6ednDPEXxHAmoBs1qKVM8kLg79PvWF2mhXV1",
+   "exchange": "kraken",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "ft4vm2xm3fyfvurrkende46hpmwwnzpctfu3szxpve2",
+   "exchange": "kraken",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "ASTyfSima4LLAdDgoFGkgqoKowG1LZFDr9fAQrg7iaJZ",
+   "exchange": "mexc",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "57vSaRTqN9iXaemgh4AoDsZ63mcaoshfMK8NP3Z5QNbs",
+   "exchange": "kucoin",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "BmFdpraQhkiDQE6SnfG5omcA1VwzqfXrwtNYBwWTymy6",
+   "exchange": "kucoin",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "HVh6wHNBAsG3pq1Bj5oCzRjoWKVogEDHwUHkRz3ekFgt",
+   "exchange": "kucoin",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "5LT2BQ7FFYBXW2PEDVB6KBX2F3C77WXBJ2FPVERBXXBU",
+   "exchange": "kucoin",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "EkUy8BB574iEVAQE9dywEiMhp9f2mFBuFu6TBKAkQxFY",
+   "exchange": "kucoin",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "A77HErqtfN1hLLpvZ9pCtu66FEtM8BveoaKbbMoZ4RiR",
+   "exchange": "bitget",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "42brAgAVNzMBP7aaktPvAmBSPEkehnFQejiZc53EpJFd",
+   "exchange": "bybit",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "AC5RDfQFmDS1deWZos921JfqscXdByf8BKHs5ACWjtW2",
+   "exchange": "bybit",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "CLNEVwuSAiGsvPtE74yLhda4beNfd8qfZXVKkUcAJZDL",
+   "exchange": "gate",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "DdzFFzCqrhseMuShaXzLDGDBa8jGEjdEjNc83jouqdqB",
+   "exchange": "gate",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "DdzFFzCqrhtBatWqyFge4w6M6VLgNUwRHiXTAg3xfQCU",
+   "exchange": "gate",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "u6PJ8DtQuPFnfmwHbGFULQ4u4EgjDiyYKjVEsynXq2w",
+   "exchange": "gate",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "HiRpdAZifEsZGdzQ5Xo5wcnaH3D2Jj9SoNsUzcYNK78J",
+   "exchange": "gate",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "5bJcc9eb2XE7mqcET2xDuAdMGuXWybb4YPmAHLjKLhQG",
+   "exchange": "htx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "88xTWZMeKfiTgbfEmPLdsUCQcZinwUfk25EBQZ21XMAZ",
+   "exchange": "htx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "8NBEbxLknGv5aRYefFrW2qFXoDZyi9fSHJNiJRvEcMBE",
+   "exchange": "htx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "BY4StcU9Y2BpgH8quZzorg31EGE4L1rjomN8FNsCBEcx",
+   "exchange": "htx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "14B3z6xL9vGgKz8WptoZabPrgH6adH1ev2Ven4SiTcdz",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "6Attw9NcFspCAreufvQ3mW8aqXEk6MDceeoC8obw45cJ",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "6NnzUC7mrM7ZgKdcMq1jPAdqh9TMgdsaVR1DNq6kce3A",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "7CtzEcGeYpMfR1aEi1Gbt8GRHDPH9uDB6GNTsBABqSmo",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "7fGw3UURsxk1szQ4buxQyEkiF4P6z7vx7sN1MHEguTJg",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "7o9ukGhWvc71yYcjinKnrxMn2kFMyQD1iCG3romrzg7r",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "8dUc88Nss8uhqzzFvUQhepkwZaVrfzpoCfKjCXGkdzAG",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "945SJTwsBSqwEEgtKMnhcLDnJowP6YpJUTEykMVK5k6q",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "9un5wqE3q4oCjyrDkwsdD48KteCJitQX5978Vh7KKxHo",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "APJmXrtC9TUAg5gcjbcsVUiVzeDv85xLZRLad1GiQTNE",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "BEaiMhcc4Kao7B4hoq6r9m8neUpfimUMwhzugKxtkZw6",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "BWZqi67kXsvf5crjd19Fb3gmf3DCipGE8eWWJT2YHDXQ",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "BhJrLQEyFyrcf1746pHATzAZQpC1uk3SJf2AHHK7LW3K",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "CE8joA143dBjsCFTeBxBs3kNGNU87WH6Q7GMMfxPzSr2",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "CGZAHxBannZzYK3rzVdG1e3uNjMxrmaXDhLEZxQBbueq",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "CeGyfZdtbjzC5FeVXCBdYE1v397yxxqYgmMcUwtouJUu",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "EBVigEhxvkWUwreG98kTh5FbZEjnXTXC5ANZtLz4YpHQ",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "FJS2rTjAQmFFRmVqtnkceGvLJrMwUPgCUfLjciuMYkSC",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "FefAbVt2EgXMGxeJb6sB1k5pQJhiGPxw4mB1zeUohZLk",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "GcFZHQVJ2icPGLrA9qPLq88b7eqBXSUcdL1utUtUfcSD",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "HnLezgQkNVWMp2AV6mcHM1Ljst32kfsoVnYUkvXuQpjg",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "2gp4phmq6mcz995xc6m8n6fn8nygjfg8p63ncy4gsp3x",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "44DwSkZbY2PVo9wfFP21D7HG7xf5rw8QaF6xSLGSfm7P",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "5URmUviWsAtcciFXqgM7f1jmhvBULdQDT47dqDkrJUi",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "5kiqH41rz2wPoNH5FuDJ3x8dB3EEe3XGoSWy2485tAp9",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  },
+  {
+   "address": "5VCwKtCXgCJ6kit5FybXjvriW3xELsFDhYrPSqtJNmcD",
+   "exchange": "okx",
+   "kind": "hot",
+   "source": "dune-spellbook"
+  }
+ ]
+}

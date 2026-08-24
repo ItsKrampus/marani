@@ -1,0 +1,23 @@
+{
+  "name": "marani",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Marani — the Solana wallet that won't let you lose money",
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@10.14.0",
+  "scripts": {
+    "dev": "pnpm -C apps/extension dev",
+    "build": "pnpm -C apps/extension build",
+    "zip": "pnpm -C apps/extension zip",
+    "typecheck": "pnpm -r --no-bail exec tsc --noEmit",
+    "refresh-data": "tsx scripts/refresh-data/src/fetch-matrix.ts && tsx scripts/refresh-data/src/labels-seed.ts",
+    "smoke": "tsx scripts/refresh-data/src/smoke-core.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

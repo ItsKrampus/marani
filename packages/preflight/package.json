@@ -1,0 +1,14 @@
+{
+  "name": "@marani/preflight",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./data/support-matrix.json": "./data/support-matrix.json",
+    "./data/labels.json": "./data/labels.json"
+  },
+  "dependencies": {
+    "@marani/core": "workspace:*"
+  }
+}

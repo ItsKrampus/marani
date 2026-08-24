@@ -1,0 +1,7112 @@
+{
+ "updatedAt": "2026-08-24T05:42:48.283Z",
+ "exchanges": {
+  "binance": {
+   "name": "Binance",
+   "assets": 57,
+   "source": "binance.com bapi (public, unofficial)"
+  },
+  "coinbase": {
+   "name": "Coinbase",
+   "assets": 52,
+   "source": "api.exchange.coinbase.com (public)"
+  },
+  "kucoin": {
+   "name": "KuCoin",
+   "assets": 190,
+   "source": "api.kucoin.com (public)"
+  },
+  "bitget": {
+   "name": "Bitget",
+   "assets": 200,
+   "source": "api.bitget.com (public)"
+  },
+  "htx": {
+   "name": "HTX",
+   "assets": 129,
+   "source": "api.huobi.pro (public)"
+  },
+  "gate": {
+   "name": "Gate",
+   "assets": 377,
+   "source": "api.gateio.ws (public)"
+  },
+  "kraken": {
+   "name": "Kraken",
+   "assets": 5,
+   "source": "manual (no public network API)"
+  }
+ },
+ "entries": [
+  {
+   "exchange": "binance",
+   "mint": "hntyVP6YFm1Hg25TN9WGLqM12b8TQmcknKrdu1oxWux",
+   "symbol": "HNT",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "binance",
+   "mint": "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
+   "symbol": "JTO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "85VBFQZC9TZkfaptBWjvUw7YbZjy52A6mjtPGjstQAmQ",
+   "symbol": "W",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+   "symbol": "JUP",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "7dUKUopcNWW6CcU4eRxCHh1uiMh32zDrmGf6ufqhxann",
+   "symbol": "1MBABYDOGE",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "bioJ9JTqW62MLz7UKHU69gtKhPpGi1BQhccj2kmSvUJ",
+   "symbol": "BIO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "BZLbGTNCSFfoth2GYDtwr7e4imWzpR5jqcUuGEwr646K",
+   "symbol": "IO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "SNS8DJbHc34nKySHVhLGMUUE72ho6igvJaxtq9T3cX3",
+   "symbol": "SNS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "FQgtfugBdpFN7PZ6NdPrZpVLDBrPGxXesi4gVu3vErhY",
+   "symbol": "BMT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "SOL",
+   "symbol": "SOL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "CCDfDXZxzZtkZLuhY48gyKdXc5KywqpR8xEVHHh8ck1G",
+   "symbol": "CGPT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "LAYER4xPpTCb3QL8S9u41EAhAX7mhBn8Q6xMTwY2Yzc",
+   "symbol": "LAYER",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "MEFNBXixkEbait3xn9bkm8WsJzXtVsaJEn4c8Sam21u",
+   "symbol": "ME",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "J3NKxxXZcnNiMjKw9hYb2K4LUxgwB6t1FtPtQVsv3KFr",
+   "symbol": "SPX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
+   "symbol": "TRUMP",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
+   "symbol": "MET",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "MEW1gQWJ3nEXg2qgERiKu7FAFj79PHvQVREQUzScPP5",
+   "symbol": "MEW",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "HNg5PYJmtqcmzXrv6S9zP1CDKk5BgDuyFBxbvNApump",
+   "symbol": "ALCH",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "SRMuApVNdxXokk5GT7XD5cUUgXMBCoAz2LHeuAoKWRt",
+   "symbol": "SRM",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "binance",
+   "mint": "rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof",
+   "symbol": "RENDER",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "WLFinEv6ypjkczcS83FZqFpgFZYwQXutRbxGe7oC16g",
+   "symbol": "WLFI",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "KMNo3nJsBXfcpJTVhZcXLW7RmTwTt4GVFE7suUBo9sS",
+   "symbol": "KMNO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "ukHH6c7mMyiWCf1b9pnWe25TSpkDDt3H5pQZgZ74J82",
+   "symbol": "BOME",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+   "symbol": "BONK",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "HUMA1821qVDKta3u2ovmfDQeW2fSQouSKE8fkF44wvGw",
+   "symbol": "HUMA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+   "symbol": "USDT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "USD1ttGY1N17NEEHLmELoaybftRBUSErhqYiQzvEmuB",
+   "symbol": "USD1",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+   "symbol": "USDC",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+   "symbol": "RAY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "9zNQRsGLjNKwCUU5Gq5LR8beUCPzQMVMqKAi3SSZh54u",
+   "symbol": "FDUSD",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "7i5KKsX2weiTkry7jA4ZwSuXGhs5eJBEjY8vVxR4pfRx",
+   "symbol": "GMT",
+   "deposit": true,
+   "withdraw": false
+  },
+  {
+   "exchange": "binance",
+   "mint": "FeR8VBqNRSUD5NtXAj2n3j1dAHkZHfyDktKuLXD4pump",
+   "symbol": "JELLYJELLY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "GJAFwWjJ3vnTsrQVabjBVK2TYB1YtRCQXRDfDgUnpump",
+   "symbol": "ACT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "EchesyfXePKdLtoiZSL8pBe8Myagyy8ZRqsACNCFGnvp",
+   "symbol": "FIDA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "AFbX8oGjGpmVFywbVouvhQSRmiW2aR1mohfahi4Y2AdB",
+   "symbol": "GST",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "binance",
+   "mint": "69RX85eQoEsnZvXGmLNjYcWgVkp9r2JjahVm99KbJETU",
+   "symbol": "HOLO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "J3umBWqhSjd13sag1E1aUojViWvPYA5dFNyqpKuX3WXj",
+   "symbol": "HOME",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "4eDf52YYzL6i6gbZ6FXqrLUPXbtP61f1gPSFM66M4XHe",
+   "symbol": "SOON",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "3jUf2RTyXp867piSB2dt8uUcNiLDW58asjGtXkRAkBbe",
+   "symbol": "GUN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "2qEHjDLDLbuBgRYvsxhc5D6uDWAivNFZGan56P1tpump",
+   "symbol": "PNUT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "So11111111111111111111111111111111111111112",
+   "symbol": "WSOL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "Grass7B4RdKfBCjTKgSqnXkqjwiGvQyFbuSCUJr3XXjs",
+   "symbol": "GRASS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
+   "symbol": "ORCA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "HZ1JovNiVvGrGNiiYvEozEVgZ58xaU3RKwX8eACQBCt3",
+   "symbol": "PYTH",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "3joMReCCSESngJEpFLoKR2dNcChjSRCDtybQet5uSpse",
+   "symbol": "1000CAT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+   "symbol": "PUMP",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "BNso1VUJnh4zcfpZa6986Ea66P6TCp59hvtNJ8b1X85",
+   "symbol": "BNSOL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "J6pQQ3FAcJQeWPPGppWRb4nM8jU3wLyYbRrLh7feMfvd",
+   "symbol": "2Z",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "TNSRxcUxoT9xBG3de7PiJyTDYu7kskLqcpddxnEJAS6",
+   "symbol": "TNSR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "G8LfyGVsjsLzetJ5RWZVAhMo4H9cb58ET1Z6gEZJQdPM",
+   "symbol": "AVA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY",
+   "symbol": "MOODENG",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "7GCihgDB8fe6KNjn2MYtkzZcRjQy3t9GHdC8uHYmW2hr",
+   "symbol": "POPCAT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump",
+   "symbol": "FARTCOIN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "WCTk5xWdn5SYg56twGj32sUF3W4WFQ48ogezLBuYTBY",
+   "symbol": "WCT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+   "symbol": "PENGU",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump",
+   "symbol": "GOAT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "binance",
+   "mint": "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
+   "symbol": "WIF",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "J6pQQ3FAcJQeWPPGppWRb4nM8jU3wLyYbRrLh7feMfvd",
+   "symbol": "2Z",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "5maydfq5yxtudahtfyumbuhzjgabas9tbeyeqyahds5y",
+   "symbol": "ACS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "ARXwZkNAtzPfdcoqQiduJn8EPv9fKiDfGn2KyggyDrFs",
+   "symbol": "ARX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "G7vQWurMkMMm2dU3iZpXYFTHT9Biio4F4gZCrwFpKNwG",
+   "symbol": "BIRB",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+   "symbol": "BONK",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "DBRiDgJAMsM95moTzJs7M9LnkGErpbv9v6CUR1DXnUu5",
+   "symbol": "DBR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "DvjbEsdca43oQcw2h3HW1CT7N3x5vRcr3QrvTUHnXvgV",
+   "symbol": "DOOD",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "DriFtupJYLTosbwoN8koMbEYSx54aFAVLddWsbksjwg7",
+   "symbol": "DRIFT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump",
+   "symbol": "FARTCOIN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "8f62NyJGo7He5uWeveTA2JJQf4xzf8aqxkmzxRQ3mxfU",
+   "symbol": "FIGHT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "7JA5eZdCzztSfQbJvS8aVVxMFfd81Rs9VvwnocV1mKHu",
+   "symbol": "GEOD",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9",
+   "symbol": "GIGA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "7i5KKsX2weiTkry7jA4ZwSuXGhs5eJBEjY8vVxR4pfRx",
+   "symbol": "GMT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "hntyVP6YFm1Hg25TN9WGLqM12b8TQmcknKrdu1oxWux",
+   "symbol": "HNT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "4vMsoUT2BWatFweudnQM1xedRLfJgJ7hswhcpz4xgBTy",
+   "symbol": "HONEY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "BZLbGTNCSFfoth2GYDtwr7e4imWzpR5jqcUuGEwr646K",
+   "symbol": "IO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn",
+   "symbol": "JITOSOL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
+   "symbol": "JTO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+   "symbol": "JUPITER",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "KMNo3nJsBXfcpJTVhZcXLW7RmTwTt4GVFE7suUBo9sS",
+   "symbol": "KMNO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "LAYER4xPpTCb3QL8S9u41EAhAX7mhBn8Q6xMTwY2Yzc",
+   "symbol": "LAYER",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "MEFNBXixkEbait3xn9bkm8WsJzXtVsaJEn4c8Sam21u",
+   "symbol": "ME",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "ETAtLmCmsoiEEKfNrHKJ2kYy3MoABhU6NQvpSfij5tDs",
+   "symbol": "MEDIA",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
+   "symbol": "MET",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "METAwkXcqyXKy1AtsSgJ8JiUHwGCafnZL38n3vYmeta",
+   "symbol": "META",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "mndefzgvmt87ueuhvvu9vctqsap5b3ftgpshuupa5ey",
+   "symbol": "MNDE",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "mb1eu7TzEc71KxDpsmsKoucSSuuoGLv1drys1oP2jh6",
+   "symbol": "MOBILE",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY",
+   "symbol": "MOODENG",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "METAewgxyPbgwsseH8T16a39CQ5VyVxZi9zXiDPY18m",
+   "symbol": "MPLX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "NeonTjSjsuo3rexg9o6vHuMXw62f9V7zvmu8M8Zut44",
+   "symbol": "NEON",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
+   "symbol": "ORCA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+   "symbol": "PENGU",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "2qEHjDLDLbuBgRYvsxhc5D6uDWAivNFZGan56P1tpump",
+   "symbol": "PNUT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "7GCihgDB8fe6KNjn2MYtkzZcRjQy3t9GHdC8uHYmW2hr",
+   "symbol": "POPCAT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "4LLbsb5ReP3yEtYzmXewyGjcir5uXtKFURtaEUVC2AHs",
+   "symbol": "PRCL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "PERLEQKUNUp1dgFZ8EvyXHdN9d6ZQqfGxALDvfs6pDs",
+   "symbol": "PRL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+   "symbol": "PUMP",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "HZ1JovNiVvGrGNiiYvEozEVgZ58xaU3RKwX8eACQBCt3",
+   "symbol": "PYTH",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "2b1kV6DkPAnxd5ixfnxCpjxmKwqjjaYmCZfHsFu24GXo",
+   "symbol": "PYUSD",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof",
+   "symbol": "RENDER",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "SHDWyBxihqiCj6YekG2GUr7wqKLeLAMK1gHZck9pL6y",
+   "symbol": "SHDW",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "SKRbvo6Gf7GondiT3BbTfuRDPqLWei4j2Qy2NPGZhW3",
+   "symbol": "SKR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "SOL",
+   "symbol": "SOL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "TNSRxcUxoT9xBG3de7PiJyTDYu7kskLqcpddxnEJAS6",
+   "symbol": "TNSR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2",
+   "symbol": "TROLL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
+   "symbol": "TRUMP",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+   "symbol": "USDC",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "5AMAA9JV9H97YYVxx8F6FsCMmTwXSuTTQneiup4RYAUQ",
+   "symbol": "USDF",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk",
+   "symbol": "USELESS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "85VBFQZC9TZkfaptBWjvUw7YbZjy52A6mjtPGjstQAmQ",
+   "symbol": "W",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "WETZjtprkDMCcUxPi9PfWnowMRZkiGGHDb9rABuRZ2U",
+   "symbol": "WET",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "coinbase",
+   "mint": "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
+   "symbol": "WIF",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "5XZw2LKTyrfvfiskJ78AMpackRjPcyCif1WhUsPDuVqQ",
+   "symbol": "WBTC",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "SOL",
+   "symbol": "SOL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "xxxxa1sKNGwFtw2kFn8XauW9xq8hBZ5kVtcSesTT9fW",
+   "symbol": "SLIM",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "7j7H7sgsnNDeCngAPjpaCN4aaaru4HS7NAFYSEUyzJ3k",
+   "symbol": "SOLR",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "AURYydfxJib1ZkTir1Jn1J9ECYUtjb6rKQVmtYaixWPP",
+   "symbol": "AURY",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "6cVgJUqo4nmvQpbgrDZwyfd6RwWw5bfnCamS3M9N1fd",
+   "symbol": "SHILL",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "HfYFjMKNZygfMC8LsQ8LtpPsPxEJoXJx4M6tqi75Hajo",
+   "symbol": "CWAR",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "3bRTivrVsitbmCTGtqwp7hxXPsybkjn4XLNtPsHqa3zR",
+   "symbol": "LIKE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "SRMuApVNdxXokk5GT7XD5cUUgXMBCoAz2LHeuAoKWRt",
+   "symbol": "SRM",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "5gs8nf4wojB5EXgDUWNLwXpknzgV2YWDhveAeBZpVLbp",
+   "symbol": "XTAG",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "AAmGoPDFLG6bE82BgZWjVi8k95tj9Tf3vUN7WvtUm2BU",
+   "symbol": "RACEFI",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "hntyVP6YFm1Hg25TN9WGLqM12b8TQmcknKrdu1oxWux",
+   "symbol": "HNT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "CKaKtYvz6dKPyMvYq9Rh3UBrnNqYZAyd7iF4hJtjUvks",
+   "symbol": "GARI",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "HovGjrBGTfna4dvg6exkMxXuexB3tUfEZKcut8AWowXj",
+   "symbol": "FCON",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "HBB111SCo9jkCejsZfz8Ec8nH7T6THF8KEKSnvwT6XK6",
+   "symbol": "HBB",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "7i5KKsX2weiTkry7jA4ZwSuXGhs5eJBEjY8vVxR4pfRx",
+   "symbol": "GMT",
+   "deposit": true,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "SLCLww7nc1PD2gQPQdGayHviVVcpMthnqUz2iWKhNQV",
+   "symbol": "SLCL",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "3Dy8KFyvpUJ8nfRCbvk4HLWjNRRzxiVhTeE9PQF9RARD",
+   "symbol": "ARNM",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "zebeczgi5fSEtbpfQKVZKCJ3WgYXxjkMUkNNx7fLKAF",
+   "symbol": "ZBC",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "BKipkearSqAUdNKa1WDstvcMjoPsSKBuNyvKDQDDu9WE",
+   "symbol": "HAWK",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "2cJgFtnqjaoiu9fKVX3fny4Z4pRzuaqfJ3PBTMk2D9ur",
+   "symbol": "PLD",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "AFbX8oGjGpmVFywbVouvhQSRmiW2aR1mohfahi4Y2AdB",
+   "symbol": "GST",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "EchesyfXePKdLtoiZSL8pBe8Myagyy8ZRqsACNCFGnvp",
+   "symbol": "FIDA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "METAewgxyPbgwsseH8T16a39CQ5VyVxZi9zXiDPY18m",
+   "symbol": "MPLX",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "5MAYDfq5yxtudAhtfyuMBuHZjgAbaS9tbEyEQYAhDS5y",
+   "symbol": "ACS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "octo82drBEdm8CSDaEKBymVn86TBtgmPnDdmE64PTqJ",
+   "symbol": "OTK",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "EcQCUYv57C4V6RoPxkVUiDwtX1SP8y8FP5AEToYL8Az",
+   "symbol": "WLKN",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "HHjoYwUp5aU6pnrvN4s2pwEErwXNZKhxKGYjRJMoBjLw",
+   "symbol": "PIP",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "HZ1JovNiVvGrGNiiYvEozEVgZ58xaU3RKwX8eACQBCt3",
+   "symbol": "PYTH",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+   "symbol": "BONK",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
+   "symbol": "JTO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "MNDEFzGvMt87ueuHvVU9VcTqsAP5b3fTGPsHuuPA5ey",
+   "symbol": "MNDE",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "2wme8EVkw8qsfSk2B3QeX4S64ac6wxHPXb3GrdckEkio",
+   "symbol": "SOLS",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "7iT1GRYYhEop2nV1dyCwK2MGyLmPHq47WhPGSwiqcUg5",
+   "symbol": "ANALOS",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "Bm3dgkZrjH7eaz1GBH1R2ZHkp7nZUoPNJhjekoxepump",
+   "symbol": "MYRO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "7EYnhQoR9YM3N7UoaKRoA44Uy8JeaZV3qyouov87awMs",
+   "symbol": "SILLY",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "mb1eu7TzEc71KxDpsmsKoucSSuuoGLv1drys1oP2jh6",
+   "symbol": "MOBILE",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+   "symbol": "RAY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
+   "symbol": "ORCA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "NeonTjSjsuo3rexg9o6vHuMXw62f9V7zvmu8M8Zut44",
+   "symbol": "NEON",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
+   "symbol": "WIF",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "SarosY6Vscao718M4A778z4CGtvcwcGef5M9MEH1LGL",
+   "symbol": "SAROS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "AMUwxPsqWSd1fbCGzWsrRKDcNoduuWMkdR38qPdit8G8",
+   "symbol": "AMU",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+   "symbol": "JUP",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "WENWENvqqNya429ubCdR81ZmD69brwQaaBYY6p3LCpk",
+   "symbol": "WEN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "H53UGEyBrB9easo9ego8yYk7o4Zq1G5cCtkxD3E3hZav",
+   "symbol": "MXM",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "ukHH6c7mMyiWCf1b9pnWe25TSpkDDt3H5pQZgZ74J82",
+   "symbol": "BOME",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "5mdBkZ4dTP94SE7PyiuWseTDAd1kYxSk6oYaWB7186s7",
+   "symbol": "BRAWL",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "9Ttyez3xiruyj6cqaR495hbBkJU6SUWdV6AmQ9MvbyyS",
+   "symbol": "SMOLE",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "85VBFQZC9TZkfaptBWjvUw7YbZjy52A6mjtPGjstQAmQ",
+   "symbol": "W",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "MEW1gQWJ3nEXg2qgERiKu7FAFj79PHvQVREQUzScPP5",
+   "symbol": "MEW",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "ZEUS1aR7aX8DFFJf5QjWj2ftDDdNTroMNGo8YoQm3Gq",
+   "symbol": "ZEUS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "TNSRxcUxoT9xBG3de7PiJyTDYu7kskLqcpddxnEJAS6",
+   "symbol": "TNSR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "4LLbsb5ReP3yEtYzmXewyGjcir5uXtKFURtaEUVC2AHs",
+   "symbol": "PRCL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "ZBCNpuD7YMXzTHB2fhGkGi78MNsHGLRXUhRewNRm9RU",
+   "symbol": "ZBCN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "KMNo3nJsBXfcpJTVhZcXLW7RmTwTt4GVFE7suUBo9sS",
+   "symbol": "KMNO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "25hAyBQfoDhfWx9ay6rarbgvWGwDdNqcHsXS3jQ3mTDJ",
+   "symbol": "MANEKI",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "DriFtupJYLTosbwoN8koMbEYSx54aFAVLddWsbksjwg7",
+   "symbol": "DRIFT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "BZLbGTNCSFfoth2GYDtwr7e4imWzpR5jqcUuGEwr646K",
+   "symbol": "IO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "AujTJJ7aMS8LDo3bFzoyXDwT3jBALUbu4VZhzZdTZLmG",
+   "symbol": "BEER",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "FRySi8LPkuByB7VPSCCggxpewFUeeJiwEGRKKuhwpKcX",
+   "symbol": "NATIX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "ZEXy1pqteRu3n13kdyh4LwPQknkFk3GzmMYMuNadWPo",
+   "symbol": "ZEX",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "3vmfEaTR9M2Pp5JcFNC8c8u6U4eFUBdq6FQjgPpcnfKS",
+   "symbol": "DOAI",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof",
+   "symbol": "RENDER",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "7GCihgDB8fe6KNjn2MYtkzZcRjQy3t9GHdC8uHYmW2hr",
+   "symbol": "POPCAT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY",
+   "symbol": "MOODENG",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "5z3EqYQo9HiCEs3R84RCDMu2n7anpDMxRhdK8PSWmrRC",
+   "symbol": "PONKE",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "DBRiDgJAMsM95moTzJs7M9LnkGErpbv9v6CUR1DXnUu5",
+   "symbol": "DBR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump",
+   "symbol": "GOAT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "Grass7B4RdKfBCjTKgSqnXkqjwiGvQyFbuSCUJr3XXjs",
+   "symbol": "GRASS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "GJAFwWjJ3vnTsrQVabjBVK2TYB1YtRCQXRDfDgUnpump",
+   "symbol": "ACT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "CBdCxKo9QavR9hfShgpEBG3zekorAeD7W1jfq2o3pump",
+   "symbol": "LUCE",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "2qEHjDLDLbuBgRYvsxhc5D6uDWAivNFZGan56P1tpump",
+   "symbol": "PNUT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "5mbK36SZ7J19An8jFochhQS4of8g6BwUjbeCSxBSoWdp",
+   "symbol": "MICHI",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "9PR7nCP9DpcUotnDPVLUBUZKu5WAYkwrCUx9wDnSpump",
+   "symbol": "BAN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "GJtJuWD9qYcCkrwMBmtY1tpapV1sKfB2zUv9Q4aqpump",
+   "symbol": "RIFSOL",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "FvgqHMfL9yn39V79huDPy3YUNDoYJpuLWng2JfmQpump",
+   "symbol": "URO",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "9999FVbjHioTcoJpoBiSjpxHW6xEn3witVuXKqBh2RFQ",
+   "symbol": "SLERF",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "HAPPYwgFcjEJDzRtfWE6tiHE9zGdzpNky2FvjPHsvvGZ",
+   "symbol": "HAPPY",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "CNvitvFnSM5ed6K28RUNSaAjqqz5tX1rA5HgaBN9pump",
+   "symbol": "FRED",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "HKJHsYJHMVK5VRyHHk5GhvzY9tBAAtPvDkZfDH6RLDTd",
+   "symbol": "READY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+   "symbol": "SAMO",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "Df6yfrKC8kZE3KNkrHERKzAetSxbrWeniQfyJY4Jpump",
+   "symbol": "CHILLGUY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "J3NKxxXZcnNiMjKw9hYb2K4LUxgwB6t1FtPtQVsv3KFr",
+   "symbol": "SPX",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "43VWkd99HjqkhFTZbWBpMpRhjG469nWa7x7uEsgSH7We",
+   "symbol": "STNK",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "DKu9kykSfbN5LBfFXtNNDPaX35o4Fv6vJ9FKk7pZpump",
+   "symbol": "AVAAI",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9",
+   "symbol": "GIGA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "MEFNBXixkEbait3xn9bkm8WsJzXtVsaJEn4c8Sam21u",
+   "symbol": "ME",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "8x5VqbHA8D7NkD52uNuS5nnt3PwA8pLD34ymskeSo2Wn",
+   "symbol": "ZEREBRO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "STREAMribRwybYpMmSYoCsQUdr6MZNXEqHgm7p1gu9M",
+   "symbol": "STREAM",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+   "symbol": "PENGU",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8n4V98jwC",
+   "symbol": "AI16Z",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "M3M3pSFptfpZYnWNUgAbyWzKKgPo5d1eWmX6tbiSF2K",
+   "symbol": "M3M3",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump",
+   "symbol": "FARTCOIN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "ZxBon4vcf3DVcrt63fJU52ywYm9BKZC6YuXDhb3fomo",
+   "symbol": "FOMO",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "KENJSUYLASHUMfHyy5o4Hp2FdNqZg1AsUPhfH2kYvEP",
+   "symbol": "GRIFFAIN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "HcQbgvMTCNDgMDY6GAFzP1WwCNZeMoEwZfUuHepzC9L5",
+   "symbol": "MTOS",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "61V8vBaqAGMpgDQi4JcAwo1dmBGHsyhzodcPqnEVpump",
+   "symbol": "ARC",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "SonicxvLud67EceaEzCLRnMTBqzYUUYNr93DBkBdDES",
+   "symbol": "SONIC",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "74SBV4zDXxTRgv1pEMoECskKBkZHc2yGPnc7GYVepump",
+   "symbol": "SWARMS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "2w3A2P5juwg234spHKfps7WReWoVmujtErqjaZm9VaiP",
+   "symbol": "AIPUMP",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "CLoUDKc4Ane7HeQcPpE3YHnznRxhMimJ4MyaUqyHFzAu",
+   "symbol": "CLOUD",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "8nKP8Vc72pRZB6bhCy8D1UYf6ZjwYT859i6awyinpump",
+   "symbol": "BABYSHARKO",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "98mb39tPFKQJ4Bif8iVg9mYb9wsfPZgpgN1sxoVTpump",
+   "symbol": "LLM",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "B89Hd5Juz7JP2dxCZXFJWk4tMTcbw7feDhuWGb3kq5qE",
+   "symbol": "NC",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "BLDiYcvm3CLcgZ7XUBPgz6idSAkNmWY6MBbm8Xpjpump",
+   "symbol": "TRISIG",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "Jambjx1oJoZNBZiqbiF9TqgatEZPdyfvYa9WVsKNzUh",
+   "symbol": "J",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
+   "symbol": "TRUMP",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P",
+   "symbol": "MELANIA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "WEmjxPMGXEW1Nvc4rCgRKiWHj1H1tvhPsKMw2yvpump",
+   "symbol": "DIGIMON",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "6AJcP7wuLwmRYLBNbi825wgguaPsWzPBEHcHndpRpump",
+   "symbol": "VINE",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "FeR8VBqNRSUD5NtXAj2n3j1dAHkZHfyDktKuLXD4pump",
+   "symbol": "JELLYJELLY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "Hjw6bEcHtbHGpQr8onG3izfJY5DJiWdt7uk2BfdSpump",
+   "symbol": "SNAI",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "9DHe3pycTuymFk4H4bbPoAJ4hQrr2kaLDF6J6aAKpump",
+   "symbol": "BUZZ",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "GekTNfm84QfyP2GdAHZ5AgACBRd69aNmgA5FDhZupump",
+   "symbol": "GRIFT",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "AxriehR6Xw3adzHopnvMn7GcpRFcD41ddpiTWMg6pump",
+   "symbol": "JAILSTOOL",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "LAYER4xPpTCb3QL8S9u41EAhAX7mhBn8Q6xMTwY2Yzc",
+   "symbol": "LAYER",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "1Qf8gESP4i6CFNWerUSDdLKJ9U1LpqTYvjJ2MM4pain",
+   "symbol": "PAIN",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump",
+   "symbol": "FWOG",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "RoamA1USA8xjvpTJZ6RvvxyDRzNh6GCA1zVGKSiMVkn",
+   "symbol": "ROAM",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "4vMsoUT2BWatFweudnQM1xedRLfJgJ7hswhcpz4xgBTy",
+   "symbol": "HONEY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "PAWSxhjTyNJELywYiYTxCN857utnYmWXu7Q59Vgn6ZQ",
+   "symbol": "PAWS",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "FQgtfugBdpFN7PZ6NdPrZpVLDBrPGxXesi4gVu3vErhY",
+   "symbol": "BMT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "AvoecWraqX969kfXUF5XCCDz59sjRjiDa1KUDyj225t8",
+   "symbol": "MINT",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "Hax9LTgsQkze1YFychnBLtFH8gYbQKtKfWKKg2SP6gdD",
+   "symbol": "TAI",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "C3DwDjT17gDvvCYC2nsdGHxDHVmQRdhKfpAdqQ29pump",
+   "symbol": "RFC",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "8BtoThi2ZoXnF7QQK1Wjmh2JuBw9FjVvhnGMVZ2vpump",
+   "symbol": "DARK",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2",
+   "symbol": "TROLL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "38PgzpJYu2HkiYvV8qePFakB8tuobPdGm2FFEn7Dpump",
+   "symbol": "GORK",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "DitHyRMQiSDhn5cnKMJV2CDDt6sVct96YrECiM49pump",
+   "symbol": "HOUSE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "DvjbEsdca43oQcw2h3HW1CT7N3x5vRcr3QrvTUHnXvgV",
+   "symbol": "DOOD",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk",
+   "symbol": "USELESS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "Ey59PH7Z4BFU4HjyKnyMdWt5GGN76KazTAwQihoUXRnk",
+   "symbol": "LAUNCHCOIN",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "4eDf52YYzL6i6gbZ6FXqrLUPXbtP61f1gPSFM66M4XHe",
+   "symbol": "SOON",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "USD1ttGY1N17NEEHLmELoaybftRBUSErhqYiQzvEmuB",
+   "symbol": "USD1",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "HwFh2kN2rYPKxzHRCFYB5qQ8rYomMs4jp968oe6FQubZ",
+   "symbol": "DEFAI",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "HUMA1821qVDKta3u2ovmfDQeW2fSQouSKE8fkF44wvGw",
+   "symbol": "HUMA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "ASRRjA1R4RHVk5H9QKKm1jaQqMkxvv6nh5EypPrvwmxQ",
+   "symbol": "ASRR",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "5evN2exivZXJfLaA1KhHfiJKWfwH8znqyH36w1SFz89Y",
+   "symbol": "MIRAI",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "2RHWryP5nYjVo747tMe67DdE7i95LmPRRBV1PooF9nGg",
+   "symbol": "INFOFI",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "8ZHE4ow1a2jjxuoMfyExuNamQNALv5ekZhsBn5nMDf5e",
+   "symbol": "MORI",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+   "symbol": "PUMP",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "FRAGMEWj2z65qM62zqKhNtwNFskdfKs4ekDUDX3b4VD5",
+   "symbol": "FRAG",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "haioZJAWTMaR4SFhZRwFBBejnGDPiwLTqrDiKpwH31h",
+   "symbol": "HAIO",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "9tqjeRS1swj36Ee5C1iGiwAxjQJNGAVCzaTLwFY8bonk",
+   "symbol": "ANI",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
+   "symbol": "SPYX",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1",
+   "symbol": "CRCLX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB",
+   "symbol": "TSLAX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ",
+   "symbol": "MSTRX",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh",
+   "symbol": "NVDAX",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "CN162nCPpq3DxPCyKLbAvEJeB1aCxsnVTEG4ZU8vpump",
+   "symbol": "A47",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups",
+   "symbol": "URANUS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "C29ebrgYjYoJPMGPnPSGY1q3mMGk4iDSqnQeQQA7moon",
+   "symbol": "NOBODY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "DrZ26cKJDksVRWib3DVVsjo9eeXccc7hKhDJviiYEEZY",
+   "symbol": "YZY",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "HgBRWfYxEfvPhtqkaeymCQtHCrKE46qQ43pKe8HCpump",
+   "symbol": "BERT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "HtTYHz1Kf3rrQo6AqDLmss7gq5WrkWAaXn3tupUZbonk",
+   "symbol": "KORI",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "XLnpFRQ3rSWupCRjuQfx74mgVoT3ezVJKE1CogRZxhH",
+   "symbol": "XLAB",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "WLFinEv6ypjkczcS83FZqFpgFZYwQXutRbxGe7oC16g",
+   "symbol": "WLFI",
+   "deposit": true,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "SW1TCHLmRGTfW5xZknqQdpdarB8PD95sJYWpNp9TbFx",
+   "symbol": "SWTCH",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "69RX85eQoEsnZvXGmLNjYcWgVkp9r2JjahVm99KbJETU",
+   "symbol": "HOLO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "PRTLSwfLzpVGSAQiUfXEenJkq1cwTsEcsn1hPL9zwwg",
+   "symbol": "PORTALS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "J6pQQ3FAcJQeWPPGppWRb4nM8jU3wLyYbRrLh7feMfvd",
+   "symbol": "2Z",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "moonThZEkkTVoNB7v6YVCQiT56JYDZ1oN185ba3WizL",
+   "symbol": "MF",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "7s9MoSt7VV1J3jVNnw2AyocsQDBdCkPYz5apQDPKy9i5",
+   "symbol": "PIPE",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "BLVxek8YMXUQhcKmMvrFTrzh5FXg8ec88Crp6otEaCMf",
+   "symbol": "BELIEVE",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
+   "symbol": "MET",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "375aiUqZERLrB9sHtsArKr4nuWCgBrtqibUDBMGeLvZC",
+   "symbol": "EAT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "DuMbhu7mvQvqQHGcnikDgb4XegXJRyhUBfdU22uELiZA",
+   "symbol": "ELIZAOS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "BMBtwz6LFDJVJd2aZvL5F64fdvWP3RPn4NP5q9Xe15UD",
+   "symbol": "BMB",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "PLAYs3GSSadH2q2JLS7djp7yzeT75NK78XgrE5YLrfq",
+   "symbol": "PLAYSOLANA",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "CyyhLNKtLrJ3ckVZkvytBW3TieAaAz7P6qsJLChDNfp",
+   "symbol": "BIT",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "2u1tszSeqZ3qBWF3uNGPFc8TzMk2tdiwknnRMWGWjGWH",
+   "symbol": "USDG",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "WETZjtprkDMCcUxPi9PfWnowMRZkiGGHDb9rABuRZ2U",
+   "symbol": "WET",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "SKRbvo6Gf7GondiT3BbTfuRDPqLWei4j2Qy2NPGZhW3",
+   "symbol": "SKR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "8f62NyJGo7He5uWeveTA2JJQf4xzf8aqxkmzxRQ3mxfU",
+   "symbol": "FIGHT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "D6xWgRCSHoMEB5fqPwk3p6Stxirn5ytm2WwboSTTx4oE",
+   "symbol": "PYBOBO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "G7vQWurMkMMm2dU3iZpXYFTHT9Biio4F4gZCrwFpKNwG",
+   "symbol": "BIRB",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "8UKuetxWnpC9Po9Mpf3ptT2wEvkqg9GxZWnnx4VPhpeD",
+   "symbol": "PVT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "HmMubgKx91Tpq3jmfcKQwsv5HrErqnCTTRJMB6afFR2u",
+   "symbol": "9BIT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "PERLEQKUNUp1dgFZ8EvyXHdN9d6ZQqfGxALDvfs6pDs",
+   "symbol": "PRL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "2MU93nLHhDsHzgEYBKbVbwLDd2pi71ubGp8SkEv9dZwQ",
+   "symbol": "SPC",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "METAwkXcqyXKy1AtsSgJ8JiUHwGCafnZL38n3vYmeta",
+   "symbol": "METADAO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "FPJfY8mMTRwaePD2f46TFLqVov4X9svBaUgR1a8oTwTF",
+   "symbol": "HOOLI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "STARqri3xhy6Pyv1EpgdjkPDVcs9FncKcaEP6527krs",
+   "symbol": "STAR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "ARXwZkNAtzPfdcoqQiduJn8EPv9fKiDfGn2KyggyDrFs",
+   "symbol": "ARX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "CWZ6BsdnjkDVTGkmL6bGbJXXig6ceef12KvyGQW14cMt",
+   "symbol": "ANTFUN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp",
+   "symbol": "CARDS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump",
+   "symbol": "ANSEM",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+   "symbol": "USDC",
+   "deposit": true,
+   "withdraw": false
+  },
+  {
+   "exchange": "kucoin",
+   "mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+   "symbol": "USDT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+   "symbol": "USDT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "947tEoG318GUmyjVYhraNRvWpMX7fpBTDQFBoJvSkSG3",
+   "symbol": "CHAT",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+   "symbol": "USDC",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "SOL",
+   "symbol": "SOL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "Saber2gLauYim4Mvftnrasomsv6NvAuncvMEZwcLpD1",
+   "symbol": "SBR",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "GsNzxJfFn6zQdJGeYsupJWzUAm57Ba7335mfhWvFiE9Z",
+   "symbol": "DXL",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "ATLASXmbPQxBUYbxPsV97usA3fPQYEqzQBUHgiFCUsXx",
+   "symbol": "ATLAS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "poLisWXnNRwC6oBu1vHiuKQzFjGL4XDSu4g9qjz9qVk",
+   "symbol": "POLIS",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "AURYydfxJib1ZkTir1Jn1J9ECYUtjb6rKQVmtYaixWPP",
+   "symbol": "AURY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "3bRTivrVsitbmCTGtqwp7hxXPsybkjn4XLNtPsHqa3zR",
+   "symbol": "LIKE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "SLNDpmoWTVADgEdndyvWzroNL7zSi1dF9PC3xHGtPwp",
+   "symbol": "SLND",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "E5ndSkaB17Dm7CsD22dvcjfrYSDLCxFcMd6z8ddCk5wp",
+   "symbol": "RIN",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "7j7H7sgsnNDeCngAPjpaCN4aaaru4HS7NAFYSEUyzJ3k",
+   "symbol": "SOLR",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "kinXdEcpDQeHPEuQnqmUgtYykqKGVFq6CeVX5iAHJq6",
+   "symbol": "KIN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "AD27ov5fVU2XzwsbvnFvb1JpCBaCB5dRXrczV9CqSVGb",
+   "symbol": "REAL",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "7i5KKsX2weiTkry7jA4ZwSuXGhs5eJBEjY8vVxR4pfRx",
+   "symbol": "GMT",
+   "deposit": true,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+   "symbol": "RAY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
+   "symbol": "ORCA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "A94X2fRy3wydNShU4dRaDyap2UuoeWJGWyATtyp61WZf",
+   "symbol": "TRYB",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "HVkFqcMHevVPb4XKrf4XowjEaVVsBoqJ2U1EG59Dfk5j",
+   "symbol": "VISION",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "AFbX8oGjGpmVFywbVouvhQSRmiW2aR1mohfahi4Y2AdB",
+   "symbol": "GST",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "hntyVP6YFm1Hg25TN9WGLqM12b8TQmcknKrdu1oxWux",
+   "symbol": "HNT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "PRiME7gDoiG1vGr95a3CRMv9xHY7UGjd4JKvfSkmQu2",
+   "symbol": "PRIMEOLD",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "FtgGSFADXBtroxq8VCausXRr2of47QBf5AS1NtZCu4GD",
+   "symbol": "BRZ",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "EcQCUYv57C4V6RoPxkVUiDwtX1SP8y8FP5AEToYL8Az",
+   "symbol": "WLKN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "3uejHm24sWmniGA5m4j4S1DVuGqzYBR5DJpevND4mivq",
+   "symbol": "IP3",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So",
+   "symbol": "MSOL",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+   "symbol": "BONK",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "GEBUHM7o5T1Ws2rAWjRijtYeh9XFxKrD3B4b9HV7dxLz",
+   "symbol": "LITT",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "HHjoYwUp5aU6pnrvN4s2pwEErwXNZKhxKGYjRJMoBjLw",
+   "symbol": "PIP",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "8BMzMi2XxZn9afRaMx5Z6fauk9foHXqV5cLTCYWRcVje",
+   "symbol": "STIK",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "2b1kV6DkPAnxd5ixfnxCpjxmKwqjjaYmCZfHsFu24GXo",
+   "symbol": "PYUSD",
+   "deposit": true,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "HZ1JovNiVvGrGNiiYvEozEVgZ58xaU3RKwX8eACQBCt3",
+   "symbol": "PYTH",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "Bm3dgkZrjH7eaz1GBH1R2ZHkp7nZUoPNJhjekoxepump",
+   "symbol": "MYRO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "EchesyfXePKdLtoiZSL8pBe8Myagyy8ZRqsACNCFGnvp",
+   "symbol": "FIDA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
+   "symbol": "JTO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+   "symbol": "SAMO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "2wme8EVkw8qsfSk2B3QeX4S64ac6wxHPXb3GrdckEkio",
+   "symbol": "SOLS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "93RC484oMK5T9H89rzT5qiAXKHGP9jscXfFfrihNbe57",
+   "symbol": "ZERO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "mb1eu7TzEc71KxDpsmsKoucSSuuoGLv1drys1oP2jh6",
+   "symbol": "MOBILE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "7EYnhQoR9YM3N7UoaKRoA44Uy8JeaZV3qyouov87awMs",
+   "symbol": "SILLY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "7iT1GRYYhEop2nV1dyCwK2MGyLmPHq47WhPGSwiqcUg5",
+   "symbol": "ANALOS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "BCpa4PVRovJv9EszgYvLRh1WqHq1PjE6LCr9EBdWGSa9",
+   "symbol": "RABBIT",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "5z3EqYQo9HiCEs3R84RCDMu2n7anpDMxRhdK8PSWmrRC",
+   "symbol": "PONKE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "SarosY6Vscao718M4A778z4CGtvcwcGef5M9MEH1LGL",
+   "symbol": "SAROS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "AMUwxPsqWSd1fbCGzWsrRKDcNoduuWMkdR38qPdit8G8",
+   "symbol": "AMU",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
+   "symbol": "WIF",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR",
+   "symbol": "GUAC",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+   "symbol": "JUP",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "WENWENvqqNya429ubCdR81ZmD69brwQaaBYY6p3LCpk",
+   "symbol": "WENOLD",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "3QYAWuowfaLC1CqYKx2eTe1SwV9MqAe1dUZT3NPt3srQ",
+   "symbol": "DWARS",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "nuumnQ637GtKPis16AeU3PhNru74S7tK9GdjYVATbxL",
+   "symbol": "NUUM",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "A3eME5CetyZPBoWbRUwY3tSe25S6tb18ba9ZPbWk9eFJ",
+   "symbol": "PENGOLD",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "AHW5N8iqZobTcBepkSJzZ61XtAuSzBDcpxtrLG6KUKPk",
+   "symbol": "BENDOG",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "21rweMLGYeMNonHW7H3xa5py17X6ZFRcHirCp9inRBQA",
+   "symbol": "IQ50",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "CxrhHSqyW8YTDWc4csJMMgo7uBUJSXzNzrWhtw9ULdru",
+   "symbol": "NEVER",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "4n7AbgC6WWBMBqLa92vC3FmFQti6am17KS9jHEKgirPF",
+   "symbol": "DMR",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "ukHH6c7mMyiWCf1b9pnWe25TSpkDDt3H5pQZgZ74J82",
+   "symbol": "BOME",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "4G86CMxGsMdLETrYnavMFKPhQzKTvDBYGMRAdVtr72nu",
+   "symbol": "SNAP",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "2miHpQbYLPvXxC2V234jrrrtnJdejd5xW883a5ToNW3g",
+   "symbol": "$POGAI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "HLptm5e6rTgh4EKgDpYFrnRHbjpkMyVdEeREEa2G7rf9",
+   "symbol": "DUKO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "667w6y7eH5tQucYQXfJ2KmiuGBE8HfYnqqbjLNSw7yww",
+   "symbol": "ANDY",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "CxRppbsvfhrZJdnqSo5VDkrAYQMucN8Gbj5J1F5qkrNs",
+   "symbol": "TOAD",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "9999FVbjHioTcoJpoBiSjpxHW6xEn3witVuXKqBh2RFQ",
+   "symbol": "SLERF",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "HfQuaLjMguh7vyZqqrWuVqpsjQd7tAPrzBWKqA3pDTH3",
+   "symbol": "JENSEN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "EqNpeYivy7ehzwwVEKRkJJFf2NKcGnKv6SS7hHdSi12J",
+   "symbol": "BIBO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "9Ttyez3xiruyj6cqaR495hbBkJU6SUWdV6AmQ9MvbyyS",
+   "symbol": "SMOLE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "8Kqmghm1mkXbKYqt2wGnHxwnRdEjD9nayNKD3EanWkcD",
+   "symbol": "DOPE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "ENoD8J2J6wNHkcJkvVBkwq5JMiR1oNBfBZRkoHCQogyT",
+   "symbol": "AABL",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "GtDZKAqvMZMnti46ZewMiXCa4oXF4bZxwQPoKzXPFxZn",
+   "symbol": "NUB",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "Avb1PBRudW7uUV9MqTUqfZ3EZTDvNkKS63W3wyPseudf",
+   "symbol": "CATWIF",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "DpfVseMtcwUMuMaNUgVoshxQ7Uo4Brtna3k5NaN44U1g",
+   "symbol": "CHATAI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "3TWgDvYBL2YPET2LxnWAwsMeoA8aL4DutNuwat2pKCjC",
+   "symbol": "KHAI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "85VBFQZC9TZkfaptBWjvUw7YbZjy52A6mjtPGjstQAmQ",
+   "symbol": "W",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "FsA54yL49WKs7rWoGv9sUcbSGWCWV756jTD349e6H2yW",
+   "symbol": "KOKO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "MEW1gQWJ3nEXg2qgERiKu7FAFj79PHvQVREQUzScPP5",
+   "symbol": "MEW",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "hf34pZHnV4entu9bdp4pFEmeKpivEUeSUhASgWopump",
+   "symbol": "MUMU",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "C6Q5fMpuPjBPox84wbcE3Rn8HYJg11o4YHEmbQSuYs5L",
+   "symbol": "MOEW",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "TNSRxcUxoT9xBG3de7PiJyTDYu7kskLqcpddxnEJAS6",
+   "symbol": "TNSR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "ATRLuHph8dxnPny4WSNW7fxkhbeivBrtWbY6BfB4xpLj",
+   "symbol": "ATR",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "3BgwJ8b7b9hHX4sgfZ2KJhv9496CoVfsMK2YePevsBRw",
+   "symbol": "EPIK",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "4LLbsb5ReP3yEtYzmXewyGjcir5uXtKFURtaEUVC2AHs",
+   "symbol": "PRCL",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "ZBCNpuD7YMXzTHB2fhGkGi78MNsHGLRXUhRewNRm9RU",
+   "symbol": "ZBCN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "nQ1qgSpXWi71twnWPFjyfCtcbUXbVyQb64RfHKwRpKE",
+   "symbol": "DAOT",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "FGf1Us3kqu9AXu2x1yWKfiKE8uSx42ACvRiUrbuAodzq",
+   "symbol": "CATGPT",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "25hAyBQfoDhfWx9ay6rarbgvWGwDdNqcHsXS3jQ3mTDJ",
+   "symbol": "MANEKI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "KMNo3nJsBXfcpJTVhZcXLW7RmTwTt4GVFE7suUBo9sS",
+   "symbol": "KMNO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "BZLbGTNCSFfoth2GYDtwr7e4imWzpR5jqcUuGEwr646K",
+   "symbol": "IO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB",
+   "symbol": "GMESOL",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "CATA4f9X72ErPxZydy11EGk3e5WVVkxrm2B17tfzDuSP",
+   "symbol": "CATA",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "DriFtupJYLTosbwoN8koMbEYSx54aFAVLddWsbksjwg7",
+   "symbol": "DRIFT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "NYANpAp9Cr7YarBNrby7Xx4xU6No6JKTBuohNA3yscP",
+   "symbol": "NYAN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "6FVyLVhQsShWVUsCq2FJRr1MrECGShc3QxBwWtgiVFwK",
+   "symbol": "BWB",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "Euoq6CyQFCjCVSLR9wFaUPDW19Y6ZHwEcJoZsEi643i1",
+   "symbol": "LAIKA",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "7atgF8KQo4wJrD5ATGX7t1V2zVvykPJbFfNeVf1icFv1",
+   "symbol": "CWIF",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "AujTJJ7aMS8LDo3bFzoyXDwT3jBALUbu4VZhzZdTZLmG",
+   "symbol": "BEER",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "9P32yqucXfZnDoXmmJNzBpqXQgfou4tA4sB1RaQh9cYw",
+   "symbol": "JUNGLE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "6FDJbSkiySbetXaELZYaL9im8mAyCkMfHB7rtDt9p3qp",
+   "symbol": "ROSA",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "3S8qX1MsMqRbiwKg2cQyx7nis1oHMgaCuc9c4VfvVdPN",
+   "symbol": "MOTHER",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "5t4EVfkb5QU8NZXmTzcSK2bQsNWUr2HL64rRb8i6wpat",
+   "symbol": "SPHYNX",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "FPZsqAgtwf58GmJMctZGSu9RaXiGAmQLL6ZtKUUewm7k",
+   "symbol": "UTG",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "4Cnk9EPnW5ixfLZatCPJjDB1PUtcRpVVgTQukm9epump",
+   "symbol": "DADDY",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "B6h248NJkAcBAkaCnji889a26tCiGXGN8cxhEJ4dX391",
+   "symbol": "WATER",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "3GEznP41VaAGv9yRdBiuYdA8zkffNc8b7DzNJgFbH4Kh",
+   "symbol": "SCRAT",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "7g9yXDhBnS9QycNVK4QP9amcotcsqNEa2Pq8QnX5wXxH",
+   "symbol": "JAIL",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "3B5wuUrMEi5yATD7on46hKfej3pfmd7t1RKgrsN3pump",
+   "symbol": "BILLY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "sPiKEYAqoaGYYBAnPxro8NLSYLu93sr56n352jJRLN5",
+   "symbol": "SPIKE",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "Faf89929Ni9fbg4gmVZTca7eW6NFg877Jqn6MizT3Gvw",
+   "symbol": "LANDWOLF",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "CLoUDKc4Ane7HeQcPpE3YHnznRxhMimJ4MyaUqyHFzAu",
+   "symbol": "CLOUD",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof",
+   "symbol": "RENDER",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "ED5wbeyAYtLM4WRGnohPxJEwniaikEFioVmJyZH6K31m",
+   "symbol": "TIMESOL",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "FsBPYiGZ4bhUxVSPP7XPJYfTPm5PsLJc2WGZaFaDpump",
+   "symbol": "MONGY",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "CATTzAwLyADd2ekzVjTjX8tVUBYfrozdkJBkutJggdB7",
+   "symbol": "CATDOG",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "73xsLcBnLnc9bh81cqVKqj8uEyiarXng5ZwJuTbnVebG",
+   "symbol": "WUF",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "GinNabffZL4fUj9Vactxha74GDAW8kDPGaHqMtMzps2f",
+   "symbol": "GINNAN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "D4R5MEE6eAywxURZJzwyVPcKxrzsSCgHV3VN667LLLv4",
+   "symbol": "OGLG",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "DBRiDgJAMsM95moTzJs7M9LnkGErpbv9v6CUR1DXnUu5",
+   "symbol": "DBR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY",
+   "symbol": "MOODENG",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "bgSoLfRx1wRPehwC9TyG568AGjnf1sQG1MYa8s3FbfY",
+   "symbol": "BGSOL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "Grass7B4RdKfBCjTKgSqnXkqjwiGvQyFbuSCUJr3XXjs",
+   "symbol": "GRASS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump",
+   "symbol": "GOAT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "GJAFwWjJ3vnTsrQVabjBVK2TYB1YtRCQXRDfDgUnpump",
+   "symbol": "ACT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "9PR7nCP9DpcUotnDPVLUBUZKu5WAYkwrCUx9wDnSpump",
+   "symbol": "BAN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "CBdCxKo9QavR9hfShgpEBG3zekorAeD7W1jfq2o3pump",
+   "symbol": "LUCE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "2qEHjDLDLbuBgRYvsxhc5D6uDWAivNFZGan56P1tpump",
+   "symbol": "PNUT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump",
+   "symbol": "FARTCOIN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "HAPPYwgFcjEJDzRtfWE6tiHE9zGdzpNky2FvjPHsvvGZ",
+   "symbol": "HAPPY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "CNvitvFnSM5ed6K28RUNSaAjqqz5tX1rA5HgaBN9pump",
+   "symbol": "FRED",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "H2c31USxu35MDkBrGph8pUDUnmzo2e4Rf4hnvL2Upump",
+   "symbol": "SHOGGOTH",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "FvgqHMfL9yn39V79huDPy3YUNDoYJpuLWng2JfmQpump",
+   "symbol": "URO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "GxdTh6udNstGmLLk9ztBb6bkrms7oLbrJp5yzUaVpump",
+   "symbol": "SCIHUB",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "GJtJuWD9qYcCkrwMBmtY1tpapV1sKfB2zUv9Q4aqpump",
+   "symbol": "RIFSOL",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "wUtwjNmjCP9TTTtoc5Xn5h5sZ2cYJm5w2w44b79yr2o",
+   "symbol": "ELIZA",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "Df6yfrKC8kZE3KNkrHERKzAetSxbrWeniQfyJY4Jpump",
+   "symbol": "CHILLGUY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "MEFNBXixkEbait3xn9bkm8WsJzXtVsaJEn4c8Sam21u",
+   "symbol": "ME",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "43VWkd99HjqkhFTZbWBpMpRhjG469nWa7x7uEsgSH7We",
+   "symbol": "STNK",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "HNg5PYJmtqcmzXrv6S9zP1CDKk5BgDuyFBxbvNApump",
+   "symbol": "ALCH",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "KENJSUYLASHUMfHyy5o4Hp2FdNqZg1AsUPhfH2kYvEP",
+   "symbol": "GRIFFAIN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "61V8vBaqAGMpgDQi4JcAwo1dmBGHsyhzodcPqnEVpump",
+   "symbol": "ARC",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+   "symbol": "PENGU",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "B89Hd5Juz7JP2dxCZXFJWk4tMTcbw7feDhuWGb3kq5qE",
+   "symbol": "NC",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "bioJ9JTqW62MLz7UKHU69gtKhPpGi1BQhccj2kmSvUJ",
+   "symbol": "BIO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "HcQbgvMTCNDgMDY6GAFzP1WwCNZeMoEwZfUuHepzC9L5",
+   "symbol": "MTOS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "SonicxvLud67EceaEzCLRnMTBqzYUUYNr93DBkBdDES",
+   "symbol": "SONIC",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "8x5VqbHA8D7NkD52uNuS5nnt3PwA8pLD34ymskeSo2Wn",
+   "symbol": "ZEREBRO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "74SBV4zDXxTRgv1pEMoECskKBkZHc2yGPnc7GYVepump",
+   "symbol": "SWARMS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "9DHe3pycTuymFk4H4bbPoAJ4hQrr2kaLDF6J6aAKpump",
+   "symbol": "BUZZ",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "DKu9kykSfbN5LBfFXtNNDPaX35o4Fv6vJ9FKk7pZpump",
+   "symbol": "AVAAI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "Dfh5DzRgSvvCFDoYc2ciTkMrbDfRKybA4SoFbPmApump",
+   "symbol": "PIPPIN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "Jambjx1oJoZNBZiqbiF9TqgatEZPdyfvYa9WVsKNzUh",
+   "symbol": "J",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
+   "symbol": "TRUMP",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P",
+   "symbol": "MELANIA",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "6AJcP7wuLwmRYLBNbi825wgguaPsWzPBEHcHndpRpump",
+   "symbol": "VINE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "eL5fUxj2J4CiQsmW85k5FG9DvuQjjUoBHoQBi2Kpump",
+   "symbol": "UFD",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "FeR8VBqNRSUD5NtXAj2n3j1dAHkZHfyDktKuLXD4pump",
+   "symbol": "JELLYJELLY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "LAYER4xPpTCb3QL8S9u41EAhAX7mhBn8Q6xMTwY2Yzc",
+   "symbol": "LAYER",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "AxriehR6Xw3adzHopnvMn7GcpRFcD41ddpiTWMg6pump",
+   "symbol": "JAILSTOOL",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "7oBYdEhV4GkXC19ZfgAvXpJWp2Rn9pm1Bx2cVNxFpump",
+   "symbol": "CAR",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "RoamA1USA8xjvpTJZ6RvvxyDRzNh6GCA1zVGKSiMVkn",
+   "symbol": "ROAM",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "FQgtfugBdpFN7PZ6NdPrZpVLDBrPGxXesi4gVu3vErhY",
+   "symbol": "BMT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "PAWSxhjTyNJELywYiYTxCN857utnYmWXu7Q59Vgn6ZQ",
+   "symbol": "PAWS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "4TBi66vi32S7J8X1A6eWfaLHYmUXu7CStcEmsJQdpump",
+   "symbol": "GHIBLI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "C3DwDjT17gDvvCYC2nsdGHxDHVmQRdhKfpAdqQ29pump",
+   "symbol": "RFC",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "8BtoThi2ZoXnF7QQK1Wjmh2JuBw9FjVvhnGMVZ2vpump",
+   "symbol": "DARK",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "DitHyRMQiSDhn5cnKMJV2CDDt6sVct96YrECiM49pump",
+   "symbol": "HOUSE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "38PgzpJYu2HkiYvV8qePFakB8tuobPdGm2FFEn7Dpump",
+   "symbol": "GORK",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "DvjbEsdca43oQcw2h3HW1CT7N3x5vRcr3QrvTUHnXvgV",
+   "symbol": "DOOD",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "4eDf52YYzL6i6gbZ6FXqrLUPXbtP61f1gPSFM66M4XHe",
+   "symbol": "SOON",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "Ey59PH7Z4BFU4HjyKnyMdWt5GGN76KazTAwQihoUXRnk",
+   "symbol": "LAUNCHCOIN",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "HUMA1821qVDKta3u2ovmfDQeW2fSQouSKE8fkF44wvGw",
+   "symbol": "HUMA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "JB2wezZLdzWfnaCfHxLg193RS3Rh51ThiXxEDWQDpump",
+   "symbol": "LABUBU",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "susdabGDNbhrnCa6ncrYo81u4s9GM8ecK2UwMyZiq4X",
+   "symbol": "SOLAYERUSD",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "J3umBWqhSjd13sag1E1aUojViWvPYA5dFNyqpKuX3WXj",
+   "symbol": "HOME",
+   "deposit": true,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "FRAGMEWj2z65qM62zqKhNtwNFskdfKs4ekDUDX3b4VD5",
+   "symbol": "FRAG",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+   "symbol": "PUMP",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "CN162nCPpq3DxPCyKLbAvEJeB1aCxsnVTEG4ZU8vpump",
+   "symbol": "A47",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "9tqjeRS1swj36Ee5C1iGiwAxjQJNGAVCzaTLwFY8bonk",
+   "symbol": "ANI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "DEpHYkW6nEm3Sxhb2rwftatrSAV3AP3ac6MgAWBbnsS8",
+   "symbol": "PHY",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "ERpDpYmuifJUKbaB1Dv9hnJ67RM21Jujmxz18JCeDzbr",
+   "symbol": "K",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "GUy9Tu8YtvvHoL3DcXLJxXvEN8PqEus6mWQUEchcbonk",
+   "symbol": "BOSS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "DrZ26cKJDksVRWib3DVVsjo9eeXccc7hKhDJviiYEEZY",
+   "symbol": "YZY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "SW1TCHLmRGTfW5xZknqQdpdarB8PD95sJYWpNp9TbFx",
+   "symbol": "SWTCH",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "69RX85eQoEsnZvXGmLNjYcWgVkp9r2JjahVm99KbJETU",
+   "symbol": "HOLO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "PRTLSwfLzpVGSAQiUfXEenJkq1cwTsEcsn1hPL9zwwg",
+   "symbol": "PORTALS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "A1t2UviBYwyfYZDJyKY2W6Td8ritgsCriUDuNaAQN49S",
+   "symbol": "BLESS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "J6pQQ3FAcJQeWPPGppWRb4nM8jU3wLyYbRrLh7feMfvd",
+   "symbol": "2Z",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
+   "symbol": "MET",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "BLVxek8YMXUQhcKmMvrFTrzh5FXg8ec88Crp6otEaCMf",
+   "symbol": "BELIEVE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "DuMbhu7mvQvqQHGcnikDgb4XegXJRyhUBfdU22uELiZA",
+   "symbol": "ELIZAOS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "SKRbvo6Gf7GondiT3BbTfuRDPqLWei4j2Qy2NPGZhW3",
+   "symbol": "SKR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "G7vQWurMkMMm2dU3iZpXYFTHT9Biio4F4gZCrwFpKNwG",
+   "symbol": "BIRB",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "8Jx8AAHj86wbQgUTjGuj6GTTL5Ps3cqxKRTvpaJApump",
+   "symbol": "PENGUIN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "72puLt71H93Z9CzHuBRTwFpL4TG3WZUhnoCC7p8gxigu",
+   "symbol": "USDGO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "PERLEQKUNUp1dgFZ8EvyXHdN9d6ZQqfGxALDvfs6pDs",
+   "symbol": "PRL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "4HtfQVWujUfTmZJbtDjSjdJPmqYyri4BpnipjqsD9HLS",
+   "symbol": "PRESPCX",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "8jo8yuaQj2t48rKKUy5V7txxVihDo1Ayb2HvuBwSisS3",
+   "symbol": "PREOPAI",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "bitget",
+   "mint": "FPJfY8mMTRwaePD2f46TFLqVov4X9svBaUgR1a8oTwTF",
+   "symbol": "HOOLI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "SLXdx4BUt2v9uJQNzWqSfzTJ9UKLUDsvxHFMEEdrfgq",
+   "symbol": "SLX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "FG4HFf9tc3GbqqQ5fPjJkTwsiJCanuonFrSv4rhvvSsQ",
+   "symbol": "AVV",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "bitget",
+   "mint": "ARXwZkNAtzPfdcoqQiduJn8EPv9fKiDfGn2KyggyDrFs",
+   "symbol": "ARX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+   "symbol": "USDT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+   "symbol": "USDC",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "5XZw2LKTyrfvfiskJ78AMpackRjPcyCif1WhUsPDuVqQ",
+   "symbol": "BTC",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "GbbesPbaYh5uiAZSYNXTc7w9jty1rpg3P9L4JeN4LkKc",
+   "symbol": "TRX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "5MAYDfq5yxtudAhtfyuMBuHZjgAbaS9tbEyEQYAhDS5y",
+   "symbol": "ACS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "GJAFwWjJ3vnTsrQVabjBVK2TYB1YtRCQXRDfDgUnpump",
+   "symbol": "ACTSOL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "HNg5PYJmtqcmzXrv6S9zP1CDKk5BgDuyFBxbvNApump",
+   "symbol": "ALCH",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "AMUwxPsqWSd1fbCGzWsrRKDcNoduuWMkdR38qPdit8G8",
+   "symbol": "AMU",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "7iT1GRYYhEop2nV1dyCwK2MGyLmPHq47WhPGSwiqcUg5",
+   "symbol": "ANALOS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "9tqjeRS1swj36Ee5C1iGiwAxjQJNGAVCzaTLwFY8bonk",
+   "symbol": "ANI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump",
+   "symbol": "ANSEM",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "61V8vBaqAGMpgDQi4JcAwo1dmBGHsyhzodcPqnEVpump",
+   "symbol": "ARC",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "AURYydfxJib1ZkTir1Jn1J9ECYUtjb6rKQVmtYaixWPP",
+   "symbol": "AURY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "DKu9kykSfbN5LBfFXtNNDPaX35o4Fv6vJ9FKk7pZpump",
+   "symbol": "AVAAI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "9PR7nCP9DpcUotnDPVLUBUZKu5WAYkwrCUx9wDnSpump",
+   "symbol": "BAN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "AujTJJ7aMS8LDo3bFzoyXDwT3jBALUbu4VZhzZdTZLmG",
+   "symbol": "BEER",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "3B5wuUrMEi5yATD7on46hKfej3pfmd7t1RKgrsN3pump",
+   "symbol": "BILLY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "G7vQWurMkMMm2dU3iZpXYFTHT9Biio4F4gZCrwFpKNwG",
+   "symbol": "BIRB",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "FQgtfugBdpFN7PZ6NdPrZpVLDBrPGxXesi4gVu3vErhY",
+   "symbol": "BMT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "ukHH6c7mMyiWCf1b9pnWe25TSpkDDt3H5pQZgZ74J82",
+   "symbol": "BOME",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+   "symbol": "BONK",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "79yTpy8uwmAkrdgZdq6ZSBTvxKsgPrNqTLvYQBh1pump",
+   "symbol": "BULLY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "9DHe3pycTuymFk4H4bbPoAJ4hQrr2kaLDF6J6aAKpump",
+   "symbol": "BUZZ",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "Df6yfrKC8kZE3KNkrHERKzAetSxbrWeniQfyJY4Jpump",
+   "symbol": "CHILLGUY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "BMwhQ1HXuzA7ucY8NYHyVq2uwuG47GHj1dNP6xJdoPzD",
+   "symbol": "COOL",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "3wNmRxyZPzDWVAydsF3VuNKCNk89A8uSo7EzTnubDJcR",
+   "symbol": "COOLMAN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "CudisfkgWvMKnZ3TWf6iCuHm8pN2ikXhDcWytwz6f6RN",
+   "symbol": "CUDIS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "8BtoThi2ZoXnF7QQK1Wjmh2JuBw9FjVvhnGMVZ2vpump",
+   "symbol": "DARK",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "DBRiDgJAMsM95moTzJs7M9LnkGErpbv9v6CUR1DXnUu5",
+   "symbol": "DBR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "Gu3LDkn7Vx3bmCzLafYNKcDxv2mH7YN44NJZFXnypump",
+   "symbol": "DEGENAI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "BiDB55p4G3n1fGhwKFpxsokBMqgctL4qnZpDH1bVQxMD",
+   "symbol": "DIO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "DriFtupJYLTosbwoN8koMbEYSx54aFAVLddWsbksjwg7",
+   "symbol": "DRIFT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "5voS9evDjxF589WuEub5i4ti7FWQmZCsAsyD5ucbuRqM",
+   "symbol": "ELIZA",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "wUtwjNmjCP9TTTtoc5Xn5h5sZ2cYJm5w2w44b79yr2o",
+   "symbol": "ELIZACTO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "DuMbhu7mvQvqQHGcnikDgb4XegXJRyhUBfdU22uELiZA",
+   "symbol": "ELIZAOS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "4tJZhSdGePuMEfZQ3h5LaHjTPsw1iWTRFTojnZcwsAU6",
+   "symbol": "ELU",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump",
+   "symbol": "FARTCOIN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "FRAGMEWj2z65qM62zqKhNtwNFskdfKs4ekDUDX3b4VD5",
+   "symbol": "FRAG",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "CKaKtYvz6dKPyMvYq9Rh3UBrnNqYZAyd7iF4hJtjUvks",
+   "symbol": "GARI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "4TBi66vi32S7J8X1A6eWfaLHYmUXu7CStcEmsJQdpump",
+   "symbol": "GHIBLI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB",
+   "symbol": "GME",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "7i5KKsX2weiTkry7jA4ZwSuXGhs5eJBEjY8vVxR4pfRx",
+   "symbol": "GMT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump",
+   "symbol": "GOAT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "71Jvq4Epe2FCJ7JFSF7jLXdNk1Wy4Bhqd9iL6bEFELvg",
+   "symbol": "GOR",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "38PgzpJYu2HkiYvV8qePFakB8tuobPdGm2FFEn7Dpump",
+   "symbol": "GORK",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "Grass7B4RdKfBCjTKgSqnXkqjwiGvQyFbuSCUJr3XXjs",
+   "symbol": "GRASS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "KENJSUYLASHUMfHyy5o4Hp2FdNqZg1AsUPhfH2kYvEP",
+   "symbol": "GRIFFAIN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "GekTNfm84QfyP2GdAHZ5AgACBRd69aNmgA5FDhZupump",
+   "symbol": "GRIFT",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "3MadWqcN9cSrULn8ikDnan9mF3znoQmBPXtVy6BfSTDB",
+   "symbol": "GROKCOIN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "AFbX8oGjGpmVFywbVouvhQSRmiW2aR1mohfahi4Y2AdB",
+   "symbol": "GST",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "H7bTHGb5Cvo5fGe5jBDNDPUv8KykQnzyZA3qZ8sH7yxw",
+   "symbol": "GUMMY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "AxGAbdFtdbj2oNXa4dKqFvwHzgFtW9mFHWmd7vQfpump",
+   "symbol": "HAT",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "HBB111SCo9jkCejsZfz8Ec8nH7T6THF8KEKSnvwT6XK6",
+   "symbol": "HBB",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "69RX85eQoEsnZvXGmLNjYcWgVkp9r2JjahVm99KbJETU",
+   "symbol": "HOLOWORLD",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "DitHyRMQiSDhn5cnKMJV2CDDt6sVct96YrECiM49pump",
+   "symbol": "HOUSE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "BZLbGTNCSFfoth2GYDtwr7e4imWzpR5jqcUuGEwr646K",
+   "symbol": "IO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "4GJ3TCt5mTgQT5BRKb14AkjddpFQqKVfphxzS3t4foZ9",
+   "symbol": "JENNER",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
+   "symbol": "JTO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+   "symbol": "JUP",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "HnKkzR1YtFbUUxM6g3iVRS2RY68KHhGV7bNdfF1GCsJB",
+   "symbol": "KAMA",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "EKEWAk7hfnwfR8DBb1cTayPPambqyC7pwNiYkaYQKQHp",
+   "symbol": "KITTY",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "htx",
+   "mint": "LAYER4xPpTCb3QL8S9u41EAhAX7mhBn8Q6xMTwY2Yzc",
+   "symbol": "LAYER",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "5z3iCe53hUANTiG8Js8RjHNE2Arjik7L2CXLyr2rpump",
+   "symbol": "LESTER",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "3bRTivrVsitbmCTGtqwp7hxXPsybkjn4XLNtPsHqa3zR",
+   "symbol": "LIKE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "83mCRQJzvKMeQd9wJbZDUCTPgRbZMDoPdMSx5Sf1pump",
+   "symbol": "LLJEFFY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "CBdCxKo9QavR9hfShgpEBG3zekorAeD7W1jfq2o3pump",
+   "symbol": "LUCE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "9se6kma7LeGcQWyRBNcYzyxZPE3r9t9qWZ8SnjnN3jJ7",
+   "symbol": "LUNASOL",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "25hAyBQfoDhfWx9ay6rarbgvWGwDdNqcHsXS3jQ3mTDJ",
+   "symbol": "MANEKI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "FJz7ptUR1FwxSHbb8Sfd5Cn6Zt4TqucJZKLqU4n66gdq",
+   "symbol": "MAY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "MEFNBXixkEbait3xn9bkm8WsJzXtVsaJEn4c8Sam21u",
+   "symbol": "ME",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P",
+   "symbol": "MELANIA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
+   "symbol": "MET",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "MEW1gQWJ3nEXg2qgERiKu7FAFj79PHvQVREQUzScPP5",
+   "symbol": "MEW",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "5mbK36SZ7J19An8jFochhQS4of8g6BwUjbeCSxBSoWdp",
+   "symbol": "MICHI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "MNDEFzGvMt87ueuHvVU9VcTqsAP5b3fTGPsHuuPA5ey",
+   "symbol": "MNDE",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY",
+   "symbol": "MOODENG",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "Ai3eKAWjzKMV8wRwd41nVP83yqfbAVJykhvJVPxspump",
+   "symbol": "MOONPIG",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "3S8qX1MsMqRbiwKg2cQyx7nis1oHMgaCuc9c4VfvVdPN",
+   "symbol": "MOTHER",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "METAewgxyPbgwsseH8T16a39CQ5VyVxZi9zXiDPY18m",
+   "symbol": "MPLX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "HhJpBhRRn4g56VsyLuT8DL5Bv31HkXqsrahTTUCZeZg4",
+   "symbol": "MYRO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "CTJf74cTo3cw8acFP1YXF3QpsQUUBGBjh2k2e8xsZ6UL",
+   "symbol": "NEIROLOL",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "htx",
+   "mint": "3N2ETvNpPNAxhcaXgkhKoY1yDnQfs41Wnxsx5qNJpump",
+   "symbol": "NEUR",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "NYANpAp9Cr7YarBNrby7Xx4xU6No6JKTBuohNA3yscP",
+   "symbol": "NYAN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
+   "symbol": "ORCA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "PAYmo6moDF3Ro3X6bU2jwe2UdBnBhv8YjLgL1j4DxGu",
+   "symbol": "PAYAI",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+   "symbol": "PENGU",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "Dfh5DzRgSvvCFDoYc2ciTkMrbDfRKybA4SoFbPmApump",
+   "symbol": "PIPPIN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "2qEHjDLDLbuBgRYvsxhc5D6uDWAivNFZGan56P1tpump",
+   "symbol": "PNUT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "5z3EqYQo9HiCEs3R84RCDMu2n7anpDMxRhdK8PSWmrRC",
+   "symbol": "PONKE",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "7GCihgDB8fe6KNjn2MYtkzZcRjQy3t9GHdC8uHYmW2hr",
+   "symbol": "POPCAT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "4LLbsb5ReP3yEtYzmXewyGjcir5uXtKFURtaEUVC2AHs",
+   "symbol": "PRCL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+   "symbol": "PUMP",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "WskzsKqEW3ZsmrhPAevfVZb6PuuLzWov9mJWZsfDePC",
+   "symbol": "PUNDU",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "HZ1JovNiVvGrGNiiYvEozEVgZ58xaU3RKwX8eACQBCt3",
+   "symbol": "PYTH",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+   "symbol": "RAY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof",
+   "symbol": "RENDER",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "GJtJuWD9qYcCkrwMBmtY1tpapV1sKfB2zUv9Q4aqpump",
+   "symbol": "RIF",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "2HeykdKjzHKGm2LKHw8pDYwjKPiFEoXAz74dirhUgQvq",
+   "symbol": "SAO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "SarosY6Vscao718M4A778z4CGtvcwcGef5M9MEH1LGL",
+   "symbol": "SAROS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "7EYnhQoR9YM3N7UoaKRoA44Uy8JeaZV3qyouov87awMs",
+   "symbol": "SILLY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "SKRbvo6Gf7GondiT3BbTfuRDPqLWei4j2Qy2NPGZhW3",
+   "symbol": "SKR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "9999FVbjHioTcoJpoBiSjpxHW6xEn3witVuXKqBh2RFQ",
+   "symbol": "SLERF",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "FqvtZ2UFR9we82Ni4LeacC1zyTiQ77usDo31DUokpump",
+   "symbol": "SLOP",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "HQ7DaoiUxzC2K1Dr7KXRHccNtXvEYgNvoUextXe8dmBh",
+   "symbol": "SLOTH",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "9Ttyez3xiruyj6cqaR495hbBkJU6SUWdV6AmQ9MvbyyS",
+   "symbol": "SMOLE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "SNSNkV9zfG5ZKWQs6x4hxvBRV6s8SqMfSGCtECDvdMd",
+   "symbol": "SNS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "4eDf52YYzL6i6gbZ6FXqrLUPXbtP61f1gPSFM66M4XHe",
+   "symbol": "SOON",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "8bdhP1UQMevciC9oJ7NrvgDfoW8XPXPfbkkm6vKtMS7N",
+   "symbol": "SPORE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "74SBV4zDXxTRgv1pEMoECskKBkZHc2yGPnc7GYVepump",
+   "symbol": "SWARMS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "SW1TCHLmRGTfW5xZknqQdpdarB8PD95sJYWpNp9TbFx",
+   "symbol": "SWTCH",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "TNSRxcUxoT9xBG3de7PiJyTDYu7kskLqcpddxnEJAS6",
+   "symbol": "TNSR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "FU1q8vJpZNUrmqsciSjp8bAKKidGsLmouB8CBdf8TKQv",
+   "symbol": "TREMP",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
+   "symbol": "TRUMP",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "eL5fUxj2J4CiQsmW85k5FG9DvuQjjUoBHoQBi2Kpump",
+   "symbol": "UFD",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "FvgqHMfL9yn39V79huDPy3YUNDoYJpuLWng2JfmQpump",
+   "symbol": "URO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "USD1ttGY1N17NEEHLmELoaybftRBUSErhqYiQzvEmuB",
+   "symbol": "USD1",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "htx",
+   "mint": "6AJcP7wuLwmRYLBNbi825wgguaPsWzPBEHcHndpRpump",
+   "symbol": "VINE",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "6gh8b2mqUrVb6Ew8Mwt89tNyN9keCDNstzT5cdp5pump",
+   "symbol": "VOID",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "85VBFQZC9TZkfaptBWjvUw7YbZjy52A6mjtPGjstQAmQ",
+   "symbol": "W",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "Bz7vVzQhm2KMW1XgcrDruYega1MiwrAs1DQysrx4tFkp",
+   "symbol": "WAP",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "C9dJfTGUzhuqPWxh9mcDr66JZN4uzXh2gh9EWnEdpump",
+   "symbol": "WAR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "WENWENvqqNya429ubCdR81ZmD69brwQaaBYY6p3LCpk",
+   "symbol": "WEN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "GTH3wG3NErjwcf7VGCoXEXkgXSHvYhx5gtATeeM5JAS1",
+   "symbol": "WHALES",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
+   "symbol": "WIF",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "EcQCUYv57C4V6RoPxkVUiDwtX1SP8y8FP5AEToYL8Az",
+   "symbol": "WLKN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "ZBCNpuD7YMXzTHB2fhGkGi78MNsHGLRXUhRewNRm9RU",
+   "symbol": "ZBCN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "8x5VqbHA8D7NkD52uNuS5nnt3PwA8pLD34ymskeSo2Wn",
+   "symbol": "ZEREBRO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "93RC484oMK5T9H89rzT5qiAXKHGP9jscXfFfrihNbe57",
+   "symbol": "ZERO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "htx",
+   "mint": "ZEUS1aR7aX8DFFJf5QjWj2ftDDdNTroMNGo8YoQm3Gq",
+   "symbol": "ZEUS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Jambjx1oJoZNBZiqbiF9TqgatEZPdyfvYa9WVsKNzUh",
+   "symbol": "J",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "85VBFQZC9TZkfaptBWjvUw7YbZjy52A6mjtPGjstQAmQ",
+   "symbol": "W",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "mntmG9Kqt9f9pNYmcpV65y8nvetvyngS2A7p7JWfDjK",
+   "symbol": "NEER",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "BMBtwz6LFDJVJd2aZvL5F64fdvWP3RPn4NP5q9Xe15UD",
+   "symbol": "BMB",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "FQgtfugBdpFN7PZ6NdPrZpVLDBrPGxXesi4gVu3vErhY",
+   "symbol": "BMT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "53kC8TJ5gfBPBPN4afNA1k433vL7ZhNHaw9NGh3HBo9N",
+   "symbol": "NEKO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "FvgqHMfL9yn39V79huDPy3YUNDoYJpuLWng2JfmQpump",
+   "symbol": "UROLITHINA",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Xseo8tgCZfkHxWS9xbFYeKFyMSbWEvZGFV1Gh53GtCV",
+   "symbol": "DHRX",
+   "deposit": true,
+   "withdraw": false
+  },
+  {
+   "exchange": "gate",
+   "mint": "NeonTjSjsuo3rexg9o6vHuMXw62f9V7zvmu8M8Zut44",
+   "symbol": "NEON",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "PRTLSwfLzpVGSAQiUfXEenJkq1cwTsEcsn1hPL9zwwg",
+   "symbol": "PORTALS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "HUMA1821qVDKta3u2ovmfDQeW2fSQouSKE8fkF44wvGw",
+   "symbol": "HUMA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "mb1eu7TzEc71KxDpsmsKoucSSuuoGLv1drys1oP2jh6",
+   "symbol": "MOBILE",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "gate",
+   "mint": "ZxBon4vcf3DVcrt63fJU52ywYm9BKZC6YuXDhb3fomo",
+   "symbol": "FOMO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "5cbq1HriesW4zHpFEk9Gc8UT4ccmfHcBTDCa2XcBduTo",
+   "symbol": "ELIX",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XsqE9cRRpzxcGKDXj1BJ7Xmg4GRhZoyY1KpmGSxAWT2",
+   "symbol": "MCDX",
+   "deposit": true,
+   "withdraw": false
+  },
+  {
+   "exchange": "gate",
+   "mint": "TuLipcqtGVXP9XR62wM8WWCm6a9vhLs7T1uoWBk6FDs",
+   "symbol": "TULIP",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "DubwWZNWiNGMMeeQHPnMATNj77YZPZSAz2WVR5WjLJqz",
+   "symbol": "CRP",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "CTJf74cTo3cw8acFP1YXF3QpsQUUBGBjh2k2e8xsZ6UL",
+   "symbol": "NEIRO_OLD",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "J6pQQ3FAcJQeWPPGppWRb4nM8jU3wLyYbRrLh7feMfvd",
+   "symbol": "2Z",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Gdck9KXSSiMMhNyjUjo4sVT1GDzeZnZP2yse9jhax3GR",
+   "symbol": "HVLO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "DBRiDgJAMsM95moTzJs7M9LnkGErpbv9v6CUR1DXnUu5",
+   "symbol": "DBR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "HDa3zJc12ahykSsBRvgiWzr6WLEByf36yzKKbVvy4gnF",
+   "symbol": "1SOS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+   "symbol": "SPCXX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "DKu9kykSfbN5LBfFXtNNDPaX35o4Fv6vJ9FKk7pZpump",
+   "symbol": "AVAAI",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "BiDB55p4G3n1fGhwKFpxsokBMqgctL4qnZpDH1bVQxMD",
+   "symbol": "DIO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "4n7AbgC6WWBMBqLa92vC3FmFQti6am17KS9jHEKgirPF",
+   "symbol": "DMR",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "BZLbGTNCSFfoth2GYDtwr7e4imWzpR5jqcUuGEwr646K",
+   "symbol": "IO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "DFL1zNkaGPWm1BqAVqRjCZvHmwTFrEaJtbzJWgseoNJh",
+   "symbol": "DEFILAND",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "MEFNBXixkEbait3xn9bkm8WsJzXtVsaJEn4c8Sam21u",
+   "symbol": "ME",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "moonThZEkkTVoNB7v6YVCQiT56JYDZ1oN185ba3WizL",
+   "symbol": "MF",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "C7DpniLsJBFEZvt6SnS5Ac8tdwuxCW4T3mS1JrfntDdX",
+   "symbol": "N3",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "B89Hd5Juz7JP2dxCZXFJWk4tMTcbw7feDhuWGb3kq5qE",
+   "symbol": "NC",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "5oVNBeEEQvYi1cX3ir8Dx5n1P7pdxydbGF2X4TxVusJm",
+   "symbol": "SCNSOL",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "F3nefJBcejYbtdREjui1T9DPh5dBgpkKq7u2GAAMXs5B",
+   "symbol": "AART",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "A3eME5CetyZPBoWbRUwY3tSe25S6tb18ba9ZPbWk9eFJ",
+   "symbol": "PENGOLD",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P",
+   "symbol": "MELANIA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "NFTUkR4u7wKxy9QLaX2TGvd9oZSWoMo4jqSJqdMb7Nk",
+   "symbol": "BLOCKASSET",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "947tEoG318GUmyjVYhraNRvWpMX7fpBTDQFBoJvSkSG3",
+   "symbol": "CHAT",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "JB2wezZLdzWfnaCfHxLg193RS3Rh51ThiXxEDWQDpump",
+   "symbol": "LABUBU",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "7dHbWXmci3dT8UFYWYZweBLXgycu7Y3iL6trKn1Y7ARj",
+   "symbol": "STSOL",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "MEANeD3XDdUmNMsRGjASkSWdC8prLYsoRJ61pPeHctD",
+   "symbol": "MEAN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "AujTJJ7aMS8LDo3bFzoyXDwT3jBALUbu4VZhzZdTZLmG",
+   "symbol": "BEER",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ",
+   "symbol": "QQQX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "4tJZhSdGePuMEfZQ3h5LaHjTPsw1iWTRFTojnZcwsAU6",
+   "symbol": "ELU",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "GTxrpyWoLoKze64984JdxJQXZS8TU6PV8t6ZvGKdi8BC",
+   "symbol": "GTXRP",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "gate",
+   "mint": "E1R4RF89GcKxz62DVfojxDJteLFFs8rtiXcGcrx5HbTj",
+   "symbol": "MATRIX",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "2qEHjDLDLbuBgRYvsxhc5D6uDWAivNFZGan56P1tpump",
+   "symbol": "PNUT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "FRAGMEWj2z65qM62zqKhNtwNFskdfKs4ekDUDX3b4VD5",
+   "symbol": "FRAG",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "HgBRWfYxEfvPhtqkaeymCQtHCrKE46qQ43pKe8HCpump",
+   "symbol": "BERT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "8x5VqbHA8D7NkD52uNuS5nnt3PwA8pLD34ymskeSo2Wn",
+   "symbol": "ZEREBRO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "CNvitvFnSM5ed6K28RUNSaAjqqz5tX1rA5HgaBN9pump",
+   "symbol": "FRED",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "FrEeWJreTHUyPgdJ3DWrdRg6X8qogF5zG5qdxMCgXtTy",
+   "symbol": "FREE",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XsHtf5RpxsQ7jeJ9ivNewouZKJHbPxhPoEy6yYvULr7",
+   "symbol": "ABTX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XsvKCaNsxg2GN8jjUmq71qukMJr7Q1c5R2Mk9P8kcS8",
+   "symbol": "CMCSAX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "PoRTjZMPXb9T7dyU7tpLEZRQj7e6ssfAE62j2oQuc6y",
+   "symbol": "PORT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Ey59PH7Z4BFU4HjyKnyMdWt5GGN76KazTAwQihoUXRnk",
+   "symbol": "LAUNCHCOIN",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "gate",
+   "mint": "Xs5UJzmCRQ8DWZjskExdSQDnbE6iLkRu2jjrRAB1JSU",
+   "symbol": "ACNX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "2b1kV6DkPAnxd5ixfnxCpjxmKwqjjaYmCZfHsFu24GXo",
+   "symbol": "PYUSD",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "SPQkEcsdALLLn4MqCb3XH64hYTmdD4fZZk9CF5LiQV8",
+   "symbol": "SPICE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB",
+   "symbol": "TSLAX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "74SBV4zDXxTRgv1pEMoECskKBkZHc2yGPnc7GYVepump",
+   "symbol": "SWARMS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "7i5KKsX2weiTkry7jA4ZwSuXGhs5eJBEjY8vVxR4pfRx",
+   "symbol": "GMT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "kzyC6U8E8uWwuKHHLkFE5kGiG7qwupKtX31cQo9Y5nv",
+   "symbol": "GPT",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "7hWcHohzwtLddDUG81H2PkWq6KEkMtSDNkYXsso18Fy3",
+   "symbol": "CATCOIN",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "gate",
+   "mint": "AFbX8oGjGpmVFywbVouvhQSRmiW2aR1mohfahi4Y2AdB",
+   "symbol": "GST",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "gate",
+   "mint": "3X8GcLiH2HttjyqePg7MazpMbwbgq5URUMTyDz5tkmdE",
+   "symbol": "LADYF",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Faf89929Ni9fbg4gmVZTca7eW6NFg877Jqn6MizT3Gvw",
+   "symbol": "LANDWOLF",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "HVWf8JmLoHs99Lw8Psf3fyqAtA4crWxCPkrmSdNjhNH3",
+   "symbol": "USDPT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ",
+   "symbol": "MSTRX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "AxGAbdFtdbj2oNXa4dKqFvwHzgFtW9mFHWmd7vQfpump",
+   "symbol": "HAT",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XszjVtyhowGjSC5odCqBpW1CtXXwXjYokymrk7fGKD3",
+   "symbol": "HDX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY",
+   "symbol": "MOODENG",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "5WieRrJ5oFthgxaH4nCEkwJiBTxuRpEn9qmFRkVzkc98",
+   "symbol": "HER",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "BYZ9CcZGKAXmN2uDsKcQMM9UnZacija4vWcns9Th69xb",
+   "symbol": "BOTIFY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "CATTzAwLyADd2ekzVjTjX8tVUBYfrozdkJBkutJggdB7",
+   "symbol": "CATDOG",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "hntyVP6YFm1Hg25TN9WGLqM12b8TQmcknKrdu1oxWux",
+   "symbol": "HNT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "GtDogeoPcfYRU2LmJqyLsLnD3QM1N5fUYta3C4x8st1",
+   "symbol": "GTDOGE",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "gate",
+   "mint": "3dgCCb15HMQSA4Pn3Tfii5vRk7aRqTH95LJjxzsG2Mug",
+   "symbol": "HXD",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "CWZ6BsdnjkDVTGkmL6bGbJXXig6ceef12KvyGQW14cMt",
+   "symbol": "ANTFUN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Xs2yquAgsHByNzx68WJC55WHjHBvG9JsMB7CWjTLyPy",
+   "symbol": "DFDVX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "4LLbsb5ReP3yEtYzmXewyGjcir5uXtKFURtaEUVC2AHs",
+   "symbol": "PRCL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "3vmfEaTR9M2Pp5JcFNC8c8u6U4eFUBdq6FQjgPpcnfKS",
+   "symbol": "DOAI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "2ru87k7yAZnDRsnqVpgJYETFgqVApuBcwB2xDb19pump",
+   "symbol": "BIAO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "FHAeF63cELMnm9HAHPLEWJGrGpBEYkdcvN3cLQGTCA6j",
+   "symbol": "ZEEP_OLD",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "gate",
+   "mint": "KQijDbNJ6rPCqhtXrfH6gKa5cH3a39At8vHq34nnPbF",
+   "symbol": "DOGEGOV",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "FGf1Us3kqu9AXu2x1yWKfiKE8uSx42ACvRiUrbuAodzq",
+   "symbol": "CATGPT",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "12UP9cSwe1tDzQg3KSEx1BpSS9nkpT5VkmDe4fSz4Hso",
+   "symbol": "PUNKAI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "DvjbEsdca43oQcw2h3HW1CT7N3x5vRcr3QrvTUHnXvgV",
+   "symbol": "DOOD",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "8Kqmghm1mkXbKYqt2wGnHxwnRdEjD9nayNKD3EanWkcD",
+   "symbol": "DOPE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "9zNQRsGLjNKwCUU5Gq5LR8beUCPzQMVMqKAi3SSZh54u",
+   "symbol": "FDUSD",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "FeR8VBqNRSUD5NtXAj2n3j1dAHkZHfyDktKuLXD4pump",
+   "symbol": "JELLYJELLY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "DriFtupJYLTosbwoN8koMbEYSx54aFAVLddWsbksjwg7",
+   "symbol": "DRIFT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "G7vQWurMkMMm2dU3iZpXYFTHT9Biio4F4gZCrwFpKNwG",
+   "symbol": "BIRB",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "8Jx8AAHj86wbQgUTjGuj6GTTL5Ps3cqxKRTvpaJApump",
+   "symbol": "PENGUIN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "4TBi66vi32S7J8X1A6eWfaLHYmUXu7CStcEmsJQdpump",
+   "symbol": "GHIBLI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "HJbNXx2YMRxgfUJ6K4qeWtjatMK5KYQT1QnsCdDWywNv",
+   "symbol": "ATLASDEX",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
+   "symbol": "JTO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+   "symbol": "JUP",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "AGRidUXLeDij9CJprkZx7WBXtTQC67jtfiwz293mVrJ",
+   "symbol": "AGRI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "79F32BvHBE49gPsvypYTGzcpWGvt66mgvenQow3mJjXu",
+   "symbol": "CORGIAI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump",
+   "symbol": "FWOG",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "kinXdEcpDQeHPEuQnqmUgtYykqKGVFq6CeVX5iAHJq6",
+   "symbol": "KIN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "2qpqweHfSKUvZFGQL3D7aadD5i5dDN8kz9xdZGraGAxC",
+   "symbol": "RZTO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XsaBXg8dU5cPM6ehmVctMkVqoiRG2ZjMo1cyBJ3AykQ",
+   "symbol": "KOX",
+   "deposit": true,
+   "withdraw": false
+  },
+  {
+   "exchange": "gate",
+   "mint": "7ZqzGzTNg5tjK1CHTBdGFHyKjBtXdfvAobuGgdt4pump",
+   "symbol": "BARSIK",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "DuMbhu7mvQvqQHGcnikDgb4XegXJRyhUBfdU22uELiZA",
+   "symbol": "ELIZAOS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "HUdqc5MR5h3FssESabPnQ1GTgTcPvnNudAuLj5J6a9sU",
+   "symbol": "BONGO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
+   "symbol": "ORCA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "BRLsMczKuaR5w9vSubF4j8HwEGGprVAyyVgS4EX7DKEg",
+   "symbol": "CYS_OLD",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XLnpFRQ3rSWupCRjuQfx74mgVoT3ezVJKE1CogRZxhH",
+   "symbol": "XLAB",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+   "symbol": "PUMP",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "4wjPQJ6PrkC4dHhYghwJzGBVP78DkBzA2U3kHoFNBuhj",
+   "symbol": "LIQ",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XsgSaSvNSqLTtFuyWPBhK9196Xb9Bbdyjj4fH3cPJGo",
+   "symbol": "AVGOX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "3bRTivrVsitbmCTGtqwp7hxXPsybkjn4XLNtPsHqa3zR",
+   "symbol": "LIKE",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "25hAyBQfoDhfWx9ay6rarbgvWGwDdNqcHsXS3jQ3mTDJ",
+   "symbol": "MANEKI",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XsEH7wWfJJu2ZT3UCFeVfALnVA6CP5ur7Ee11KmzVpL",
+   "symbol": "NFLXX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "4GJ3TCt5mTgQT5BRKb14AkjddpFQqKVfphxzS3t4foZ9",
+   "symbol": "JENSOL",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Xs7ZdzSHLU9ftNJsii5fCeJhoRWSC32SQGzGQtePxNu",
+   "symbol": "COINX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "8Zx6ECj3Fia7NCPfEWLcgCrP22j7dyS5GdYHUsTkVUtS",
+   "symbol": "DEFAI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "3S8qX1MsMqRbiwKg2cQyx7nis1oHMgaCuc9c4VfvVdPN",
+   "symbol": "MOTHER",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "madHpjRn6bd8t78Rsy7NuSuNwWa2HU8ByPobZprHbHv",
+   "symbol": "MAD",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "FJz7ptUR1FwxSHbb8Sfd5Cn6Zt4TqucJZKLqU4n66gdq",
+   "symbol": "MAY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XsApJFV9MAktqnAc6jqzsHVujxkGm9xcSUffaBoYLKC",
+   "symbol": "MAX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Fm9rHUTF5v3hwMLbStjZXqNBBoZyGriQaFM6sTFz3K8A",
+   "symbol": "MBS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "H1nf1F4eoHtiWiSBwLYAhJvAb7CDFY32eYA64mhL8Rp",
+   "symbol": "MCG",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "2w3A2P5juwg234spHKfps7WReWoVmujtErqjaZm9VaiP",
+   "symbol": "AIPUMP",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "ALQ9KMWjFmxVbew3vMkJj3ypbAKuorSgGst6svCHEe2z",
+   "symbol": "MDF",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "MERt85fc5boKw3BW1eYdxonEuJNvXbiMbs6hvheau5K",
+   "symbol": "MER",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
+   "symbol": "MET",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "MEW1gQWJ3nEXg2qgERiKu7FAFj79PHvQVREQUzScPP5",
+   "symbol": "MEW",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2",
+   "symbol": "TROLL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Taki7fi3Zicv7Du1xNAWLaf6mRK7ikdn77HeGzgwvo4",
+   "symbol": "TAKI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "WskzsKqEW3ZsmrhPAevfVZb6PuuLzWov9mJWZsfDePC",
+   "symbol": "PUNDU",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "LX2mJPsutHkUc6iXNFgumSC6LVKyc66xpy2zDTZpump",
+   "symbol": "TATE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "MNDEFzGvMt87ueuHvVU9VcTqsAP5b3fTGPsHuuPA5ey",
+   "symbol": "MNDE",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "MangoCzJ36AjZyKwVj3VnYU4GTonjfVEnJmvvWaxLac",
+   "symbol": "MNGO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "nosXBVoaCTtYdLvKY6Csb4AC8JCdQKKAaWYtx2ZMoo7",
+   "symbol": "NOS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "GtDZKAqvMZMnti46ZewMiXCa4oXF4bZxwQPoKzXPFxZn",
+   "symbol": "NUB",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "KENJSUYLASHUMfHyy5o4Hp2FdNqZg1AsUPhfH2kYvEP",
+   "symbol": "GRIFFAIN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN",
+   "symbol": "GOOGLX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "5voS9evDjxF589WuEub5i4ti7FWQmZCsAsyD5ucbuRqM",
+   "symbol": "ELIZASOL",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "METAmTMXwdb8gYzyCPfXXFmZZw4rUsXX58PNsDg7zjL",
+   "symbol": "SOLICE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "H2gf5g2k4KSWGrAdwtznw7bYkWiszvjistFG447aePiN",
+   "symbol": "DEEPSEEK",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "HLptm5e6rTgh4EKgDpYFrnRHbjpkMyVdEeREEa2G7rf9",
+   "symbol": "DUKO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "sonarX4VtVkQemriJeLm6CKeW3GDMyiBnnAEMw1MRAE",
+   "symbol": "SONAR",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "HNg5PYJmtqcmzXrv6S9zP1CDKk5BgDuyFBxbvNApump",
+   "symbol": "ALCH",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "gtBTCGWvSRYYoZpU9UZj6i3eUGUpgksXzzsbHk2K9So",
+   "symbol": "GTBTC",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "WENWENvqqNya429ubCdR81ZmD69brwQaaBYY6p3LCpk",
+   "symbol": "WENSOL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "oobQ3oX6ubRYMNMahG7VSCe8Z73uaQbAWFn6f22XTgo",
+   "symbol": "OOB",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "WLFinEv6ypjkczcS83FZqFpgFZYwQXutRbxGe7oC16g",
+   "symbol": "WLFI",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "DUSTawucrTsGU8hcqRdHDCbuYhCPADMLM2VcCb8VnFnQ",
+   "symbol": "DUST",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XsvNBAYkrDRNhA7wPHQfX3ZUXZyZLdnCQDfHZ56bzpg",
+   "symbol": "HOODX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "ukHH6c7mMyiWCf1b9pnWe25TSpkDDt3H5pQZgZ74J82",
+   "symbol": "BOME",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "SonicxvLud67EceaEzCLRnMTBqzYUUYNr93DBkBdDES",
+   "symbol": "SONIC",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "EcQCUYv57C4V6RoPxkVUiDwtX1SP8y8FP5AEToYL8Az",
+   "symbol": "WLKN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+   "symbol": "BONK",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "boopkpWqe68MSxLqBGogs8ZbUDN4GXaLhFwNP7mpP1i",
+   "symbol": "BOOP",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "6AJcP7wuLwmRYLBNbi825wgguaPsWzPBEHcHndpRpump",
+   "symbol": "VINE",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "z3dn17yLaGMKffVogeFHQ9zWVcXgqgf3PQnDsNs2g6M",
+   "symbol": "OXY",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "gate",
+   "mint": "GDfnEsia2WLAW5t8yx2X5j2mkfA74i5kwGdDuZHt7XmG",
+   "symbol": "CRWN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "FPJfY8mMTRwaePD2f46TFLqVov4X9svBaUgR1a8oTwTF",
+   "symbol": "HOOLI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "degod39zqQWzpG6h4b7SJLLTCFE6FeZnZD8BwHBFxaN",
+   "symbol": "DEGOD",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "BWXrrYFhT7bMHmNBFoQFWdsSgA3yXoAnMhDK6Fn1eSEn",
+   "symbol": "HADES",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "9RUup1LmD5PBsnd23JmTy39wSwALB7JF7xMfUJP8K7je",
+   "symbol": "VIVI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Xsnuv4omNoHozR6EEW5mXkw8Nrny5rB3jVfLqi6gKMH",
+   "symbol": "LLYX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "2Vnei1LAmrBpbL8fNCiCpaYcQTCSodiE51wab6qaQJAq",
+   "symbol": "PGN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XsYdjDjNUygZ7yGKfQaB6TxLh2gC6RRjzLtLAGJrhzV",
+   "symbol": "PGX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "HHjoYwUp5aU6pnrvN4s2pwEErwXNZKhxKGYjRJMoBjLw",
+   "symbol": "PIP",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Xsba6tUnSjDae2VcopDB6FGGDaxRrewFCDa5hKn5vT3",
+   "symbol": "PMX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "HZ1JovNiVvGrGNiiYvEozEVgZ58xaU3RKwX8eACQBCt3",
+   "symbol": "PYTH",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "METAewgxyPbgwsseH8T16a39CQ5VyVxZi9zXiDPY18m",
+   "symbol": "MPLX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "PERLEQKUNUp1dgFZ8EvyXHdN9d6ZQqfGxALDvfs6pDs",
+   "symbol": "PRL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "PRT88RkA4Kg5z7pKnezeNH4mafTvtQdfFgpQTGRjz44",
+   "symbol": "PRT",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Xsa62P5mvPszXL1krVUnU5ar38bBSVcWAB6fmPCo5Zu",
+   "symbol": "METAX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "PsyFiqqjiv41G7o5SMRzDJCu4psptThNR2GtfeGHfSq",
+   "symbol": "PSY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "G7uYedVqFy97mzjygebnmmaMUVxWHFhNZotY6Zzsprvf",
+   "symbol": "CSTR",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "4vMsoUT2BWatFweudnQM1xedRLfJgJ7hswhcpz4xgBTy",
+   "symbol": "HONEY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Fosp9yoXQBdx8YqyURZePYzgpCnxp9XsfnQq69DRvvU4",
+   "symbol": "MEDUSA",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+   "symbol": "SAMO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "DoGinuF39MGaxJDeJ3QDk4qd2vXwkYf5TDYpkdpYjip",
+   "symbol": "DOGIN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Doggoyb1uHFJGFdHhJf8FKEBUMv58qo98CisWgeD7Ftk",
+   "symbol": "DOGGO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "mtQ5jWgCqrgBiSut29b4HV19RkMBGA6vidwTMqhNmyy",
+   "symbol": "QKA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB",
+   "symbol": "GMESOL",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "667w6y7eH5tQucYQXfJ2KmiuGBE8HfYnqqbjLNSw7yww",
+   "symbol": "ANDY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "7vsKatZ8BAKXXb16ZZMJyg9X3iLn8Zpq4yBPg8mWBLMd",
+   "symbol": "PUMPAI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups",
+   "symbol": "URANUS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp",
+   "symbol": "AAPLX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "GJtJuWD9qYcCkrwMBmtY1tpapV1sKfB2zUv9Q4aqpump",
+   "symbol": "RIFSOL",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof",
+   "symbol": "RENDER",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "9McvH6w97oewLmPxqQEoHUAv3u5iYMyQ9AeZZhguYf1T",
+   "symbol": "ANON",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "GxdTh6udNstGmLLk9ztBb6bkrms7oLbrJp5yzUaVpump",
+   "symbol": "SCIHUB",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+   "symbol": "RAY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "2Wu1g2ft7qZHfTpfzP3wLdfPeV1is4EwQ3CXBfRYAciD",
+   "symbol": "GOHOME",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "C3DwDjT17gDvvCYC2nsdGHxDHVmQRdhKfpAdqQ29pump",
+   "symbol": "RFC",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "9999FVbjHioTcoJpoBiSjpxHW6xEn3witVuXKqBh2RFQ",
+   "symbol": "SLERF",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "E5ndSkaB17Dm7CsD22dvcjfrYSDLCxFcMd6z8ddCk5wp",
+   "symbol": "RIN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "5tB5D6DGJMxxHYmNkfJNG237x6pZGEwTzGpUUh62yQJ7",
+   "symbol": "ROA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "hwTWfDEzrAwrqKR98voJVAAD5CBkhUcG9NxWNfx2mSn",
+   "symbol": "NETOLD",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "nuumnQ637GtKPis16AeU3PhNru74S7tK9GdjYVATbxL",
+   "symbol": "NUUM",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "4QQV4LQUUXAn1eN1XQGrfY65TfLe5STJcfsCQozqyb8T",
+   "symbol": "LOVE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Xs7xXqkcK7K8urEqGg52SECi79dRp2cEKKuYjUePYDw",
+   "symbol": "CRWDX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "FVdo7CDJarhYoH6McyTFqx71EtzCPViinvdd1v86Qmy5",
+   "symbol": "AIMONICA",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "PRSMNsEPqhGVCH1TtWiJqPjJyh2cKrLostPZTNy1o5x",
+   "symbol": "PRISM",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "2HeykdKjzHKGm2LKHw8pDYwjKPiFEoXAz74dirhUgQvq",
+   "symbol": "SAO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Saber2gLauYim4Mvftnrasomsv6NvAuncvMEZwcLpD1",
+   "symbol": "SBR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "GiG7Hr61RVm4CSUxJmgiCoySFQtdiwxtqf64MsRppump",
+   "symbol": "SCF",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "SCYfrGCw8aDiqdgcpdGjV6jp4UVVQLuphxTDLNWu36f",
+   "symbol": "SCY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "ELPrcU7qRV3DUz8AP6siTE7GkR3gkkBvGmgBRiLnC19Y",
+   "symbol": "SFM",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "9PsSGxwbYWR42c9zWJ88fvNnchHmss13PopPSe5rUGHW",
+   "symbol": "SFT",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "SKRbvo6Gf7GondiT3BbTfuRDPqLWei4j2Qy2NPGZhW3",
+   "symbol": "SKR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "SLXdx4BUt2v9uJQNzWqSfzTJ9UKLUDsvxHFMEEdrfgq",
+   "symbol": "SLX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "5mbK36SZ7J19An8jFochhQS4of8g6BwUjbeCSxBSoWdp",
+   "symbol": "MICHI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "4dmKkXNHdgYsXqBHCuMikNQWwVomZURhYvkkX5c4pQ7y",
+   "symbol": "SNY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "SOL",
+   "symbol": "SOL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "HhJpBhRRn4g56VsyLuT8DL5Bv31HkXqsrahTTUCZeZg4",
+   "symbol": "MYROOLD",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
+   "symbol": "TRUMP",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "SRMuApVNdxXokk5GT7XD5cUUgXMBCoAz2LHeuAoKWRt",
+   "symbol": "SRM",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "gate",
+   "mint": "STBuyENwJ1GP4yNZCjwavn92wYLEY3t5S1kVS5kwyS1",
+   "symbol": "STB",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So",
+   "symbol": "MSOL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "de1QJkP1qDCk5JYCCXCeq27bQQUdCaiv7xVKFrhPSzF",
+   "symbol": "DELFI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "svtMpL5eQzdmB3uqK9NXaQkq8prGZoKQFNVJghdWCkV",
+   "symbol": "SVT",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "KMNo3nJsBXfcpJTVhZcXLW7RmTwTt4GVFE7suUBo9sS",
+   "symbol": "KMNO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "7BgBvyjrZX1YKz4oh9mjb8ZScatkkwb8DzFx7LoiVkM3",
+   "symbol": "SLERF_OLD",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "APTtJyaRX5yGTsJU522N4VYWg3vCvSb65eam5GrPT5Rt",
+   "symbol": "APRT",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Hax9LTgsQkze1YFychnBLtFH8gYbQKtKfWKKg2SP6gdD",
+   "symbol": "TAI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "HfYFjMKNZygfMC8LsQ8LtpPsPxEJoXJx4M6tqi75Hajo",
+   "symbol": "CWAR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "5gs8nf4wojB5EXgDUWNLwXpknzgV2YWDhveAeBZpVLbp",
+   "symbol": "XTAG",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "eiu9KULXfswbCoZSQQLpTPnWRkvp1Fq3i8gRnsvpFPW",
+   "symbol": "DWAIN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "7atgF8KQo4wJrD5ATGX7t1V2zVvykPJbFfNeVf1icFv1",
+   "symbol": "CWIF",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "CKaKtYvz6dKPyMvYq9Rh3UBrnNqYZAyd7iF4hJtjUvks",
+   "symbol": "GARI",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "gate",
+   "mint": "DLgo3LRukTWV7G38Jf1FV7AQwrPYoDBgafYFbPEJE859",
+   "symbol": "TOK",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "FNFKRV3V8DtA3gVJN6UshMiLGYA8izxFwkNWmJbFjmRj",
+   "symbol": "TTT",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "HcQbgvMTCNDgMDY6GAFzP1WwCNZeMoEwZfUuHepzC9L5",
+   "symbol": "MTOS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "FQ1tyso61AH1tzodyJfSwmzsD3GToybbRNoZxUBz21p8",
+   "symbol": "VVAIFU",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XsjQP3iMAaQ3kQScQKthQpx9ALRbjKAjQtHg6TFomoc",
+   "symbol": "TQQQX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Lrxqnh6ZHKbGy3dcrCED43nsoLkM1LTzU2jRfWe8qUC",
+   "symbol": "LARIX",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "526A9a7VDdfr32EDWr3YDFgZk7BA3LjToAKG2WTbpump",
+   "symbol": "3AC",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "FLqmVrv6cp7icjobpRMQJMEyjF3kF84QmC4HXpySpump",
+   "symbol": "BUCK",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "UNQtEecZ5Zb4gSSVHCAWUQEoNnSVEbWiKCi1v9kdUJJ",
+   "symbol": "UNQ",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "DtR4D9FtVoTX2569gaL837ZgrB6wNjj6tkmnX9Rdk9B2",
+   "symbol": "AURASOL",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "6gh8b2mqUrVb6Ew8Mwt89tNyN9keCDNstzT5cdp5pump",
+   "symbol": "VOID",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Dvo1Fb7FxtUxsLbcQaizftfUT9HtL9P6swaQAScZDeQQ",
+   "symbol": "VOLD",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "FsA54yL49WKs7rWoGv9sUcbSGWCWV756jTD349e6H2yW",
+   "symbol": "KOKO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "9DHe3pycTuymFk4H4bbPoAJ4hQrr2kaLDF6J6aAKpump",
+   "symbol": "BUZZ",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "3GEznP41VaAGv9yRdBiuYdA8zkffNc8b7DzNJgFbH4Kh",
+   "symbol": "SCRAT",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "DitHyRMQiSDhn5cnKMJV2CDDt6sVct96YrECiM49pump",
+   "symbol": "HOUSE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "NYANpAp9Cr7YarBNrby7Xx4xU6No6JKTBuohNA3yscP",
+   "symbol": "NYAN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "4j9bDg7iWNah1Qa61rrqwWZMtEdqV3fV56SzyhfNpump",
+   "symbol": "BITCAT",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "5a6LTLwdMJBY2JDLjw8B1w4JwFRdZszGF9W56ZzrriS1",
+   "symbol": "VDR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "GHichsGq8aPnqJyz6Jp1ASTK4PNLpB5KrD6XrfDjpump",
+   "symbol": "1DOLLAR",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh",
+   "symbol": "NVDAX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Grass7B4RdKfBCjTKgSqnXkqjwiGvQyFbuSCUJr3XXjs",
+   "symbol": "GRASS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "5tN42n9vMi6ubp67Uy4NnmM5DMZYN8aS8GeB3bEDHr6E",
+   "symbol": "WAG",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "wzAyQTorWyoVXuJKj2x8EqKEGJpS13z6EWE9z5Aondo",
+   "symbol": "SPCXON",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "WETZjtprkDMCcUxPi9PfWnowMRZkiGGHDb9rABuRZ2U",
+   "symbol": "WET",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
+   "symbol": "WIF",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "ATLASXmbPQxBUYbxPsV97usA3fPQYEqzQBUHgiFCUsXx",
+   "symbol": "ATLAS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Xs3eBt7uRfJX8QUs4suhyU8p2M6DoUDrJyWBa8LLZsg",
+   "symbol": "AMZNX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "WNZzxM1WqWFH8DpDZSqr6EoHKWXeMx9NLLd2R5RzGPA",
+   "symbol": "WNZ",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "73xsLcBnLnc9bh81cqVKqj8uEyiarXng5ZwJuTbnVebG",
+   "symbol": "WUF",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XszvaiXGPwvk2nwb3o9C1CX4K6zH8sez11E6uyup6fe",
+   "symbol": "UNHX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "CudisfkgWvMKnZ3TWf6iCuHm8pN2ikXhDcWytwz6f6RN",
+   "symbol": "CUDIS",
+   "deposit": true,
+   "withdraw": false
+  },
+  {
+   "exchange": "gate",
+   "mint": "wxmJYe17a2oGJZJ1wDe6ZyRKUKmrLj2pJsavEdTVhPP",
+   "symbol": "WXM",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "SHDWyBxihqiCj6YekG2GUr7wqKLeLAMK1gHZck9pL6y",
+   "symbol": "SHDW",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "4Cnk9EPnW5ixfLZatCPJjDB1PUtcRpVVgTQukm9epump",
+   "symbol": "DADDY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "STREAMribRwybYpMmSYoCsQUdr6MZNXEqHgm7p1gu9M",
+   "symbol": "STREAM",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "ratioMVg27rSZbSvBopUvsdrGUzeALUfFma61mpxc8J",
+   "symbol": "RATIO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "SHARKSYJjqaNyxVfrpnBN9pjgkhwDhatnMyicWPnr1s",
+   "symbol": "SHARK",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "CBdCxKo9QavR9hfShgpEBG3zekorAeD7W1jfq2o3pump",
+   "symbol": "LUCE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "9Ttyez3xiruyj6cqaR495hbBkJU6SUWdV6AmQ9MvbyyS",
+   "symbol": "SMOLE",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "CxrhHSqyW8YTDWc4csJMMgo7uBUJSXzNzrWhtw9ULdru",
+   "symbol": "NEVER",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "5mdBkZ4dTP94SE7PyiuWseTDAd1kYxSk6oYaWB7186s7",
+   "symbol": "BRAWL",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "HovGjrBGTfna4dvg6exkMxXuexB3tUfEZKcut8AWowXj",
+   "symbol": "FCON",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Df6yfrKC8kZE3KNkrHERKzAetSxbrWeniQfyJY4Jpump",
+   "symbol": "CHILLGUY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "AHW5N8iqZobTcBepkSJzZ61XtAuSzBDcpxtrLG6KUKPk",
+   "symbol": "BENDOG",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Bm3dgkZrjH7eaz1GBH1R2ZHkp7nZUoPNJhjekoxepump",
+   "symbol": "MYRO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "DrZ26cKJDksVRWib3DVVsjo9eeXccc7hKhDJviiYEEZY",
+   "symbol": "YZY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "LAYER4xPpTCb3QL8S9u41EAhAX7mhBn8Q6xMTwY2Yzc",
+   "symbol": "LAYER",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "5qsZAnWuR7vMJbiznrJEY2ddVqZXjNYmFvR3eXSxpump",
+   "symbol": "FOCAI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "zebeczgi5fSEtbpfQKVZKCJ3WgYXxjkMUkNNx7fLKAF",
+   "symbol": "ZBC",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "79yTpy8uwmAkrdgZdq6ZSBTvxKsgPrNqTLvYQBh1pump",
+   "symbol": "BULLY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "ZEXy1pqteRu3n13kdyh4LwPQknkFk3GzmMYMuNadWPo",
+   "symbol": "ZEX",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "HAPPYwgFcjEJDzRtfWE6tiHE9zGdzpNky2FvjPHsvvGZ",
+   "symbol": "HAPPY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "1Qf8gESP4i6CFNWerUSDdLKJ9U1LpqTYvjJ2MM4pain",
+   "symbol": "PAIN",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XsssYEQjzxBCFgvYFFNuhJFBeHNdLWYeUSP8F45cDr9",
+   "symbol": "VTIX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "PAWSxhjTyNJELywYiYTxCN857utnYmWXu7Q59Vgn6ZQ",
+   "symbol": "PAWS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "7BMb4jNt2tQG81jX7W22H2h2UyL4SW9QJgz25HRhpump",
+   "symbol": "LOULOU",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "TNSRxcUxoT9xBG3de7PiJyTDYu7kskLqcpddxnEJAS6",
+   "symbol": "TNSR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "7GCihgDB8fe6KNjn2MYtkzZcRjQy3t9GHdC8uHYmW2hr",
+   "symbol": "POPCAT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "xxxxa1sKNGwFtw2kFn8XauW9xq8hBZ5kVtcSesTT9fW",
+   "symbol": "SLIM",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9",
+   "symbol": "GIGA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "3WPep4ufaToK1aS5s8BL9inzeUrt4DYaQCiic6ZkkC1U",
+   "symbol": "GIKO",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "SLNDpmoWTVADgEdndyvWzroNL7zSi1dF9PC3xHGtPwp",
+   "symbol": "SLND",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Ai3eKAWjzKMV8wRwd41nVP83yqfbAVJykhvJVPxspump",
+   "symbol": "MOONPIG",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "SLRSSpSLUTP7okbCUBYStWCo1vUgyt775faPqz8HUMr",
+   "symbol": "SLRS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "G3s49agBGCXqqhLXGXFtasQgAAMPvXQifyWL5M2Wpump",
+   "symbol": "JERRY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "2u1tszSeqZ3qBWF3uNGPFc8TzMk2tdiwknnRMWGWjGWH",
+   "symbol": "USDG",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+   "symbol": "USDT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "USD1ttGY1N17NEEHLmELoaybftRBUSErhqYiQzvEmuB",
+   "symbol": "USD1",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+   "symbol": "USDC",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "PLAYs3GSSadH2q2JLS7djp7yzeT75NK78XgrE5YLrfq",
+   "symbol": "PLAYSOLANA",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "HKJHsYJHMVK5VRyHHk5GhvzY9tBAAtPvDkZfDH6RLDTd",
+   "symbol": "READY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Xsr3pdLQyXvDJBFgpR5nexCEZwXvigb8wbPYp4YoNFf",
+   "symbol": "CSCOX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "85cQsFgbi8mBZxiPppbpPXuV7j1hA8tBwhjF4gKW6mHg",
+   "symbol": "RIZZMAS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "CLoUDKc4Ane7HeQcPpE3YHnznRxhMimJ4MyaUqyHFzAu",
+   "symbol": "CLOUD",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "21rweMLGYeMNonHW7H3xa5py17X6ZFRcHirCp9inRBQA",
+   "symbol": "IQ50",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8n4V98jwC",
+   "symbol": "AI16Z",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "oraim8c9d1nkfuQk9EzGYEUGxqL3MHQYndRw1huVo5h",
+   "symbol": "MAXSOL",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "3B5wuUrMEi5yATD7on46hKfej3pfmd7t1RKgrsN3pump",
+   "symbol": "BILLY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+   "symbol": "PENGU",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "8BtoThi2ZoXnF7QQK1Wjmh2JuBw9FjVvhnGMVZ2vpump",
+   "symbol": "DARK",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Xs3ZFkPYT2BN7qBMqf1j1bfTeTm1rFzEFSsQ1z3wAKU",
+   "symbol": "AZNX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "4G86CMxGsMdLETrYnavMFKPhQzKTvDBYGMRAdVtr72nu",
+   "symbol": "SNAP",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "AxriehR6Xw3adzHopnvMn7GcpRFcD41ddpiTWMg6pump",
+   "symbol": "JAILSTOOL",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "8nKP8Vc72pRZB6bhCy8D1UYf6ZjwYT859i6awyinpump",
+   "symbol": "BABYSHARK_OL",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "6Jt1B3wC4zD6ZjeJKvhNZtvYxzCyFcWCvVZT46TytH25",
+   "symbol": "ZBAI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "ZBCNpuD7YMXzTHB2fhGkGi78MNsHGLRXUhRewNRm9RU",
+   "symbol": "ZBCN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "BkVeSP2GsXV3AYoRJBSZTpFE8sXmcuGnRQcFgoWspump",
+   "symbol": "AUTISM",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "SENBBKVCM7homnf5RX9zqpf1GFe935hnbU4uVzY1Y6M",
+   "symbol": "SNTR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "SW1TCHLmRGTfW5xZknqQdpdarB8PD95sJYWpNp9TbFx",
+   "symbol": "SWTCH",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Xsv99frTRUeornyvCfvhnDesQDWuvns1M852Pez91vF",
+   "symbol": "PEPX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "7yZFFUhq9ac7DY4WobLL539pJEUbMnQ5AGQQuuEMpump",
+   "symbol": "OBOT",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "5z3EqYQo9HiCEs3R84RCDMu2n7anpDMxRhdK8PSWmrRC",
+   "symbol": "PONKE",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "DpfVseMtcwUMuMaNUgVoshxQ7Uo4Brtna3k5NaN44U1g",
+   "symbol": "CHATAI",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "SarosY6Vscao718M4A778z4CGtvcwcGef5M9MEH1LGL",
+   "symbol": "SAROS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Xsv9hRk1z5ystj9MhnA7Lq4vjSsLwzL2nxrwmwtD3re",
+   "symbol": "GLDX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "poLisWXnNRwC6oBu1vHiuKQzFjGL4XDSu4g9qjz9qVk",
+   "symbol": "POLIS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "EchesyfXePKdLtoiZSL8pBe8Myagyy8ZRqsACNCFGnvp",
+   "symbol": "FIDA",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "7j7H7sgsnNDeCngAPjpaCN4aaaru4HS7NAFYSEUyzJ3k",
+   "symbol": "SOLR",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "2wme8EVkw8qsfSk2B3QeX4S64ac6wxHPXb3GrdckEkio",
+   "symbol": "SOLS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "69RX85eQoEsnZvXGmLNjYcWgVkp9r2JjahVm99KbJETU",
+   "symbol": "HOLO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "4eDf52YYzL6i6gbZ6FXqrLUPXbtP61f1gPSFM66M4XHe",
+   "symbol": "SOON",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XsRbLZthfABAPAfumWNEJhPyiKDW6TvDVeAeW7oKqA2",
+   "symbol": "HONX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "APQd2J9FQLbMy4jYa6A4oe2jXVvKgy2uGKfQbhdGeXpk",
+   "symbol": "HAMSTER",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "GMai1NvHreNe135cvxya1gHaUJZiT1NAvbJkF4hPHQJ9",
+   "symbol": "GMAI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "gateMurAxe4YFoUR6J63gXGKtkbTfdkMdLjZrCmThFP",
+   "symbol": "GTSOL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1",
+   "symbol": "CRCLX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "6cVgJUqo4nmvQpbgrDZwyfd6RwWw5bfnCamS3M9N1fd",
+   "symbol": "SHILL",
+   "deposit": false,
+   "withdraw": false
+  },
+  {
+   "exchange": "gate",
+   "mint": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
+   "symbol": "SPYX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "B6h248NJkAcBAkaCnji889a26tCiGXGN8cxhEJ4dX391",
+   "symbol": "WATERSOL",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "kZEn3aDxEzcFADPe2VQ6WcJRbS1hVGjUcgCw4HiuYSU",
+   "symbol": "KZEN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "FjK6rqU6QzUeNtmK6QQ78cCuS5AHAhcm4HgJkdsvXaep",
+   "symbol": "YOURAI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Dfh5DzRgSvvCFDoYc2ciTkMrbDfRKybA4SoFbPmApump",
+   "symbol": "PIPPIN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "SUNNYWgPQmFxe9wTZzNK7iPnJ3vYDrkgnxJRJm1s3ag",
+   "symbol": "SUNNY",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk",
+   "symbol": "USELESS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "93RC484oMK5T9H89rzT5qiAXKHGP9jscXfFfrihNbe57",
+   "symbol": "ZERO",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump",
+   "symbol": "FARTCOIN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "RoamA1USA8xjvpTJZ6RvvxyDRzNh6GCA1zVGKSiMVkn",
+   "symbol": "ROAM",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "ZEUS1aR7aX8DFFJf5QjWj2ftDDdNTroMNGo8YoQm3Gq",
+   "symbol": "ZEUS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump",
+   "symbol": "GOAT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "cxxShYRVcepDudXhe7U62QHvw8uBJoKFifmzggGKVC2",
+   "symbol": "CHICKS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "GFX1ZjR2P15tmrSwow6FjyDYcEkoFb4p4gJCpLBjaxHD",
+   "symbol": "GOFX",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "5evN2exivZXJfLaA1KhHfiJKWfwH8znqyH36w1SFz89Y",
+   "symbol": "MIRAI",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "6YsbefsCddFqUGyMxd788LQHbCGsGgmzjr5cowpYqRhk",
+   "symbol": "SS20",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "38PgzpJYu2HkiYvV8qePFakB8tuobPdGm2FFEn7Dpump",
+   "symbol": "GORK",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "XswbinNKyPmzTa5CskMbCPvMW6G5CMnZXZEeQSSQoie",
+   "symbol": "ABBVX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "7s9MoSt7VV1J3jVNnw2AyocsQDBdCkPYz5apQDPKy9i5",
+   "symbol": "PIPE",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "CN162nCPpq3DxPCyKLbAvEJeB1aCxsnVTEG4ZU8vpump",
+   "symbol": "A47",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "C29ebrgYjYoJPMGPnPSGY1q3mMGk4iDSqnQeQQA7moon",
+   "symbol": "NOBODY",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "8W3DbYbLY1zWXm6YDqfPYFpyKsjytD5vhhPN2AyNVdM9",
+   "symbol": "AAX",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "5MAYDfq5yxtudAhtfyuMBuHZjgAbaS9tbEyEQYAhDS5y",
+   "symbol": "ACS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "GJAFwWjJ3vnTsrQVabjBVK2TYB1YtRCQXRDfDgUnpump",
+   "symbol": "ACT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "wUtwjNmjCP9TTTtoc5Xn5h5sZ2cYJm5w2w44b79yr2o",
+   "symbol": "ELIZA",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "AMB4mArTRxZG7jCLqhxWziDeZGxzT59WPrQWvgpZPe8d",
+   "symbol": "AMB",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "FRySi8LPkuByB7VPSCCggxpewFUeeJiwEGRKKuhwpKcX",
+   "symbol": "NATIX",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "AMUwxPsqWSd1fbCGzWsrRKDcNoduuWMkdR38qPdit8G8",
+   "symbol": "AMU",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "9tqjeRS1swj36Ee5C1iGiwAxjQJNGAVCzaTLwFY8bonk",
+   "symbol": "ANI",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "BLVxek8YMXUQhcKmMvrFTrzh5FXg8ec88Crp6otEaCMf",
+   "symbol": "BELIEVE",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "CHGknFhLgwRcnYGETJwShwAeZssyGE8WXCsgu7fe6X6V",
+   "symbol": "AQA",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "61V8vBaqAGMpgDQi4JcAwo1dmBGHsyhzodcPqnEVpump",
+   "symbol": "ARC",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "DJ7vji2BU7RjNgktPAKN4L42CiXTFHEt4Eeeyr5FiTmy",
+   "symbol": "ASP",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "ATRLuHph8dxnPny4WSNW7fxkhbeivBrtWbY6BfB4xpLj",
+   "symbol": "ATR",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "MAPS41MDahZ9QdKXhVa4dWB9RuyfV4XqhyAZ8XcYepb",
+   "symbol": "MAPS",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "EgGSqHYuysAEvtP1YxnjcBZNfucT7g4JWzdnURgKSXSr",
+   "symbol": "AWS",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "StepAscQoEioFxxWGnh2sLBDFp9d8rvKz2Yp39iDpyT",
+   "symbol": "STEP",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "8BMzMi2XxZn9afRaMx5Z6fauk9foHXqV5cLTCYWRcVje",
+   "symbol": "STIK",
+   "deposit": false,
+   "withdraw": true
+  },
+  {
+   "exchange": "gate",
+   "mint": "9PR7nCP9DpcUotnDPVLUBUZKu5WAYkwrCUx9wDnSpump",
+   "symbol": "BAN",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kraken",
+   "mint": "SOL",
+   "symbol": "SOL",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kraken",
+   "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+   "symbol": "USDC",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kraken",
+   "mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+   "symbol": "USDT",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kraken",
+   "mint": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+   "symbol": "JUP",
+   "deposit": true,
+   "withdraw": true
+  },
+  {
+   "exchange": "kraken",
+   "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+   "symbol": "BONK",
+   "deposit": true,
+   "withdraw": true
+  }
+ ]
+}

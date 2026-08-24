@@ -1,0 +1,10 @@
+{
+  "name": "@marani/refresh-data",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@marani/core": "workspace:*",
+    "@marani/preflight": "workspace:*"
+  }
+}

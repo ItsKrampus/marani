@@ -1,0 +1,37 @@
+[
+  {
+    "exchange": "kraken",
+    "mint": "SOL",
+    "symbol": "SOL",
+    "deposit": true,
+    "withdraw": true
+  },
+  {
+    "exchange": "kraken",
+    "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "symbol": "USDC",
+    "deposit": true,
+    "withdraw": true
+  },
+  {
+    "exchange": "kraken",
+    "mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "symbol": "USDT",
+    "deposit": true,
+    "withdraw": true
+  },
+  {
+    "exchange": "kraken",
+    "mint": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+    "symbol": "JUP",
+    "deposit": true,
+    "withdraw": true
+  },
+  {
+    "exchange": "kraken",
+    "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "symbol": "BONK",
+    "deposit": true,
+    "withdraw": true
+  }
+]

@@ -1,0 +1,51 @@
+@import 'tailwindcss';
+
+:root {
+  --marani-wine: #8e2438;
+  --marani-wine-deep: #5c1626;
+  --marani-gold: #d9a441;
+}
+
+html,
+body {
+  width: 380px;
+  height: 600px;
+  margin: 0;
+  background: #0c0a0e;
+  color: #ece7ea;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+::selection {
+  background: var(--marani-wine);
+  color: white;
+}
+
+.btn {
+  @apply rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer;
+}
+.btn-primary {
+  background: var(--marani-wine);
+  @apply text-white hover:brightness-110;
+}
+.btn-ghost {
+  @apply bg-white/5 text-zinc-200 hover:bg-white/10;
+}
+.btn-danger {
+  @apply bg-red-900/60 text-red-200 hover:bg-red-900;
+}
+.card {
+  @apply rounded-2xl bg-white/[0.04] border border-white/[0.06] p-4;
+}
+.input {
+  @apply w-full rounded-xl bg-black/40 border border-white/10 px-3 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 outline-none focus:border-[#8e2438];
+}
+.label {
+  @apply text-[11px] uppercase tracking-wider text-zinc-500 font-semibold;
+}
