@@ -1,8 +1,16 @@
-import { pickRpcUrl, signerFromMnemonic, type KeyPairSigner } from '@marani/core';
+import { pickRpcUrl, signerFromMnemonic, type Cluster, type KeyPairSigner } from '@marani/core';
 import React, { useEffect, useState } from 'react';
 import { WalletProvider } from './lib/wallet';
 import { PrefsProvider } from './lib/prefs';
-import { getRpcPick, getSessionMnemonic, getSettings, getVault, clearSessionMnemonic, setRpcPick } from './lib/storage';
+import {
+  getRpcPick,
+  getSessionMnemonic,
+  getSettings,
+  getVault,
+  clearSessionMnemonic,
+  setRpcPick,
+  setSettings as setSettingsPatch,
+} from './lib/storage';
 import { Logo, WaitState } from './lib/ui';
 import Onboard from './screens/Onboard';
 import Unlock from './screens/Unlock';
@@ -12,26 +20,35 @@ type Phase =
   | { t: 'boot' }
   | { t: 'onboard' }
   | { t: 'locked' }
-  | { t: 'ready'; signer: KeyPairSigner; mnemonic: string; rpcUrl: string; rpcIsAuto: boolean };
+  | { t: 'ready'; signer: KeyPairSigner; mnemonic: string; rpcUrl: string; rpcIsAuto: boolean; cluster: Cluster };
 
 export default function App() {
   const [phase, setPhase] = useState<Phase>({ t: 'boot' });
 
-  const unlockWith = async (mnemonic: string) => {
+  const unlockWith = async (mnemonic: string, clusterOverride?: Cluster) => {
     const [signer, settings] = await Promise.all([signerFromMnemonic(mnemonic), getSettings()]);
-    let rpcUrl = settings.rpcUrl.trim();
+    const cluster: Cluster = clusterOverride ?? settings.cluster ?? 'mainnet';
+    let rpcUrl = (cluster === 'devnet' ? (settings.rpcUrlDevnet ?? '') : settings.rpcUrl).trim();
     const rpcIsAuto = rpcUrl === '';
     if (rpcIsAuto) {
       // auto mode: probe once, then reuse the pick for 10 minutes across popup opens
-      const cached = await getRpcPick();
+      const cached = await getRpcPick(cluster);
       if (cached && Date.now() - cached.at < 10 * 60_000) {
         rpcUrl = cached.url;
       } else {
-        rpcUrl = await pickRpcUrl();
-        await setRpcPick(rpcUrl);
+        rpcUrl = await pickRpcUrl(undefined, cluster);
+        await setRpcPick(rpcUrl, cluster);
       }
     }
-    setPhase({ t: 'ready', signer, mnemonic, rpcUrl, rpcIsAuto });
+    setPhase({ t: 'ready', signer, mnemonic, rpcUrl, rpcIsAuto, cluster });
+  };
+
+  const switchCluster = async (cluster: Cluster) => {
+    if (phase.t !== 'ready' || phase.cluster === cluster) return;
+    const settings = await getSettings();
+    await setSettingsPatch({ ...settings, cluster });
+    setPhase({ t: 'boot' });
+    await unlockWith(phase.mnemonic, cluster);
   };
 
   useEffect(() => {
@@ -68,6 +85,8 @@ export default function App() {
         mnemonic={phase.mnemonic}
         rpcUrl={phase.rpcUrl}
         rpcIsAuto={phase.rpcIsAuto}
+        cluster={phase.cluster}
+        onSwitchCluster={switchCluster}
         onLock={async () => {
           await clearSessionMnemonic();
           setPhase({ t: 'locked' });

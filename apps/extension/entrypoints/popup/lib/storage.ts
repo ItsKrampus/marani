@@ -4,6 +4,8 @@ import { browser } from 'wxt/browser';
 
 export interface Settings {
   rpcUrl: string;
+  rpcUrlDevnet?: string;
+  cluster?: 'mainnet' | 'devnet';
   lang?: 'en' | 'ka';
   privacy?: boolean;
 }
@@ -77,9 +79,11 @@ export const putActivityCache = async (addr: string, items: Array<{ signature: s
   await setKey(local, `activity:${addr}`, cache);
 };
 
-/** Session-cached RPC endpoint pick so we don't re-probe on every popup open. */
-export const getRpcPick = () => getKey<{ url: string; at: number }>(session, 'rpcPick');
-export const setRpcPick = (url: string) => setKey(session, 'rpcPick', { url, at: Date.now() });
+/** Session-cached RPC endpoint pick (per cluster) so we don't re-probe on every popup open. */
+export const getRpcPick = (cluster: 'mainnet' | 'devnet' = 'mainnet') =>
+  getKey<{ url: string; at: number }>(session, `rpcPick:${cluster}`);
+export const setRpcPick = (url: string, cluster: 'mainnet' | 'devnet' = 'mainnet') =>
+  setKey(session, `rpcPick:${cluster}`, { url, at: Date.now() });
 
 /** Decrypted mnemonic parked in session storage: memory-only, cleared when the browser closes. */
 export const getSessionMnemonic = () => getKey<string>(session, 'mnemonic');

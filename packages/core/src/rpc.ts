@@ -16,6 +16,20 @@ export const RPC_CANDIDATES: readonly string[] = [
 
 export const DEFAULT_RPC_URL = RPC_CANDIDATES[0]!;
 
+export type Cluster = 'mainnet' | 'devnet';
+
+/** api.devnet.solana.com allows extension origins + heavy methods (verified 2026-08-24). */
+export const DEVNET_RPC_CANDIDATES: readonly string[] = ['https://api.devnet.solana.com'];
+
+export function rpcCandidatesFor(cluster: Cluster): readonly string[] {
+  return cluster === 'devnet' ? DEVNET_RPC_CANDIDATES : RPC_CANDIDATES;
+}
+
+/** Explorer link that follows the active cluster. */
+export function explorerUrl(kind: 'tx' | 'account' | 'token', id: string, cluster: Cluster = 'mainnet'): string {
+  return `https://solscan.io/${kind}/${id}${cluster === 'devnet' ? '?cluster=devnet' : ''}`;
+}
+
 export type SolanaRpc = Rpc<SolanaRpcApi>;
 
 export function makeRpc(url: string = DEFAULT_RPC_URL): SolanaRpc {
@@ -39,8 +53,13 @@ const PROBE_BODY = JSON.stringify({
  * endpoint that can serve the wallet's heaviest RPC method. Falls back to the
  * first candidate so callers always get a URL.
  */
-export async function pickRpcUrl(preferred?: string, fetchImpl: typeof fetch = fetch): Promise<string> {
-  const candidates = preferred && preferred.trim() ? [preferred.trim(), ...RPC_CANDIDATES] : [...RPC_CANDIDATES];
+export async function pickRpcUrl(
+  preferred?: string,
+  cluster: Cluster = 'mainnet',
+  fetchImpl: typeof fetch = fetch,
+): Promise<string> {
+  const base = rpcCandidatesFor(cluster);
+  const candidates = preferred && preferred.trim() ? [preferred.trim(), ...base] : [...base];
   for (const url of candidates) {
     try {
       const res = await fetchImpl(url, {

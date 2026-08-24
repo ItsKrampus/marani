@@ -166,6 +166,11 @@ export async function simulateTransfer(rpc: SolanaRpc, spec: TransferSpec): Prom
   };
 }
 
+/** Poll a signature until confirmed/failed/timeout. Exported for airdrops and external flows. */
+export async function confirmSignature(rpc: SolanaRpc, signature: Signature, timeoutMs = 60_000): Promise<SendResult> {
+  return pollConfirmation(rpc, signature, timeoutMs);
+}
+
 async function pollConfirmation(rpc: SolanaRpc, signature: Signature, timeoutMs = 60_000): Promise<SendResult> {
   const startedAt = Date.now();
   while (Date.now() - startedAt < timeoutMs) {
@@ -195,6 +200,20 @@ export async function sendTransfer(rpc: SolanaRpc, spec: TransferSpec): Promise<
     withTimeout(rpc.sendTransaction(wire, { encoding: 'base64', maxRetries: 3n }).send(), 20_000, 'broadcast'),
   );
   return pollConfirmation(rpc, signature);
+}
+
+/** Devnet faucet: request an airdrop and wait for it to land. Throws on rate-limit/dry faucet. */
+export async function requestDevnetAirdrop(
+  rpc: SolanaRpc,
+  recipient: string,
+  amountLamports: bigint = 1_000_000_000n,
+): Promise<SendResult> {
+  const signature = await withTimeout(
+    rpc.requestAirdrop(address(recipient), lamports(amountLamports)).send(),
+    15_000,
+    'airdrop request',
+  );
+  return pollConfirmation(rpc, signature, 45_000);
 }
 
 /** Broadcast an already-signed wire transaction (base64) and poll for confirmation. */

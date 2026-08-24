@@ -8,6 +8,7 @@ import {
   shortAddress,
   WELL_KNOWN_TOKENS,
   WSOL_MINT,
+  type Cluster,
   type KeyPairSigner,
   type Portfolio,
   type SolanaRpc,
@@ -36,6 +37,8 @@ export interface WalletCtx {
   signer: KeyPairSigner;
   rpc: SolanaRpc;
   rpcUrl: string;
+  cluster: Cluster;
+  switchCluster: (c: Cluster) => void;
   mnemonic: string;
   rows: TokenRow[];
   totalUsd: number | null;
@@ -111,10 +114,12 @@ export function WalletProvider(props: {
   rpcUrl: string;
   /** true when the RPC was auto-picked (not pinned in Settings) — enables failover. */
   rpcIsAuto: boolean;
+  cluster: Cluster;
+  onSwitchCluster: (c: Cluster) => void;
   onLock: () => void;
   children: React.ReactNode;
 }) {
-  const { signer, mnemonic, rpcIsAuto, onLock } = props;
+  const { signer, mnemonic, rpcIsAuto, cluster, onSwitchCluster, onLock } = props;
   const [activeRpcUrl, setActiveRpcUrl] = useState(props.rpcUrl);
   useEffect(() => setActiveRpcUrl(props.rpcUrl), [props.rpcUrl]);
   const rpc = useMemo(() => makeRpc(activeRpcUrl), [activeRpcUrl]);
@@ -141,9 +146,9 @@ export function WalletProvider(props: {
         // Auto mode: the picked endpoint may have started hanging — re-probe once and switch.
         if (rpcIsAuto && !failedOver.current) {
           failedOver.current = true;
-          const fresh = await pickRpcUrl().catch(() => null);
+          const fresh = await pickRpcUrl(undefined, cluster).catch(() => null);
           if (!cancelled && fresh && fresh !== activeRpcUrl) {
-            await setRpcPick(fresh);
+            await setRpcPick(fresh, cluster);
             setActiveRpcUrl(fresh); // re-runs this effect with the new endpoint
             return;
           }
@@ -160,8 +165,13 @@ export function WalletProvider(props: {
       setLoading(false);
 
       // Phase 2 — enrich with USD prices first, then logos (both fail-soft).
+      // Devnet tokens have no market prices — showing mainnet quotes would mislead.
       const mints = [WSOL_MINT, ...portfolio.tokens.map((t) => t.mint)];
       const unique = [...new Set(mints)];
+      if (cluster === 'devnet') {
+        setPriceStatus(null);
+        return;
+      }
       try {
         let prices = await fetchUsdPrices(unique);
         if (Object.keys(prices).length === 0 && !cancelled) {
@@ -228,6 +238,8 @@ export function WalletProvider(props: {
     signer,
     rpc,
     rpcUrl: activeRpcUrl,
+    cluster,
+    switchCluster: onSwitchCluster,
     mnemonic,
     rows,
     totalUsd,

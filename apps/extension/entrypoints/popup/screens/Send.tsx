@@ -1,6 +1,7 @@
 import {
   estimateTransferCost,
   executeSwapWithFreshRetry,
+  explorerUrl,
   formatRawAmount,
   getMintInfo,
   getPortfolio,
@@ -75,6 +76,12 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
 
   // ---- destination classification ----
   const classify = async (addr: string) => {
+    if (wallet.cluster === 'devnet') {
+      // Exchange deposit addresses are a mainnet concept; skip the guardian on devnet.
+      setDestState({ kind: 'not-cex' });
+      setStep('compose');
+      return;
+    }
     setStep('classifying');
     const marks = await getUserMarks();
     const byLabel = classifyByLabels(addr, labels, marks);
@@ -366,8 +373,13 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
           <>
             <div className="text-xs text-zinc-500 font-mono">→ {shortAddress(destination, 8)}</div>
             {destBadge}
-            {destState?.kind === 'not-cex' && (
+            {destState?.kind === 'not-cex' && wallet.cluster !== 'devnet' && (
               <div className="text-[11px] text-zinc-500">Marked as a regular wallet (not an exchange).</div>
+            )}
+            {wallet.cluster === 'devnet' && (
+              <div className="text-[11px]" style={{ color: 'var(--gold)' }}>
+                Devnet — the exchange guardian runs on mainnet only.
+              </div>
             )}
 
             {wallet.loading && <Spinner label="Reading balances…" />}
@@ -616,7 +628,7 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
                   <a
                     key={s.sig}
                     className="card !py-2 text-xs text-[#d9a441] hover:underline break-all"
-                    href={`https://solscan.io/tx/${s.sig}`}
+                    href={explorerUrl('tx', s.sig, wallet.cluster)}
                     target="_blank"
                     rel="noreferrer"
                   >

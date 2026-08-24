@@ -106,8 +106,8 @@ export default function Settings() {
   const [confirmReset, setConfirmReset] = useState(false);
 
   useEffect(() => {
-    getSettings().then((s) => setRpcUrl(s.rpcUrl));
-  }, []);
+    getSettings().then((s) => setRpcUrl(wallet.cluster === 'devnet' ? (s.rpcUrlDevnet ?? '') : s.rpcUrl));
+  }, [wallet.cluster]);
 
   const rpcIsAuto = rpcUrl.trim() === '';
   const rpcValue = rpcIsAuto ? t('rpcAuto') : (() => {
@@ -197,7 +197,14 @@ export default function Settings() {
         <button className="tap-row flex w-full cursor-pointer items-center gap-2.5 px-3.5 py-3 text-left" onClick={() => setRpcOpen((v) => !v)}>
           <RowIcon name="server" />
           <div className="flex flex-1 flex-col gap-0.5">
-            <span className="text-[13px]">{t('rpcEndpoint')}</span>
+            <span className="text-[13px]">
+              {t('rpcEndpoint')}
+              {wallet.cluster === 'devnet' && (
+                <span className="ml-1.5 rounded px-1 text-[9px] font-bold" style={{ background: 'rgba(224,164,88,0.12)', color: 'var(--gold)', border: '1px solid rgba(224,164,88,0.35)' }}>
+                  DEVNET
+                </span>
+              )}
+            </span>
             <span className="text-[10px]" style={{ color: 'var(--text-3)' }}>
               {rpcIsAuto ? t('rpcAutoHint') : rpcUrl.slice(0, 34)}
             </span>
@@ -224,7 +231,7 @@ export default function Settings() {
               className="btn btn-ghost self-start !py-1.5 text-xs"
               onClick={async () => {
                 const s = await getSettings();
-                await setSettings({ ...s, rpcUrl });
+                await setSettings(wallet.cluster === 'devnet' ? { ...s, rpcUrlDevnet: rpcUrl } : { ...s, rpcUrl });
                 setSaved(true);
                 setTimeout(() => setSaved(false), 1500);
               }}

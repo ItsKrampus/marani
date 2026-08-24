@@ -220,7 +220,12 @@ export default function Home() {
 
   return (
     <div className="flex h-full flex-col">
-      <TopBar address={wallet.address} onAvatar={() => setRoute('settings')} />
+      <TopBar
+        address={wallet.address}
+        cluster={wallet.cluster}
+        onSwitchCluster={wallet.switchCluster}
+        onAvatar={() => setRoute('settings')}
+      />
       <div key={tab} className="screen-in flex-1 overflow-y-auto px-4 pb-3 pt-2">
         {tab === 'home' && homeBody}
         {tab === 'cellar' && <Cellar />}

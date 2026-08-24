@@ -15,6 +15,7 @@ export default defineConfig({
       'https://solana.leorpc.com/*',
       'https://solana-rpc.publicnode.com/*',
       'https://api.mainnet-beta.solana.com/*',
+      'https://api.devnet.solana.com/*',
       'https://*.helius-rpc.com/*',
       'https://lite-api.jup.ag/*',
       'https://api.jup.ag/*',

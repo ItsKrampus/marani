@@ -15,6 +15,7 @@ import {
   type JupQuote,
   type LstOption,
 } from '@marani/core';
+import { explorerUrl } from '@marani/core';
 import yieldsJson from '@marani/preflight/data/yields.json';
 import React, { useMemo, useState } from 'react';
 import { usePrefs } from '../lib/prefs';
@@ -172,6 +173,25 @@ export default function Cellar() {
       setStep('error');
     }
   };
+
+  // ---------------- devnet gate: staking/yield ride mainnet liquidity ----------------
+  if (wallet.cluster === 'devnet') {
+    return (
+      <div className="flex flex-col items-center gap-4 pt-10 text-center">
+        <Logo size={34} />
+        <span className="pill !cursor-default" style={{ color: 'var(--gold)', borderColor: 'rgba(224,164,88,0.5)' }}>
+          ◎ Devnet
+        </span>
+        <p className="max-w-[260px] text-xs leading-relaxed" style={{ color: 'var(--text-2)' }}>
+          The Cellar stakes through real mainnet venues (Jupiter routes, Jito, Marinade, Jupiter Lend) — it's
+          unavailable on devnet. Switch back to Mainnet to stake.
+        </p>
+        <button className="btn btn-primary" onClick={() => wallet.switchCluster('mainnet')}>
+          Switch to Mainnet
+        </button>
+      </div>
+    );
+  }
 
   // ---------------- flow panel ----------------
   if (flow) {
@@ -332,7 +352,7 @@ export default function Cellar() {
             <a
               className="card w-full !py-2 text-xs"
               style={{ color: 'var(--gold)' }}
-              href={`https://solscan.io/tx/${sig}`}
+              href={explorerUrl('tx', sig, wallet.cluster)}
               target="_blank"
               rel="noreferrer"
             >

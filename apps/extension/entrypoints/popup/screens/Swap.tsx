@@ -1,6 +1,7 @@
 import {
   executeSwapWithFreshRetry,
   explainTxError,
+  explorerUrl,
   fetchTokenMeta,
   fetchUsdPrices,
   formatAmountCompact,
@@ -181,6 +182,36 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
     }
   };
 
+  // ---------------- devnet gate: swaps ride mainnet liquidity ----------------
+  if (wallet.cluster === 'devnet') {
+    return (
+      <div className="screen-in flex h-full flex-col">
+        <div className="flex items-center gap-2.5 px-4 pb-2 pt-4">
+          <button
+            className="flex h-[30px] w-[30px] items-center justify-center rounded-[10px] cursor-pointer"
+            style={{ background: 'var(--card)', border: '1px solid var(--border)' }}
+            onClick={onBack}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-2)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+          </button>
+          <span className="font-display flex-1 text-[17px]">{t('swap')}</span>
+        </div>
+        <div className="m-auto flex w-full flex-col items-center gap-4 px-6 text-center">
+          <span className="pill !cursor-default" style={{ color: 'var(--gold)', borderColor: 'rgba(224,164,88,0.5)' }}>
+            ◎ Devnet
+          </span>
+          <p className="text-xs leading-relaxed" style={{ color: 'var(--text-2)' }}>
+            Swaps route real mainnet liquidity through Jupiter, so they're unavailable on devnet. Switch back to
+            Mainnet to swap.
+          </p>
+          <button className="btn btn-primary w-full" onClick={() => wallet.switchCluster('mainnet')}>
+            Switch to Mainnet
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   // ---------------- result screens (per design) ----------------
   if (result?.phase === 'pending') {
     return (
@@ -211,7 +242,7 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
             <div className="flex justify-between"><span style={{ color: 'var(--text-3)' }}>{t('networkFee')}</span><span style={{ color: 'var(--text-2)' }}>~0.0002 SOL</span></div>
             <div className="flex justify-between">
               <span style={{ color: 'var(--text-3)' }}>{t('txId')}</span>
-              <a href={`https://solscan.io/tx/${result.sig}`} target="_blank" rel="noreferrer" style={{ color: 'var(--gold)' }}>
+              <a href={explorerUrl('tx', result.sig, wallet.cluster)} target="_blank" rel="noreferrer" style={{ color: 'var(--gold)' }}>
                 {shortAddress(result.sig, 4)} ↗
               </a>
             </div>

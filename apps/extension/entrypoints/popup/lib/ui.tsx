@@ -1,4 +1,4 @@
-import { explainTxError, shortAddress } from '@marani/core';
+import { explainTxError, shortAddress, type Cluster } from '@marani/core';
 import React, { useState } from 'react';
 import { usePrefs } from './prefs';
 
@@ -206,10 +206,17 @@ export function FindingBadge({ level }: { level: 'block' | 'warn' | 'info' | 'ok
   );
 }
 
-/** Top chrome bar: mark, account pill, network pill, avatar → settings. */
-export function TopBar(props: { address: string; onAvatar: () => void }) {
+/** Top chrome bar: mark, account pill, network switcher, avatar → settings. */
+export function TopBar(props: {
+  address: string;
+  cluster: Cluster;
+  onSwitchCluster: (c: Cluster) => void;
+  onAvatar: () => void;
+}) {
   const { t } = usePrefs();
   const [copied, setCopied] = useState(false);
+  const [netOpen, setNetOpen] = useState(false);
+  const devnet = props.cluster === 'devnet';
   return (
     <div
       className="flex items-center justify-between px-4 py-3"
@@ -233,9 +240,47 @@ export function TopBar(props: { address: string; onAvatar: () => void }) {
         </button>
       </div>
       <div className="flex items-center gap-1.5">
-        <span className="pill !cursor-default" style={{ color: 'var(--text-2)' }}>
-          ◎ Solana
-        </span>
+        <div className="relative">
+          <button
+            className="pill"
+            style={
+              devnet
+                ? { color: 'var(--gold)', borderColor: 'rgba(224,164,88,0.5)', background: 'rgba(224,164,88,0.08)' }
+                : { color: 'var(--text-2)' }
+            }
+            onClick={() => setNetOpen((v) => !v)}
+          >
+            ◎ {devnet ? 'Devnet' : 'Mainnet'}
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
+          </button>
+          {netOpen && (
+            <div
+              className="sheet-in absolute right-0 top-[115%] z-30 flex w-[136px] flex-col gap-0.5 rounded-xl p-1"
+              style={{ background: 'var(--bg)', border: '1px solid var(--border-accent)', boxShadow: '0 8px 24px rgba(0,0,0,0.5)' }}
+            >
+              {(['mainnet', 'devnet'] as Cluster[]).map((c) => (
+                <button
+                  key={c}
+                  className="tap-row flex cursor-pointer items-center gap-2 rounded-lg px-2.5 py-2 text-left"
+                  style={{ background: 'transparent', border: '1px solid transparent' }}
+                  onClick={() => {
+                    setNetOpen(false);
+                    props.onSwitchCluster(c);
+                  }}
+                >
+                  <span
+                    className="flex h-[7px] w-[7px] rounded-full"
+                    style={{ background: c === 'devnet' ? 'var(--gold)' : 'var(--green)' }}
+                  />
+                  <span className="flex-1 text-[12px] font-semibold">{c === 'devnet' ? 'Devnet' : 'Mainnet'}</span>
+                  {props.cluster === c && (
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12.5l5 5 11-11" /></svg>
+                  )}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
         <button
           className="avatar-btn h-7 w-7 rounded-full cursor-pointer"
           style={{ background: 'linear-gradient(135deg, #7A1533, #E0A458)' }}

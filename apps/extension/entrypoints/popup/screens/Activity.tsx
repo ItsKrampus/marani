@@ -1,4 +1,5 @@
 import {
+  explorerUrl,
   formatAmountCompact,
   formatRawAmount,
   getParsedActivity,
@@ -88,7 +89,7 @@ export default function Activity() {
           <a
             key={it.signature}
             className="card tap-row flex items-center gap-2.5 !py-3"
-            href={`https://solscan.io/tx/${it.signature}`}
+            href={explorerUrl('tx', it.signature, wallet.cluster)}
             target="_blank"
             rel="noreferrer"
           >

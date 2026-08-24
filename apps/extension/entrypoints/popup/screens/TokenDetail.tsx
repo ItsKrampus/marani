@@ -1,7 +1,7 @@
-import { fetchPriceHistory, formatAmountCompact, formatRawAmount, shortAddress, WSOL_MINT, type PricePoint } from '@marani/core';
+import { explorerUrl, fetchPriceHistory, formatAmountCompact, formatRawAmount, shortAddress, WSOL_MINT, type PricePoint } from '@marani/core';
 import React, { useEffect, useState } from 'react';
 import { usePrefs } from '../lib/prefs';
-import { type TokenRow } from '../lib/wallet';
+import { useWallet, type TokenRow } from '../lib/wallet';
 import { fmtUsd, Header, pctText, SkeletonBlock, Sparkline, TokenIcon } from '../lib/ui';
 
 export default function TokenDetail(props: {
@@ -12,19 +12,24 @@ export default function TokenDetail(props: {
   onSwap: () => void;
 }) {
   const { row } = props;
+  const wallet = useWallet();
   const { t, mask } = usePrefs();
   const [history, setHistory] = useState<PricePoint[] | null>(null);
 
   useEffect(() => {
     let cancelled = false;
     setHistory(null);
+    if (wallet.cluster === 'devnet') {
+      setHistory([]); // devnet tokens have no market history
+      return;
+    }
     fetchPriceHistory(row.mint ?? WSOL_MINT).then((points) => {
       if (!cancelled) setHistory(points);
     });
     return () => {
       cancelled = true;
     };
-  }, [row.mint]);
+  }, [row.mint, wallet.cluster]);
 
   const lastPrice = history && history.length > 1 ? history[history.length - 1]!.price : null;
   const firstPrice = history && history.length > 1 ? history[0]!.price : null;
@@ -69,7 +74,7 @@ export default function TokenDetail(props: {
           {history !== null && history.length > 1 && <Sparkline points={history.map((p) => p.price)} />}
           {history !== null && history.length <= 1 && (
             <div className="flex h-[92px] items-center justify-center text-xs" style={{ color: 'var(--text-3)' }}>
-              No chart data for this token
+              {wallet.cluster === 'devnet' ? 'Charts are mainnet-only' : 'No chart data for this token'}
             </div>
           )}
         </div>
@@ -108,7 +113,7 @@ export default function TokenDetail(props: {
         {row.mint && (
           <a
             className="card tap-row flex items-center justify-between !py-3"
-            href={`https://solscan.io/token/${row.mint}`}
+            href={explorerUrl('token', row.mint, wallet.cluster)}
             target="_blank"
             rel="noreferrer"
           >
