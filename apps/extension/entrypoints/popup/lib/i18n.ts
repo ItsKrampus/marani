@@ -46,6 +46,12 @@ const en = {
   deposit: 'Deposit',
   withdrawAll: 'Withdraw all',
   positions: 'Your positions',
+  youPay: 'You pay',
+  youReceive: 'You receive',
+  balanceWord: 'Balance',
+  route: 'Route',
+  slippage: 'Slippage',
+  impact: 'impact',
 };
 
 const ka: typeof en = {
@@ -93,6 +99,12 @@ const ka: typeof en = {
   deposit: 'შეტანა',
   withdrawAll: 'გამოტანა',
   positions: 'შენი პოზიციები',
+  youPay: 'იხდი',
+  youReceive: 'მიიღებ',
+  balanceWord: 'ბალანსი',
+  route: 'მარშრუტი',
+  slippage: 'ცდომილება',
+  impact: 'გავლენა',
 };
 
 export type MsgKey = keyof typeof en;
