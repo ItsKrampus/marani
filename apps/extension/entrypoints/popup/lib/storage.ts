@@ -66,6 +66,17 @@ export const putMetaCache = async (mint: string, meta: CachedTokenMeta) => {
   await setKey(local, 'tokenMeta', cache);
 };
 
+/** Parsed-transaction cache (transactions are immutable) — keyed per wallet address, capped. */
+export const getActivityCache = async (addr: string): Promise<Record<string, unknown>> =>
+  (await getKey<Record<string, unknown>>(local, `activity:${addr}`)) ?? {};
+export const putActivityCache = async (addr: string, items: Array<{ signature: string }>) => {
+  const cache = await getActivityCache(addr);
+  for (const it of items) cache[it.signature] = it;
+  const sigs = Object.keys(cache);
+  if (sigs.length > 60) for (const s of sigs.slice(0, sigs.length - 60)) delete cache[s];
+  await setKey(local, `activity:${addr}`, cache);
+};
+
 /** Session-cached RPC endpoint pick so we don't re-probe on every popup open. */
 export const getRpcPick = () => getKey<{ url: string; at: number }>(session, 'rpcPick');
 export const setRpcPick = (url: string) => setKey(session, 'rpcPick', { url, at: Date.now() });
