@@ -7,6 +7,7 @@ import {
   SOLANA_ERROR__JSON_RPC__SERVER_ERROR_SEND_TRANSACTION_PREFLIGHT_FAILURE,
   type KeyPairSigner,
 } from '@solana/kit';
+import { feeParamsFor } from './fee-config.js';
 import type { SolanaRpc } from './rpc.js';
 import { sendWireTransaction, type SendResult } from './send.js';
 
@@ -54,11 +55,13 @@ export async function getSwapQuote(params: {
   fetchImpl?: typeof fetch;
 }): Promise<JupQuote> {
   const { inputMint, outputMint, amountRaw, slippageBps = 50, fetchImpl = fetch } = params;
+  const fee = feeParamsFor(outputMint);
   const res = await jupFetch(
     `/quote?inputMint=${encodeURIComponent(inputMint)}` +
       `&outputMint=${encodeURIComponent(outputMint)}&amount=${amountRaw}&slippageBps=${slippageBps}` +
       // liquid intermediate tokens only — exotic hops go stale and fail preflight
-      `&restrictIntermediateTokens=true`,
+      `&restrictIntermediateTokens=true` +
+      (fee ? `&platformFeeBps=${fee.platformFeeBps}` : ''),
     undefined,
     fetchImpl,
   );
@@ -107,6 +110,7 @@ export async function buildSwapTransaction(params: {
         wrapAndUnwrapSol: true,
         dynamicComputeUnitLimit: true,
         prioritizationFeeLamports: 'auto',
+        ...(feeParamsFor(quote.outputMint) ? { feeAccount: feeParamsFor(quote.outputMint)!.feeAccount } : {}),
       }),
     },
     fetchImpl,

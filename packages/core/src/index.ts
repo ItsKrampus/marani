@@ -1,6 +1,7 @@
 export { address, type Address, type KeyPairSigner, type Signature } from '@solana/kit';
 export * from './balances.js';
 export * from './cellar.js';
+export * from './fee-config.js';
 export * from './history.js';
 export * from './jupiter.js';
 export * from './keys.js';
