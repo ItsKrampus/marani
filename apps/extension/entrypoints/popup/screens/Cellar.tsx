@@ -236,7 +236,7 @@ export default function Cellar() {
         {step === 'confirm' && (flow.kind === 'stake' || flow.kind === 'unstake') && (
           <>
             {!quote ? (
-              <Spinner label="Finding the best route on Jupiter…" />
+              <WaitState title="Finding the best route…" sub="via Jupiter aggregator" />
             ) : (
               <>
                 <div className="card flex flex-col gap-1.5 text-xs">

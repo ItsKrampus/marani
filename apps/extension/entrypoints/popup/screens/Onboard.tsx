@@ -2,7 +2,7 @@ import { encryptVault, isValidMnemonic, newMnemonic, normalizeMnemonic } from '@
 import React, { useState } from 'react';
 import { Brand } from '../App';
 import { setSessionMnemonic, setVault } from '../lib/storage';
-import { CopyButton } from '../lib/ui';
+import { CopyButton, WaitState } from '../lib/ui';
 
 type Step =
   | { t: 'welcome' }
@@ -144,7 +144,11 @@ export default function Onboard({ onDone }: { onDone: (mnemonic: string) => Prom
         </>
       )}
 
-      {step.t === 'working' && <div className="m-auto text-sm text-zinc-400">Sealing the qvevri…</div>}
+      {step.t === 'working' && (
+        <div className="m-auto">
+          <WaitState title="Sealing the qvevri…" sub="Encrypting your vault on this device" pad={false} />
+        </div>
+      )}
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { fetchPriceHistory, formatAmountCompact, formatRawAmount, shortAddress, 
 import React, { useEffect, useState } from 'react';
 import { usePrefs } from '../lib/prefs';
 import { type TokenRow } from '../lib/wallet';
-import { fmtUsd, Header, pctText, Sparkline, Spinner, TokenIcon } from '../lib/ui';
+import { fmtUsd, Header, pctText, SkeletonBlock, Sparkline, TokenIcon } from '../lib/ui';
 
 export default function TokenDetail(props: {
   row: TokenRow;
@@ -65,11 +65,7 @@ export default function TokenDetail(props: {
 
         {/* chart */}
         <div className="card !p-2">
-          {history === null && (
-            <div className="flex h-[92px] items-center justify-center">
-              <Spinner label="Loading chart…" />
-            </div>
-          )}
+          {history === null && <SkeletonBlock height={92} />}
           {history !== null && history.length > 1 && <Sparkline points={history.map((p) => p.price)} />}
           {history !== null && history.length <= 1 && (
             <div className="flex h-[92px] items-center justify-center text-xs" style={{ color: 'var(--text-3)' }}>

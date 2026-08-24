@@ -571,7 +571,7 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
                 {destState?.kind === 'cex' ? EXCHANGE_NAMES[destState.exchange] : 'the exchange'} does support.
               </p>
             </div>
-            {rescuePhase === 'quoting' && <Spinner label="Getting the best route on Jupiter…" />}
+            {rescuePhase === 'quoting' && <WaitState title="Finding the best route…" sub="via Jupiter aggregator" />}
             {rescuePhase === 'confirm' && rescueQuote && (
               <>
                 <div className="card flex flex-col gap-2 text-sm">

@@ -10,7 +10,7 @@ import React, { useEffect, useState } from 'react';
 import { usePrefs } from '../lib/prefs';
 import { getActivityCache, getMetaCache, putActivityCache, type CachedTokenMeta } from '../lib/storage';
 import { useWallet } from '../lib/wallet';
-import { Spinner, TokenIcon } from '../lib/ui';
+import { SkeletonRows, TokenIcon } from '../lib/ui';
 
 const KIND_LABEL: Record<ParsedActivity['kind'], string> = {
   sent: 'Sent',
@@ -63,7 +63,7 @@ export default function Activity() {
   return (
     <div className="flex flex-col gap-2 pt-1">
       <span className="label pb-1">{t('activity')}</span>
-      {!items && !error && <Spinner label="Reading transactions…" />}
+      {!items && !error && <SkeletonRows count={4} />}
       {error && (
         <div className="text-xs" style={{ color: 'var(--red)' }}>
           {error}

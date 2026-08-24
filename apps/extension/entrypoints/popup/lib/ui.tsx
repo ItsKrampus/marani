@@ -41,6 +41,36 @@ export function WaitState({ title, sub, pad = true }: { title: string; sub?: str
   );
 }
 
+/** Shimmering placeholder rows shaped like asset/activity cards. */
+export function SkeletonRows({ count = 3 }: { count?: number }) {
+  return (
+    <>
+      {Array.from({ length: count }, (_, i) => (
+        <div
+          key={i}
+          className="flex items-center gap-2.5 rounded-xl p-2.5"
+          style={{ background: 'var(--card)', border: '1px solid var(--border)', opacity: 1 - i * 0.18 }}
+        >
+          <span className="skeleton h-8 w-8 shrink-0 !rounded-full" />
+          <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+            <span className="skeleton h-3 w-24" />
+            <span className="skeleton h-2.5 w-16" />
+          </div>
+          <div className="flex flex-col items-end gap-1.5">
+            <span className="skeleton h-3 w-14" />
+            <span className="skeleton h-2.5 w-9" />
+          </div>
+        </div>
+      ))}
+    </>
+  );
+}
+
+/** Shimmering placeholder block (charts, panels). */
+export function SkeletonBlock({ height }: { height: number }) {
+  return <span className="skeleton block w-full" style={{ height }} />;
+}
+
 export function CopyButton({ text, small }: { text: string; small?: boolean }) {
   const { t } = usePrefs();
   const [copied, setCopied] = useState(false);

@@ -2,7 +2,7 @@ import { formatAmountCompact, formatRawAmount } from '@marani/core';
 import React, { useState } from 'react';
 import { usePrefs } from '../lib/prefs';
 import { useWallet, type TokenRow } from '../lib/wallet';
-import { BottomNav, fmtUsd, Logo, pctText, Spinner, TokenIcon, TopBar, type Tab } from '../lib/ui';
+import { BottomNav, fmtUsd, Logo, pctText, SkeletonRows, TokenIcon, TopBar, type Tab } from '../lib/ui';
 import Send from './Send';
 import Receive from './Receive';
 import Swap from './Swap';
@@ -158,7 +158,7 @@ export default function Home() {
         </div>
       )}
       <div className="flex flex-col gap-2">
-        {wallet.loading && <Spinner label="Reading balances…" />}
+        {wallet.loading && <SkeletonRows count={3} />}
         {wallet.loadError && (
           <div className="card !py-3 text-xs" style={{ color: 'var(--red)' }}>
             RPC error: {wallet.loadError}

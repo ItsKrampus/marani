@@ -160,3 +160,19 @@ textarea {
   border-top-color: var(--gold);
   animation: ring-spin 1.4s linear infinite;
 }
+
+/* skeleton shimmer for content placeholders */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.skeleton {
+  background: linear-gradient(90deg, #1f161e 30%, #2c2029 50%, #1f161e 70%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 8px;
+}

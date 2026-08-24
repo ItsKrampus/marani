@@ -333,9 +333,13 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
         <div className="flex flex-col gap-2.5 rounded-[14px] p-3.5" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
           <span className="label">{t('youReceive')}</span>
           <div className="flex items-center gap-2.5">
-            <span className="font-display min-w-0 flex-1 truncate text-[28px] leading-tight" style={{ color: quote ? 'var(--text)' : 'var(--inactive)' }}>
-              {quoting ? '…' : quote ? formatRawAmount(quote.outAmountRaw, to.decimals, 6) : '—'}
-            </span>
+            {quoting ? (
+              <span className="skeleton h-[30px] flex-1" style={{ maxWidth: 140 }} />
+            ) : (
+              <span className="font-display min-w-0 flex-1 truncate text-[28px] leading-tight" style={{ color: quote ? 'var(--text)' : 'var(--inactive)' }}>
+                {quote ? formatRawAmount(quote.outAmountRaw, to.decimals, 6) : '—'}
+              </span>
+            )}
             {pill(to.symbol, logos[to.mint] ?? null, () => setPicker('to'))}
           </div>
           <span className="text-[11px]" style={{ color: 'var(--text-3)' }}>
