@@ -6,7 +6,9 @@ import {
   getSwapQuote,
   isSolanaAddress,
   parseAmount,
+  RENT_EXEMPT_MIN_LAMPORTS,
   sendTransfer,
+  SOL_TX_FEE_LAMPORTS,
   shortAddress,
   signAndSendSwap,
   simulateTransfer,
@@ -42,8 +44,6 @@ const matrixIndex = indexMatrix(matrix);
 type DestState = DestinationClass | { kind: 'not-cex' };
 
 type Step = 'recipient' | 'classifying' | 'ask-exchange' | 'compose' | 'review' | 'rescue' | 'result';
-
-const SOL_FEE_BUFFER = 2_000_000n; // 0.002 SOL kept for fees
 
 export default function Send({ onBack, preset }: { onBack: () => void; preset: TokenRow | null }) {
   const wallet = useWallet();
@@ -131,9 +131,20 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
     }
   }, [amountStr, token]);
 
-  const maxRaw = token ? (token.mint === null ? (token.amountRaw > SOL_FEE_BUFFER ? token.amountRaw - SOL_FEE_BUFFER : 0n) : token.amountRaw) : 0n;
+  const maxRaw = token
+    ? token.mint === null
+      ? token.amountRaw > SOL_TX_FEE_LAMPORTS
+        ? token.amountRaw - SOL_TX_FEE_LAMPORTS
+        : 0n
+      : token.amountRaw
+    : 0n;
   const overMax = amountRaw !== null && amountRaw > maxRaw;
-  const composeReady = amountRaw !== null && !overMax && token !== null;
+  // Solana rejects transfers leaving the sender with 0 < remainder < the rent-exempt minimum.
+  const solRemainder =
+    token?.mint === null && amountRaw !== null ? token.amountRaw - amountRaw - SOL_TX_FEE_LAMPORTS : null;
+  const rentDust = solRemainder !== null && solRemainder > 0n && solRemainder < RENT_EXEMPT_MIN_LAMPORTS;
+  const composeReady = amountRaw !== null && !overMax && !rentDust && token !== null;
+  const sendableRows = wallet.rows.filter((r) => r.amountRaw > 0n);
 
   const transferSpec = () =>
     ({
@@ -334,6 +345,25 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
               <div className="text-[11px] text-zinc-500">Marked as a regular wallet (not an exchange).</div>
             )}
 
+            {wallet.loading && <Spinner label="Reading balances…" />}
+            {wallet.loadError && (
+              <div className="card !border-red-800 !bg-red-950/40 !py-3">
+                <div className="text-xs font-bold text-red-300">Couldn't load balances</div>
+                <p className="mt-1 text-[11px] text-zinc-300 break-words">{wallet.loadError}</p>
+                <p className="mt-1 text-[11px] text-zinc-400">
+                  The free public RPC rate-limits bursts. Retry, or paste a free Helius RPC URL in Settings.
+                </p>
+                <button className="btn btn-ghost mt-2 text-xs" onClick={wallet.refresh}>
+                  Retry
+                </button>
+              </div>
+            )}
+            {!wallet.loading && !wallet.loadError && sendableRows.length === 0 && (
+              <div className="card !py-3 text-[11px] text-zinc-400">
+                No balances to send yet. Fund this wallet first (Receive), then come back.
+              </div>
+            )}
+
             <div className="label mt-1">Asset</div>
             <select
               className="input"
@@ -345,15 +375,13 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
               }}
             >
               <option value="" disabled>
-                Select a token
+                {sendableRows.length === 0 ? 'No tokens available' : 'Select a token'}
               </option>
-              {wallet.rows
-                .filter((r) => r.amountRaw > 0n)
-                .map((r) => (
-                  <option key={r.mint ?? 'SOL'} value={r.mint ?? 'SOL'}>
-                    {r.symbol} — {formatRawAmount(r.amountRaw, r.decimals, 5)}
-                  </option>
-                ))}
+              {sendableRows.map((r) => (
+                <option key={r.mint ?? 'SOL'} value={r.mint ?? 'SOL'}>
+                  {r.symbol} — {formatRawAmount(r.amountRaw, r.decimals, 5)}
+                </option>
+              ))}
             </select>
 
             <div className="label mt-1">Amount</div>
@@ -373,7 +401,29 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
                 Max
               </button>
             </div>
-            {overMax && <div className="text-xs text-red-400">Exceeds available balance{token?.mint === null ? ' (0.002 SOL kept for fees)' : ''}.</div>}
+            {overMax && (
+              <div className="text-xs text-red-400">
+                Exceeds available balance{token?.mint === null ? ' (0.000017 SOL reserved for the network fee)' : ''}.
+              </div>
+            )}
+            {rentDust && solRemainder !== null && (
+              <div className="card !border-amber-800 !bg-amber-950/30 !py-3">
+                <div className="flex items-center gap-2">
+                  <FindingBadge level="warn" />
+                  <div className="text-xs font-bold">Solana would reject this amount</div>
+                </div>
+                <p className="mt-1 text-[11px] leading-relaxed text-zinc-300">
+                  It would leave {formatRawAmount(solRemainder, 9)} SOL behind — below the 0.00089 SOL rent-exempt
+                  minimum, so the network refuses the transfer. Send everything, or leave at least 0.00089 SOL.
+                </p>
+                <button
+                  className="btn btn-ghost mt-2 text-xs"
+                  onClick={() => setAmountStr(formatRawAmount(maxRaw, 9))}
+                >
+                  Send Max ({formatRawAmount(maxRaw, 9)} SOL) instead
+                </button>
+              </div>
+            )}
 
             {/* preflight verdict */}
             {token && destState && findings.length > 0 && (
@@ -436,7 +486,7 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
               <Row k="Sending" v={`${formatRawAmount(amountRaw, token.decimals)} ${token.symbol}`} />
               <Row k="To" v={shortAddress(destination, 8)} mono />
               {destState?.kind === 'cex' && <Row k="Destination" v={`${EXCHANGE_NAMES[destState.exchange]} deposit`} />}
-              <Row k="Network fee" v="~0.00012 SOL" />
+              <Row k="Network fee" v="0.000017 SOL" />
               <Row k="Token program" v={token.program ?? 'system'} />
             </div>
 

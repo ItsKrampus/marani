@@ -50,6 +50,11 @@ export interface SendResult {
 const PRIORITY_FEE_MICROLAMPORTS = 100_000n; // 0.0001 lamport/CU — cheap but above floor
 const COMPUTE_UNIT_LIMIT = 120_000; // generous for ATA create + transferChecked
 
+/** Exact fee for our transfers: 5000 base (1 sig) + 120k CU × 100k µlam/CU = 12k priority. */
+export const SOL_TX_FEE_LAMPORTS = 17_000n;
+/** Rent-exempt minimum for a 0-data system account. A send may leave 0 or ≥ this — never in between. */
+export const RENT_EXEMPT_MIN_LAMPORTS = 890_880n;
+
 async function buildInstructions(spec: TransferSpec): Promise<Instruction[]> {
   const destination = address(spec.destination);
   if (!spec.token) {
