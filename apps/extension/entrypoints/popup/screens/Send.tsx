@@ -1,6 +1,6 @@
 import {
-  buildSwapTransaction,
   estimateTransferCost,
+  executeSwapWithFreshRetry,
   formatRawAmount,
   getMintInfo,
   getPortfolio,
@@ -12,7 +12,6 @@ import {
   sendTransfer,
   SOL_TX_FEE_LAMPORTS,
   shortAddress,
-  signAndSendSwap,
   simulateTransfer,
   USDC_MINT,
   type JupQuote,
@@ -230,8 +229,13 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
       const before = await getPortfolio(wallet.rpc, wallet.signer.address);
       const usdcBefore = before.tokens.find((t) => t.mint === USDC_MINT)?.amountRaw ?? 0n;
 
-      const swapTx = await buildSwapTransaction({ quote: rescueQuote, userPublicKey: wallet.address });
-      const swapRes = await signAndSendSwap(wallet.rpc, wallet.signer, swapTx);
+      const swapRes = await executeSwapWithFreshRetry(wallet.rpc, wallet.signer, {
+        inputMint: token.mint!,
+        outputMint: rescueMint!,
+        amountRaw: rescueQuote.inAmountRaw,
+        slippageBps: rescueQuote.slippageBps,
+        initialQuote: rescueQuote,
+      });
       if (!swapRes.confirmed) throw new Error(`Swap not confirmed: ${safeJson(swapRes.err, 120)}`);
 
       setRescuePhase('sending');

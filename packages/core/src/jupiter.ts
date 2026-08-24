@@ -2,7 +2,9 @@ import {
   getBase64EncodedWireTransaction,
   getBase64Encoder,
   getTransactionDecoder,
+  isSolanaError,
   partiallySignTransaction,
+  SOLANA_ERROR__JSON_RPC__SERVER_ERROR_SEND_TRANSACTION_PREFLIGHT_FAILURE,
   type KeyPairSigner,
 } from '@solana/kit';
 import type { SolanaRpc } from './rpc.js';
@@ -54,7 +56,9 @@ export async function getSwapQuote(params: {
   const { inputMint, outputMint, amountRaw, slippageBps = 50, fetchImpl = fetch } = params;
   const res = await jupFetch(
     `/quote?inputMint=${encodeURIComponent(inputMint)}` +
-      `&outputMint=${encodeURIComponent(outputMint)}&amount=${amountRaw}&slippageBps=${slippageBps}`,
+      `&outputMint=${encodeURIComponent(outputMint)}&amount=${amountRaw}&slippageBps=${slippageBps}` +
+      // liquid intermediate tokens only — exotic hops go stale and fail preflight
+      `&restrictIntermediateTokens=true`,
     undefined,
     fetchImpl,
   );
@@ -123,4 +127,57 @@ export async function signAndSendSwap(
   const signedTx = await partiallySignTransaction([signer.keyPair], tx);
   const wire = getBase64EncodedWireTransaction(signedTx);
   return sendWireTransaction(rpc, wire);
+}
+
+/** True when the error means the transaction NEVER landed (rejected in simulation) — safe to retry. */
+export function isPreflightFailure(e: unknown): boolean {
+  if (isSolanaError(e, SOLANA_ERROR__JSON_RPC__SERVER_ERROR_SEND_TRANSACTION_PREFLIGHT_FAILURE)) return true;
+  const msg = e instanceof Error ? e.message : String(e);
+  return /preflight|custom program error|#-32002/i.test(msg);
+}
+
+/**
+ * Execute a swap end-to-end with stale-route protection: if the (initial)
+ * quote's route fails preflight simulation, fetch a FRESH quote and try once
+ * more. Only preflight failures are retried — anything broadcast is not.
+ */
+export async function executeSwapWithFreshRetry(
+  rpc: SolanaRpc,
+  signer: KeyPairSigner,
+  params: {
+    inputMint: string;
+    outputMint: string;
+    amountRaw: bigint;
+    slippageBps?: number;
+    initialQuote?: JupQuote;
+    fetchImpl?: typeof fetch;
+  },
+): Promise<SendResult> {
+  let quote =
+    params.initialQuote ??
+    (await getSwapQuote({
+      inputMint: params.inputMint,
+      outputMint: params.outputMint,
+      amountRaw: params.amountRaw,
+      slippageBps: params.slippageBps,
+      fetchImpl: params.fetchImpl,
+    }));
+  for (let attempt = 0; ; attempt++) {
+    try {
+      const tx = await buildSwapTransaction({ quote, userPublicKey: signer.address, fetchImpl: params.fetchImpl });
+      return await signAndSendSwap(rpc, signer, tx);
+    } catch (e) {
+      if (attempt === 0 && isPreflightFailure(e)) {
+        quote = await getSwapQuote({
+          inputMint: params.inputMint,
+          outputMint: params.outputMint,
+          amountRaw: params.amountRaw,
+          slippageBps: params.slippageBps,
+          fetchImpl: params.fetchImpl,
+        });
+        continue;
+      }
+      throw e;
+    }
+  }
 }

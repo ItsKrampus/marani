@@ -1,5 +1,5 @@
 import {
-  executeLstSwap,
+  executeSwapWithFreshRetry,
   formatRawAmount,
   JLUSDC_MINT,
   lendDeposit,
@@ -10,6 +10,7 @@ import {
   quoteUnstake,
   shortAddress,
   USDC_MINT,
+  WSOL_MINT,
   type JupQuote,
   type LstOption,
 } from '@marani/core';
@@ -132,7 +133,13 @@ export default function Cellar() {
       let res;
       if (flow.kind === 'stake' || flow.kind === 'unstake') {
         if (!quote) throw new Error('no quote');
-        res = await executeLstSwap(wallet.rpc, wallet.signer, quote);
+        res = await executeSwapWithFreshRetry(wallet.rpc, wallet.signer, {
+          inputMint: flow.kind === 'stake' ? WSOL_MINT : flow.lst.mint,
+          outputMint: flow.kind === 'stake' ? flow.lst.mint : WSOL_MINT,
+          amountRaw: quote.inAmountRaw,
+          slippageBps: quote.slippageBps,
+          initialQuote: quote,
+        });
       } else if (flow.kind === 'deposit') {
         if (amountRaw === null) throw new Error('no amount');
         res = await lendDeposit(wallet.rpc, wallet.signer, { assetMint: USDC_MINT, amountRaw });

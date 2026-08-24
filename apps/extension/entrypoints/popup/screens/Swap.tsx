@@ -1,11 +1,10 @@
 import {
-  buildSwapTransaction,
+  executeSwapWithFreshRetry,
   fetchTokenMeta,
   formatRawAmount,
   getSwapQuote,
   parseAmount,
   shortAddress,
-  signAndSendSwap,
   USDC_MINT,
   USDG_MINT,
   WSOL_MINT,
@@ -115,8 +114,13 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
     setPhase('swapping');
     setError('');
     try {
-      const tx = await buildSwapTransaction({ quote, userPublicKey: wallet.address });
-      const res = await signAndSendSwap(wallet.rpc, wallet.signer, tx);
+      const res = await executeSwapWithFreshRetry(wallet.rpc, wallet.signer, {
+        inputMint: fromInputMint!,
+        outputMint: toMint,
+        amountRaw: quote.inAmountRaw,
+        slippageBps: quote.slippageBps,
+        initialQuote: quote,
+      });
       if (!res.confirmed) throw new Error('Swap not confirmed — check Activity');
       setSig(res.signature);
       setPhase('done');
