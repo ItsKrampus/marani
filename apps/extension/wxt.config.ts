@@ -2,6 +2,8 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'wxt';
 
 export default defineConfig({
+  // Visible (non-dot) build dir so macOS file pickers can see it when loading unpacked.
+  outDir: 'output',
   modules: ['@wxt-dev/module-react'],
   manifest: {
     name: 'Marani — Safe Solana Wallet',
