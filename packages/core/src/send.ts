@@ -118,6 +118,36 @@ async function buildMessage(rpc: SolanaRpc, spec: TransferSpec) {
   );
 }
 
+/** Rent-exempt balance for a token account (165 bytes) — the cost of creating a recipient ATA. */
+export const ATA_RENT_LAMPORTS = 2_039_280n;
+
+export interface TransferCost {
+  feeLamports: bigint;
+  /** 0 when the recipient's token account already exists (or for SOL sends). */
+  ataRentLamports: bigint;
+  destAtaExists: boolean;
+}
+
+/** What this transfer costs the sender in SOL: network fee + recipient ATA rent if it must be created. */
+export async function estimateTransferCost(rpc: SolanaRpc, spec: TransferSpec): Promise<TransferCost> {
+  if (!spec.token) return { feeLamports: SOL_TX_FEE_LAMPORTS, ataRentLamports: 0n, destAtaExists: true };
+  const mod = spec.token.program === 'token-2022' ? token2022 : splToken;
+  const tokenProgram =
+    spec.token.program === 'token-2022' ? token2022.TOKEN_2022_PROGRAM_ADDRESS : splToken.TOKEN_PROGRAM_ADDRESS;
+  const [destAta] = await mod.findAssociatedTokenPda({
+    owner: address(spec.destination),
+    mint: address(spec.token.mint),
+    tokenProgram,
+  });
+  const info = await withRetry(() => rpc.getAccountInfo(destAta, { encoding: 'base64' }).send());
+  const exists = info.value !== null;
+  return {
+    feeLamports: SOL_TX_FEE_LAMPORTS,
+    ataRentLamports: exists ? 0n : ATA_RENT_LAMPORTS,
+    destAtaExists: exists,
+  };
+}
+
 /** Sign + simulate the transfer without broadcasting. */
 export async function simulateTransfer(rpc: SolanaRpc, spec: TransferSpec): Promise<SimulationResult> {
   const message = await buildMessage(rpc, spec);

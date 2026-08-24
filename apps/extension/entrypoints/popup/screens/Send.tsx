@@ -1,5 +1,6 @@
 import {
   buildSwapTransaction,
+  estimateTransferCost,
   formatRawAmount,
   getMintInfo,
   getPortfolio,
@@ -7,6 +8,7 @@ import {
   isSolanaAddress,
   parseAmount,
   RENT_EXEMPT_MIN_LAMPORTS,
+  safeJson,
   sendTransfer,
   SOL_TX_FEE_LAMPORTS,
   shortAddress,
@@ -15,6 +17,7 @@ import {
   USDC_MINT,
   type JupQuote,
   type MintInfo,
+  type TransferCost,
 } from '@marani/core';
 import {
   classifyByLabels,
@@ -60,6 +63,7 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
   const [simState, setSimState] = useState<'idle' | 'running' | 'ok' | 'failed'>('idle');
   const [simDetail, setSimDetail] = useState('');
   const [sending, setSending] = useState(false);
+  const [cost, setCost] = useState<TransferCost | null>(null);
 
   // rescue state
   const [rescueQuote, setRescueQuote] = useState<JupQuote | null>(null);
@@ -86,6 +90,20 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
     }
     setStep('ask-exchange');
   };
+
+  // ---- transfer cost (fee + recipient-ATA rent) when entering review ----
+  useEffect(() => {
+    if (step !== 'review' || !token || amountRaw === null) return;
+    let cancelled = false;
+    setCost(null);
+    estimateTransferCost(wallet.rpc, transferSpec())
+      .then((c) => !cancelled && setCost(c))
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step]);
 
   // ---- token hazards (mint extensions) ----
   useEffect(() => {
@@ -165,7 +183,8 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
         setSimDetail(`${sim.unitsConsumed ?? '?'} compute units`);
       } else {
         setSimState('failed');
-        setSimDetail(JSON.stringify(sim.err).slice(0, 160));
+        const lastLog = sim.logs.at(-1);
+        setSimDetail(safeJson(sim.err, 140) + (lastLog ? ` — ${lastLog.slice(0, 120)}` : ''));
       }
     } catch (e) {
       setSimState('failed');
@@ -178,7 +197,7 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
     setError('');
     try {
       const res = await sendTransfer(wallet.rpc, transferSpec());
-      if (!res.confirmed) throw new Error(`Not confirmed: ${JSON.stringify(res.err).slice(0, 120)}`);
+      if (!res.confirmed) throw new Error(`Not confirmed: ${safeJson(res.err, 120)}`);
       setResult({ title: `Sent ${amountStr} ${token!.symbol}`, sigs: [{ label: 'Transfer', sig: res.signature }] });
       setStep('result');
     } catch (e) {
@@ -213,7 +232,7 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
 
       const swapTx = await buildSwapTransaction({ quote: rescueQuote, userPublicKey: wallet.address });
       const swapRes = await signAndSendSwap(wallet.rpc, wallet.signer, swapTx);
-      if (!swapRes.confirmed) throw new Error(`Swap not confirmed: ${JSON.stringify(swapRes.err).slice(0, 120)}`);
+      if (!swapRes.confirmed) throw new Error(`Swap not confirmed: ${safeJson(swapRes.err, 120)}`);
 
       setRescuePhase('sending');
       const after = await getPortfolio(wallet.rpc, wallet.signer.address);
@@ -228,7 +247,7 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
         amountRaw: sendAmount,
         token: { mint: USDC_MINT, decimals: 6, program: 'token' },
       });
-      if (!sendRes.confirmed) throw new Error(`USDC send not confirmed: ${JSON.stringify(sendRes.err).slice(0, 120)}`);
+      if (!sendRes.confirmed) throw new Error(`USDC send not confirmed: ${safeJson(sendRes.err, 120)}`);
 
       setResult({
         title: `Rescued: swapped ${token.symbol} → USDC and sent`,
@@ -462,7 +481,7 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
                 <button
                   className="btn btn-danger"
                   disabled={!composeReady || !ackDanger}
-                  onClick={() => setStep('review')}
+                  onClick={() => { setSimState('idle'); setSimDetail(''); setError(''); setStep('review'); }}
                 >
                   Send {token?.symbol} anyway
                 </button>
@@ -471,7 +490,7 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
               <button
                 className="btn btn-primary mt-auto"
                 disabled={!composeReady || (Boolean(token?.mint) && !mintInfo)}
-                onClick={() => setStep('review')}
+                onClick={() => { setSimState('idle'); setSimDetail(''); setError(''); setStep('review'); }}
               >
                 Review
               </button>
@@ -487,8 +506,31 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
               <Row k="To" v={shortAddress(destination, 8)} mono />
               {destState?.kind === 'cex' && <Row k="Destination" v={`${EXCHANGE_NAMES[destState.exchange]} deposit`} />}
               <Row k="Network fee" v="0.000017 SOL" />
+              {cost && cost.ataRentLamports > 0n && (
+                <Row k="Recipient account rent (one-time)" v={`${formatRawAmount(cost.ataRentLamports, 9)} SOL`} />
+              )}
               <Row k="Token program" v={token.program ?? 'system'} />
             </div>
+            {(() => {
+              const solBalance = wallet.rows.find((r) => r.mint === null)?.amountRaw ?? 0n;
+              const needSol =
+                (cost?.feeLamports ?? SOL_TX_FEE_LAMPORTS) +
+                (cost?.ataRentLamports ?? 0n) +
+                (token.mint === null ? amountRaw : 0n);
+              if (!cost || solBalance >= needSol) return null;
+              return (
+                <div className="card !border-red-800 !bg-red-950/40 !py-3">
+                  <div className="text-xs font-bold text-red-300">Not enough SOL to cover this transfer</div>
+                  <p className="mt-1 text-[11px] leading-relaxed text-zinc-300">
+                    This send needs {formatRawAmount(needSol, 9)} SOL
+                    {cost.ataRentLamports > 0n
+                      ? ' (network fee + one-time creation of the recipient’s token account)'
+                      : ''}
+                    , but this wallet holds {formatRawAmount(solBalance, 9)} SOL. Top up a little SOL and try again.
+                  </p>
+                </div>
+              );
+            })()}
 
             <div className="card !py-3">
               {simState === 'idle' && (

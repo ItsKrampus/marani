@@ -53,6 +53,16 @@ export function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+/** JSON.stringify that survives the BigInts Kit puts in RPC responses. */
+export function safeJson(value: unknown, max = 200): string {
+  try {
+    const s = JSON.stringify(value, (_k, v) => (typeof v === 'bigint' ? v.toString() : v));
+    return (s ?? String(value)).slice(0, max);
+  } catch {
+    return String(value).slice(0, max);
+  }
+}
+
 /**
  * Retry an idempotent async operation (RPC reads, rebroadcasts) with backoff.
  * Free public RPC tiers throw 429s on small bursts — this smooths them over.
