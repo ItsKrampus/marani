@@ -102,7 +102,7 @@ export default function Home() {
             disabled={a.soon}
           >
             <span
-              className="relative flex h-11 w-11 items-center justify-center rounded-[14px]"
+              className="action-tile relative flex h-11 w-11 items-center justify-center rounded-[14px]"
               style={{ background: 'var(--card)', border: '1px solid var(--border)', opacity: a.soon ? 0.55 : 1 }}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -126,7 +126,7 @@ export default function Home() {
 
       {/* cellar banner */}
       <button
-        className="mb-4 flex items-center gap-3 rounded-[14px] p-3 text-left cursor-pointer"
+        className="chip-btn mb-4 flex items-center gap-3 rounded-[14px] p-3 text-left cursor-pointer"
         style={{ background: 'linear-gradient(135deg, #2A0D1B, #1F161E)', border: '1px solid var(--border-accent)' }}
         onClick={() => setRoute('cellar')}
       >
@@ -170,7 +170,7 @@ export default function Home() {
             return (
               <button
                 key={row.mint ?? 'SOL'}
-                className="flex items-center gap-2.5 rounded-xl p-2.5 text-left cursor-pointer"
+                className="tap-row flex items-center gap-2.5 rounded-xl p-2.5 text-left cursor-pointer"
                 style={{ background: 'var(--card)', border: '1px solid var(--border)' }}
                 onClick={() => {
                   setPresetToken(row);
@@ -221,7 +221,7 @@ export default function Home() {
   return (
     <div className="flex h-full flex-col">
       <TopBar address={wallet.address} onAvatar={() => setRoute('settings')} />
-      <div className="flex-1 overflow-y-auto px-4 pb-3 pt-2">
+      <div key={tab} className="screen-in flex-1 overflow-y-auto px-4 pb-3 pt-2">
         {tab === 'home' && homeBody}
         {tab === 'cellar' && <Cellar />}
         {tab === 'activity' && <Activity />}

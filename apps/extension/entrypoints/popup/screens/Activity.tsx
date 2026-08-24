@@ -87,7 +87,7 @@ export default function Activity() {
         return (
           <a
             key={it.signature}
-            className="card flex items-center gap-2.5 !py-3"
+            className="card tap-row flex items-center gap-2.5 !py-3"
             href={`https://solscan.io/tx/${it.signature}`}
             target="_blank"
             rel="noreferrer"

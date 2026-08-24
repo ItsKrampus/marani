@@ -467,14 +467,14 @@ export default function Cellar() {
             </div>
             <div className="flex gap-2">
               <button
-                className="flex-1 rounded-full py-2 text-[11px] font-semibold cursor-pointer"
+                className="chip-btn flex-1 rounded-full py-2 text-[11px] font-semibold cursor-pointer"
                 style={{ border: '1px solid var(--border-accent)', color: 'var(--text)' }}
                 onClick={() => (p.lst ? start({ kind: 'stake', lst: p.lst }) : start({ kind: 'deposit' }))}
               >
                 {t('addMore')}
               </button>
               <button
-                className="flex-1 rounded-full py-2 text-[11px] font-semibold cursor-pointer"
+                className="chip-btn flex-1 rounded-full py-2 text-[11px] font-semibold cursor-pointer"
                 style={{ border: '1px solid var(--border)', color: 'var(--text-3)' }}
                 onClick={() => (p.lst ? start({ kind: 'unstake', lst: p.lst, row: p.row }) : start({ kind: 'withdraw', row: p.row }))}
               >
@@ -516,7 +516,7 @@ export default function Cellar() {
               </span>
             )}
             <button
-              className="rounded-full px-3 py-1.5 text-[11px] font-semibold cursor-pointer disabled:cursor-default disabled:opacity-50"
+              className="gold-chip rounded-full px-3 py-1.5 text-[11px] font-semibold cursor-pointer disabled:cursor-default disabled:opacity-50"
               style={{ background: 'var(--gold)', color: '#14090E' }}
               disabled={pool.disabled}
               onClick={pool.onClick}

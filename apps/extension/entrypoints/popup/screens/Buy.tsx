@@ -26,7 +26,7 @@ export default function Buy({ onBack }: { onBack: () => void }) {
   ];
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="screen-in flex h-full flex-col">
       <Header title={t('buy')} onBack={onBack} />
       <div className="flex flex-1 flex-col gap-3 overflow-y-auto px-4 pb-4">
         <div className="card !py-3">
@@ -39,7 +39,7 @@ export default function Buy({ onBack }: { onBack: () => void }) {
 
         <span className="label">Buy with card</span>
         {providers.map((p) => (
-          <a key={p.name} className="card flex items-center gap-3 !py-3 hover:brightness-110" href={p.url} target="_blank" rel="noreferrer">
+          <a key={p.name} className="card tap-row flex items-center gap-3 !py-3" href={p.url} target="_blank" rel="noreferrer">
             <div className="flex flex-1 flex-col gap-0.5">
               <span className="text-[13px] font-semibold">{p.name} ↗</span>
               <span className="text-[11px]" style={{ color: 'var(--text-3)' }}>

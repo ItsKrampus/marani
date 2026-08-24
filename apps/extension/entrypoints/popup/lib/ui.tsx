@@ -168,7 +168,7 @@ export function TopBar(props: { address: string; onAvatar: () => void }) {
           ◎ Solana
         </span>
         <button
-          className="h-7 w-7 rounded-full cursor-pointer"
+          className="avatar-btn h-7 w-7 rounded-full cursor-pointer"
           style={{ background: 'linear-gradient(135deg, #7A1533, #E0A458)' }}
           onClick={props.onAvatar}
           title={t('settings')}
@@ -199,7 +199,7 @@ export function BottomNav({ active, onSelect }: { active: Tab; onSelect: (t: Tab
       {tabs.map((tab) => {
         const color = tab === active ? 'var(--gold)' : 'var(--inactive)';
         return (
-          <button key={tab} className="flex flex-col items-center gap-[3px] pb-3 pt-2.5 cursor-pointer" onClick={() => onSelect(tab)}>
+          <button key={tab} className="nav-tab flex flex-col items-center gap-[3px] pb-3 pt-2.5 cursor-pointer" onClick={() => onSelect(tab)}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d={TAB_ICONS[tab]} />
             </svg>
@@ -274,8 +274,17 @@ export function Sparkline({ points, width = 335, height = 92 }: { points: number
           <stop offset="100%" stopColor={color} stopOpacity="0" />
         </linearGradient>
       </defs>
-      <path d={area} fill="url(#spark-fill)" />
-      <path d={line} fill="none" stroke={color} strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round" />
+      <path className="spark-area" d={area} fill="url(#spark-fill)" />
+      <path
+        className="spark-line"
+        d={line}
+        pathLength={1}
+        fill="none"
+        stroke={color}
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }

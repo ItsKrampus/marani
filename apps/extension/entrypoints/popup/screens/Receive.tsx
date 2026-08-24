@@ -7,7 +7,7 @@ export default function Receive({ onBack }: { onBack: () => void }) {
   const wallet = useWallet();
   const { t } = usePrefs();
   return (
-    <div className="flex h-full flex-col">
+    <div className="screen-in flex h-full flex-col">
       <Header title={t('receive')} onBack={onBack} />
       <div className="m-auto flex w-full flex-col items-center gap-4 px-6">
         <Logo size={44} />

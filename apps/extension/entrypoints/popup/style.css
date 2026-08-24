@@ -78,7 +78,16 @@ textarea {
 }
 
 .btn {
-  @apply rounded-full px-4 py-2.5 text-sm font-semibold transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer;
+  transition:
+    transform 0.1s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
+  @apply rounded-full px-4 py-2.5 text-sm font-semibold disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer;
+}
+.btn:active:not(:disabled) {
+  transform: scale(0.965);
 }
 .btn-primary {
   background: var(--gold);
@@ -86,6 +95,7 @@ textarea {
 }
 .btn-primary:hover:not(:disabled) {
   background: var(--gold-hi);
+  box-shadow: 0 4px 18px rgba(224, 164, 88, 0.25);
 }
 .btn-ghost {
   background: var(--card);
@@ -117,8 +127,14 @@ textarea {
 .input::placeholder {
   color: var(--text-3);
 }
+.input {
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
 .input:focus {
   border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(224, 164, 88, 0.1);
 }
 .label {
   color: var(--text-3);
@@ -130,8 +146,160 @@ textarea {
   border: 1px solid var(--border);
   @apply rounded-full flex items-center gap-1.5 px-2.5 py-1.5 text-[11px] cursor-pointer;
 }
+.pill {
+  transition:
+    border-color 0.15s ease,
+    transform 0.1s ease;
+}
 .pill:hover {
   border-color: var(--border-accent);
+}
+.pill:active {
+  transform: scale(0.96);
+}
+
+/* interactive card rows: lift on hover, sink on press (!important beats inline styles) */
+.tap-row {
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease,
+    transform 0.1s ease;
+}
+.tap-row:hover {
+  border-color: var(--border-accent) !important;
+  background: #251a23 !important;
+}
+.tap-row:active {
+  transform: scale(0.985);
+}
+
+/* square action tiles (home / token detail) */
+.action-tile {
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.1s ease;
+}
+button:hover:not(:disabled) > .action-tile {
+  background: #2a1c26 !important;
+  border-color: var(--border-accent) !important;
+}
+button:active:not(:disabled) > .action-tile {
+  transform: scale(0.92);
+}
+
+/* small gold chips (pool Stake, cellar CTA) */
+.gold-chip {
+  transition:
+    filter 0.15s ease,
+    transform 0.1s ease;
+}
+.gold-chip:hover:not(:disabled) {
+  filter: brightness(1.12);
+}
+.gold-chip:active:not(:disabled) {
+  transform: scale(0.94);
+}
+
+/* outline chips (Add more / Unstake) */
+.chip-btn {
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.1s ease;
+}
+.chip-btn:hover {
+  border-color: var(--gold) !important;
+  color: var(--text) !important;
+}
+.chip-btn:active {
+  transform: scale(0.97);
+}
+
+/* bottom-nav tabs */
+.nav-tab {
+  transition:
+    opacity 0.15s ease,
+    transform 0.1s ease;
+}
+.nav-tab:hover {
+  opacity: 0.82;
+}
+.nav-tab:active {
+  transform: scale(0.9);
+}
+
+/* avatar button glow */
+.avatar-btn {
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+.avatar-btn:hover {
+  box-shadow: 0 0 0 3px rgba(224, 164, 88, 0.28);
+}
+.avatar-btn:active {
+  transform: scale(0.92);
+}
+
+/* swap flip: arrow turns over on hover */
+.flip-btn svg {
+  transition: transform 0.25s ease;
+}
+.flip-btn:hover:not(:disabled) svg {
+  transform: rotate(180deg);
+}
+
+/* screen transitions */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.screen-in {
+  animation: fade-up 0.18s ease both;
+}
+@keyframes sheet-up {
+  from {
+    opacity: 0.4;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.sheet-in {
+  animation: sheet-up 0.2s ease both;
+}
+
+/* sparkline draws itself in */
+@keyframes spark-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.spark-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: spark-draw 0.9s ease-out 0.05s forwards;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.spark-area {
+  opacity: 0;
+  animation: fade-in 0.5s ease 0.55s forwards;
 }
 
 /* branded waiting state: breathing qvevri + spinning gold ring */

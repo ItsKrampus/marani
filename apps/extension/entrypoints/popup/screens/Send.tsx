@@ -283,7 +283,7 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
   );
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="screen-in flex h-full flex-col">
       <Header title="Send" onBack={step === 'result' ? onBack : step === 'recipient' ? onBack : () => setStep('recipient')} />
       <div className="flex-1 overflow-y-auto px-4 pb-4 flex flex-col gap-3">
         {/* ---------- STEP: recipient ---------- */}

@@ -39,7 +39,7 @@ export default function TokenDetail(props: {
   ];
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="screen-in flex h-full flex-col">
       <Header title={row.name} onBack={props.onBack} />
       <div className="flex flex-1 flex-col gap-3 overflow-y-auto px-4 pb-4">
         {/* price header */}
@@ -79,7 +79,7 @@ export default function TokenDetail(props: {
           {actions.map((a) => (
             <button key={a.label} className="flex flex-col items-center gap-1.5 cursor-pointer" onClick={a.onClick}>
               <span
-                className="flex h-11 w-11 items-center justify-center rounded-[14px]"
+                className="action-tile flex h-11 w-11 items-center justify-center rounded-[14px]"
                 style={{ background: 'var(--card)', border: '1px solid var(--border)' }}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -107,7 +107,7 @@ export default function TokenDetail(props: {
         {/* mint info */}
         {row.mint && (
           <a
-            className="card flex items-center justify-between !py-3"
+            className="card tap-row flex items-center justify-between !py-3"
             href={`https://solscan.io/token/${row.mint}`}
             target="_blank"
             rel="noreferrer"

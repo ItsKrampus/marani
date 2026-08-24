@@ -196,7 +196,7 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
       </span>
     );
     return (
-      <div className="flex h-full flex-col items-center gap-4 px-5 pb-4 pt-10">
+      <div className="screen-in flex h-full flex-col items-center gap-4 px-5 pb-4 pt-10">
         {result.phase === 'success' &&
           circle('2px solid #9FE8C1', 'rgba(159,232,193,0.08)', (
             <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#9FE8C1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12.5l5 5 11-11" /></svg>
@@ -259,7 +259,7 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
   // ---------------- swap form (per design) ----------------
   const pill = (symbol: string, logoUri: string | null, onClick: () => void) => (
     <button
-      className="flex shrink-0 items-center gap-1.5 rounded-full py-1.5 pl-1.5 pr-3 cursor-pointer"
+      className="chip-btn flex shrink-0 items-center gap-1.5 rounded-full py-1.5 pl-1.5 pr-3 cursor-pointer"
       style={{ background: 'var(--bg)', border: '1px solid var(--border)' }}
       onClick={onClick}
     >
@@ -270,7 +270,7 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
   );
 
   return (
-    <div className="relative flex h-full flex-col">
+    <div className="screen-in relative flex h-full flex-col">
       {/* header: back chip · title · slippage pill */}
       <div className="flex items-center gap-2.5 px-4 pb-2 pt-4">
         <button
@@ -319,7 +319,7 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
         {/* flip */}
         <div className="z-10 -my-[24px] flex justify-center">
           <button
-            className="flex h-[34px] w-[34px] items-center justify-center rounded-[12px] cursor-pointer disabled:opacity-40"
+            className="flip-btn chip-btn flex h-[34px] w-[34px] items-center justify-center rounded-[12px] cursor-pointer disabled:opacity-40"
             style={{ background: 'var(--bg)', border: '1px solid var(--border-accent)' }}
             disabled={!canFlip}
             onClick={flip}
@@ -389,7 +389,7 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
       {picker && (
         <div className="absolute inset-0 z-20 flex flex-col justify-end" style={{ background: 'rgba(10,5,8,0.72)' }} onClick={() => setPicker(null)}>
           <div
-            className="flex max-h-[70%] flex-col gap-1.5 overflow-y-auto rounded-t-2xl p-4"
+            className="sheet-in flex max-h-[70%] flex-col gap-1.5 overflow-y-auto rounded-t-2xl p-4"
             style={{ background: 'var(--bg)', borderTop: '1px solid var(--border-accent)' }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -398,7 +398,7 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
               ? fromRows.map((r) => (
                   <button
                     key={r.mint ?? 'SOL'}
-                    className="flex items-center gap-2.5 rounded-xl p-2.5 text-left cursor-pointer"
+                    className="tap-row flex items-center gap-2.5 rounded-xl p-2.5 text-left cursor-pointer"
                     style={{ background: 'var(--card)', border: `1px solid ${(r.mint ?? 'SOL') === fromKey ? 'var(--gold)' : 'var(--border)'}` }}
                     onClick={() => {
                       setFromKey(r.mint ?? 'SOL');
@@ -419,7 +419,7 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
               : TO_OPTIONS.filter((o) => o.mint !== fromInputMint).map((o) => (
                   <button
                     key={o.mint}
-                    className="flex items-center gap-2.5 rounded-xl p-2.5 text-left cursor-pointer"
+                    className="tap-row flex items-center gap-2.5 rounded-xl p-2.5 text-left cursor-pointer"
                     style={{ background: 'var(--card)', border: `1px solid ${o.mint === toMint ? 'var(--gold)' : 'var(--border)'}` }}
                     onClick={() => {
                       setToMint(o.mint);
