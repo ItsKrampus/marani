@@ -1,4 +1,4 @@
-import { fetchPriceHistory, formatRawAmount, shortAddress, WSOL_MINT, type PricePoint } from '@marani/core';
+import { fetchPriceHistory, formatAmountCompact, formatRawAmount, shortAddress, WSOL_MINT, type PricePoint } from '@marani/core';
 import React, { useEffect, useState } from 'react';
 import { usePrefs } from '../lib/prefs';
 import { type TokenRow } from '../lib/wallet';
@@ -101,8 +101,8 @@ export default function TokenDetail(props: {
         <div className="card flex items-center justify-between !py-3">
           <div className="flex flex-col">
             <span className="label">Balance</span>
-            <span className="text-sm font-semibold">
-              {mask(`${formatRawAmount(row.amountRaw, row.decimals, 6)} ${row.symbol}`)}
+            <span className="text-sm font-semibold" title={`${formatRawAmount(row.amountRaw, row.decimals)} ${row.symbol}`}>
+              {mask(`${formatAmountCompact(row.amountRaw, row.decimals)} ${row.symbol}`)}
             </span>
           </div>
           <span className="text-sm font-semibold">{mask(row.usdValue !== null ? fmtUsd(row.usdValue) : '—')}</span>

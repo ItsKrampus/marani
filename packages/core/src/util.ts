@@ -34,6 +34,17 @@ export function formatRawAmount(raw: bigint, decimals: number, maxFraction = dec
   return `${negative ? '-' : ''}${whole}${frac ? '.' + frac : ''}`;
 }
 
+const compactFmt = new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 2 });
+
+/** Display-only amount: compact for big balances (1.23M, 48B), precise for small ones. Never for inputs. */
+export function formatAmountCompact(raw: bigint, decimals: number): string {
+  const negative = raw < 0n;
+  const abs = negative ? -raw : raw;
+  const num = Number(abs) / 10 ** decimals;
+  const s = num >= 10_000 ? compactFmt.format(num) : formatRawAmount(abs, decimals, num >= 1 ? 4 : 5);
+  return (negative ? '−' : '') + s;
+}
+
 /** Parse a user-entered decimal string into a raw integer amount. Throws on invalid input. */
 export function parseAmount(input: string, decimals: number): bigint {
   const trimmed = input.trim();

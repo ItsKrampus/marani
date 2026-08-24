@@ -1,4 +1,4 @@
-import { formatRawAmount } from '@marani/core';
+import { formatAmountCompact, formatRawAmount } from '@marani/core';
 import React, { useState } from 'react';
 import { usePrefs } from '../lib/prefs';
 import { useWallet, type TokenRow } from '../lib/wallet';
@@ -187,8 +187,12 @@ export default function Home() {
                       </span>
                     )}
                   </span>
-                  <span className="text-[11px]" style={{ color: 'var(--text-3)' }}>
-                    {mask(`${formatRawAmount(row.amountRaw, row.decimals, 5)} ${row.symbol}`)}
+                  <span
+                    className="truncate text-[11px]"
+                    style={{ color: 'var(--text-3)' }}
+                    title={`${formatRawAmount(row.amountRaw, row.decimals)} ${row.symbol}`}
+                  >
+                    {mask(`${formatAmountCompact(row.amountRaw, row.decimals)} ${row.symbol}`)}
                   </span>
                 </div>
                 <div className="flex flex-col items-end">

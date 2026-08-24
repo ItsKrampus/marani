@@ -1,4 +1,5 @@
 import {
+  formatAmountCompact,
   formatRawAmount,
   getParsedActivity,
   shortAddress,
@@ -113,15 +114,23 @@ export default function Activity() {
                 {it.blockTime ? new Date(it.blockTime * 1000).toLocaleString() : shortAddress(it.signature, 8)}
               </span>
             </div>
-            <div className="flex flex-col items-end gap-0.5">
+            <div className="flex max-w-[130px] flex-col items-end gap-0.5">
               {ins[0] && (
-                <span className="text-[12px] font-semibold" style={{ color: 'var(--green)' }}>
-                  {mask(`+${formatRawAmount(BigInt(ins[0].delta), ins[0].decimals, 5)} ${symbolFor(ins[0].mint)}`)}
+                <span
+                  className="truncate text-[12px] font-semibold"
+                  style={{ color: 'var(--green)' }}
+                  title={`+${formatRawAmount(BigInt(ins[0].delta), ins[0].decimals)} ${symbolFor(ins[0].mint)}`}
+                >
+                  {mask(`+${formatAmountCompact(BigInt(ins[0].delta), ins[0].decimals)} ${symbolFor(ins[0].mint)}`)}
                 </span>
               )}
               {outs[0] && (
-                <span className="text-[12px] font-semibold" style={{ color: ins[0] ? 'var(--text-2)' : 'var(--text)' }}>
-                  {mask(`−${formatRawAmount(-BigInt(outs[0].delta), outs[0].decimals, 5)} ${symbolFor(outs[0].mint)}`)}
+                <span
+                  className="truncate text-[12px] font-semibold"
+                  style={{ color: ins[0] ? 'var(--text-2)' : 'var(--text)' }}
+                  title={`−${formatRawAmount(-BigInt(outs[0].delta), outs[0].decimals)} ${symbolFor(outs[0].mint)}`}
+                >
+                  {mask(`−${formatAmountCompact(-BigInt(outs[0].delta), outs[0].decimals)} ${symbolFor(outs[0].mint)}`)}
                 </span>
               )}
             </div>

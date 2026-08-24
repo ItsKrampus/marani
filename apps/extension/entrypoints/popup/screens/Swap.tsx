@@ -1,6 +1,7 @@
 import {
   executeSwapWithFreshRetry,
   fetchTokenMeta,
+  formatAmountCompact,
   formatRawAmount,
   getSwapQuote,
   parseAmount,
@@ -184,8 +185,8 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
               })}
             </div>
             {from && (
-              <div className="text-[11px]" style={{ color: 'var(--text-3)' }}>
-                Balance: {formatRawAmount(from.amountRaw, from.decimals, 5)} {from.symbol}
+              <div className="text-[11px]" style={{ color: 'var(--text-3)' }} title={formatRawAmount(from.amountRaw, from.decimals)}>
+                Balance: {formatAmountCompact(from.amountRaw, from.decimals)} {from.symbol}
               </div>
             )}
 

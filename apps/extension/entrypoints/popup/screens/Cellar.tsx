@@ -1,5 +1,6 @@
 import {
   executeSwapWithFreshRetry,
+  formatAmountCompact,
   formatRawAmount,
   JLUSDC_MINT,
   lendDeposit,
@@ -362,8 +363,8 @@ export default function Cellar() {
               <TokenIcon symbol={row!.symbol} logoUri={row!.logoUri} size={28} />
               <div className="flex flex-1 flex-col">
                 <span className="text-[13px] font-semibold">{row!.symbol}</span>
-                <span className="text-[11px]" style={{ color: 'var(--text-3)' }}>
-                  {formatRawAmount(row!.amountRaw, row!.decimals, 5)}
+                <span className="truncate text-[11px]" style={{ color: 'var(--text-3)' }}>
+                  {formatAmountCompact(row!.amountRaw, row!.decimals)}
                   {row!.usdValue !== null ? ` · ${fmtUsd(row!.usdValue)}` : ''}
                 </span>
               </div>
