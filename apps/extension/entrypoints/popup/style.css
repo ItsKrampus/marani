@@ -37,6 +37,21 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Sora', 'Noto Sans Georgian', ui-sans-serif, system-ui, sans-serif;
+  /* native-app feel: no accidental text selection; opt back in with .selectable */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.selectable {
+  user-select: text;
+  -webkit-user-select: text;
+  cursor: text;
+}
+
+input,
+textarea {
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 #root {

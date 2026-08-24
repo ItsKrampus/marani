@@ -42,6 +42,29 @@ export const ONE_DOLLAR_STABLE_MINTS: ReadonlySet<string> = new Set([
   '9BEcn9aPEmhSPbPQeFGjidRiEKki46fVQDyPpSQXPA2D', // jlUSDC (≈1, accrues slowly)
 ]);
 
+export interface PricePoint {
+  timestamp: number;
+  price: number;
+}
+
+/** 24h price history (30-min candles) from the keyless DefiLlama coins API. Empty on failure. */
+export async function fetchPriceHistory(mint: string, fetchImpl: typeof fetch = fetch): Promise<PricePoint[]> {
+  try {
+    const key = `solana:${mint}`;
+    const res = await fetchImpl(`https://coins.llama.fi/chart/${encodeURIComponent(key)}?period=30m&span=48`, {
+      signal: AbortSignal.timeout(10_000),
+    });
+    if (!res.ok) return [];
+    const body = (await res.json()) as { coins?: Record<string, { prices?: Array<{ timestamp?: number; price?: number }> }> };
+    const prices = body.coins?.[key]?.prices ?? [];
+    return prices
+      .filter((p) => typeof p?.timestamp === 'number' && typeof p?.price === 'number' && Number.isFinite(p.price))
+      .map((p) => ({ timestamp: p.timestamp!, price: p.price! }));
+  } catch {
+    return [];
+  }
+}
+
 const PRICE_HOSTS = ['https://lite-api.jup.ag', 'https://api.jup.ag'];
 
 /**

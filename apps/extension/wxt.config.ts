@@ -18,6 +18,7 @@ export default defineConfig({
       'https://*.helius-rpc.com/*',
       'https://lite-api.jup.ag/*',
       'https://api.jup.ag/*',
+      'https://coins.llama.fi/*',
     ],
   },
   vite: () => ({

@@ -107,7 +107,7 @@ export default function Settings() {
       <div className="card">
         <div className="label mb-1">Reveal seed phrase</div>
         {revealed ? (
-          <div className="rounded-lg p-2 text-xs leading-relaxed" style={{ background: 'var(--bg-input)' }}>
+          <div className="selectable rounded-lg p-2 text-xs leading-relaxed" style={{ background: 'var(--bg-input)' }}>
             {revealed}
           </div>
         ) : (

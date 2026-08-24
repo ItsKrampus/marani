@@ -24,11 +24,17 @@ const TO_OPTIONS: Array<{ mint: string; symbol: string; decimals: number }> = [
   { mint: 'JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN', symbol: 'JUP', decimals: 6 },
 ];
 
-export default function Swap({ onBack }: { onBack: () => void }) {
+export default function Swap({ onBack, presetFrom }: { onBack: () => void; presetFrom?: { mint: string | null; amountRaw: bigint } | null }) {
   const wallet = useWallet();
   const { t } = usePrefs();
   const fromRows = wallet.rows.filter((r) => r.amountRaw > 0n);
-  const [fromKey, setFromKey] = useState<string>(fromRows[0] ? (fromRows[0].mint ?? 'SOL') : '');
+  const [fromKey, setFromKey] = useState<string>(
+    presetFrom && presetFrom.amountRaw > 0n
+      ? (presetFrom.mint ?? 'SOL')
+      : fromRows[0]
+        ? (fromRows[0].mint ?? 'SOL')
+        : '',
+  );
   const [toMint, setToMint] = useState(USDC_MINT);
   const [amountStr, setAmountStr] = useState('');
   const [quote, setQuote] = useState<JupQuote | null>(null);

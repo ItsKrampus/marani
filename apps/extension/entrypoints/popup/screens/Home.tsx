@@ -9,8 +9,9 @@ import Swap from './Swap';
 import Activity from './Activity';
 import Settings from './Settings';
 import Cellar from './Cellar';
+import TokenDetail from './TokenDetail';
 
-type Route = Tab | 'send' | 'receive' | 'swap';
+type Route = Tab | 'send' | 'receive' | 'swap' | 'token';
 
 const ACTION_ICONS = {
   send: 'M12 19V5 M5 12l7-7 7 7',
@@ -43,8 +44,21 @@ export default function Home() {
           setRoute('home');
           wallet.refresh();
         }}
+        presetFrom={presetToken}
       />
     );
+  if (route === 'token' && presetToken) {
+    const live = wallet.rows.find((r) => (r.mint ?? 'SOL') === (presetToken.mint ?? 'SOL')) ?? presetToken;
+    return (
+      <TokenDetail
+        row={live}
+        onBack={() => setRoute('home')}
+        onSend={() => setRoute('send')}
+        onReceive={() => setRoute('receive')}
+        onSwap={() => setRoute('swap')}
+      />
+    );
+  }
 
   const tab = route as Tab;
   const change = pctText(
@@ -158,7 +172,7 @@ export default function Home() {
                 style={{ background: 'var(--card)', border: '1px solid var(--border)' }}
                 onClick={() => {
                   setPresetToken(row);
-                  setRoute('send');
+                  setRoute('token');
                 }}
               >
                 <TokenIcon symbol={row.symbol} logoUri={row.logoUri} />

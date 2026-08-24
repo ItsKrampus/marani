@@ -156,6 +156,33 @@ export function BottomNav({ active, onSelect }: { active: Tab; onSelect: (t: Tab
   );
 }
 
+/** 24h price area chart in brand colors — green when up, red when down. */
+export function Sparkline({ points, width = 335, height = 92 }: { points: number[]; width?: number; height?: number }) {
+  if (points.length < 2) return null;
+  const min = Math.min(...points);
+  const max = Math.max(...points);
+  const range = max - min || max * 0.001 || 1;
+  const pad = 4;
+  const x = (i: number) => pad + (i / (points.length - 1)) * (width - pad * 2);
+  const y = (v: number) => pad + (1 - (v - min) / range) * (height - pad * 2);
+  const line = points.map((v, i) => `${i === 0 ? 'M' : 'L'}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
+  const area = `${line} L${x(points.length - 1).toFixed(1)},${height - pad} L${x(0).toFixed(1)},${height - pad} Z`;
+  const up = points[points.length - 1]! >= points[0]!;
+  const color = up ? '#9FE8C1' : '#FF7A8A';
+  return (
+    <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ display: 'block' }}>
+      <defs>
+        <linearGradient id="spark-fill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor={color} stopOpacity="0.28" />
+          <stop offset="100%" stopColor={color} stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <path d={area} fill="url(#spark-fill)" />
+      <path d={line} fill="none" stroke={color} strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 const usdFormat = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 export function fmtUsd(n: number): string {
   return usdFormat.format(n);

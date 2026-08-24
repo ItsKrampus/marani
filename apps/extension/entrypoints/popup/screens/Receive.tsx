@@ -13,7 +13,7 @@ export default function Receive({ onBack }: { onBack: () => void }) {
         <Logo size={44} />
         <div className="card w-full">
           <div className="label mb-1">{t('yourAddress')}</div>
-          <div className="break-all font-mono text-xs" style={{ color: 'var(--text)' }}>
+          <div className="selectable break-all font-mono text-xs" style={{ color: 'var(--text)' }}>
             {wallet.address}
           </div>
         </div>
