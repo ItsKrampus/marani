@@ -19,7 +19,7 @@ import yieldsJson from '@marani/preflight/data/yields.json';
 import React, { useMemo, useState } from 'react';
 import { usePrefs } from '../lib/prefs';
 import { useWallet, type TokenRow } from '../lib/wallet';
-import { ErrorNote, fmtUsd, Logo, Spinner, TokenIcon, WaitState } from '../lib/ui';
+import { ErrorNote, fmtUsd, Logo, StatusBadge, TokenIcon, WaitState } from '../lib/ui';
 
 interface Venue {
   apyPct: number;
@@ -327,7 +327,7 @@ export default function Cellar() {
         )}
         {step === 'done' && (
           <div className="flex flex-col items-center gap-3 pt-4 text-center">
-            <div className="text-4xl">🍇</div>
+            <StatusBadge kind="success" size={64} />
             <div className="text-sm font-bold">{title} — confirmed</div>
             <a
               className="card w-full !py-2 text-xs"

@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { usePrefs } from '../lib/prefs';
 import { clearAll, getSettings, getVault, setSettings } from '../lib/storage';
 import { useWallet } from '../lib/wallet';
+import { Logo } from '../lib/ui';
 
 const matrix = matrixJson as unknown as SupportMatrix;
 
@@ -166,8 +167,8 @@ export default function Settings() {
       <button className="btn btn-ghost" onClick={wallet.lock}>
         {prefs.t('lockWallet')}
       </button>
-      <div className="pb-1 text-center text-[10px]" style={{ color: 'var(--inactive)' }}>
-        Marani v0.1.0 — built at Startup Village, Kakheti 🍇
+      <div className="flex items-center justify-center gap-1.5 pb-1 text-[10px]" style={{ color: 'var(--inactive)' }}>
+        <Logo size={9} /> Marani v0.1.0 — built at Startup Village, Kakheti
       </div>
     </div>
   );

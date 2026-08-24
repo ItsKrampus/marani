@@ -41,6 +41,75 @@ export function WaitState({ title, sub, pad = true }: { title: string; sub?: str
   );
 }
 
+/** Animated result badge — springy pop, stroke draws itself in. Replaces ✅/❌ emojis. */
+export function StatusBadge({ kind, size = 78 }: { kind: 'success' | 'fail'; size?: number }) {
+  const ok = kind === 'success';
+  const color = ok ? '#9FE8C1' : '#FF7A8A';
+  return (
+    <span
+      className="pop-in flex items-center justify-center rounded-full"
+      style={{
+        width: size,
+        height: size,
+        background: ok ? 'rgba(159,232,193,0.08)' : 'rgba(255,122,138,0.08)',
+        border: `2px solid ${color}`,
+      }}
+    >
+      <svg
+        width={Math.round(size * 0.44)}
+        height={Math.round(size * 0.44)}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke={color}
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        {ok ? (
+          <path className="stroke-draw" pathLength={1} d="M4 12.5l5 5 11-11" />
+        ) : (
+          <>
+            <path className="stroke-draw" pathLength={1} d="M6 6l12 12" />
+            <path className="stroke-draw" pathLength={1} d="M18 6L6 18" />
+          </>
+        )}
+      </svg>
+    </span>
+  );
+}
+
+/** Guardian shield with a check — the rescue/safety mark. Replaces the 🛟 emoji. */
+export function ShieldIcon({ size = 16, color = 'currentColor' }: { size?: number; color?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2l8 3.5V11c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V5.5L12 2z" />
+      <path d="M8.5 12l2.3 2.3 4.7-4.8" />
+    </svg>
+  );
+}
+
+const KIND_ICON_PATHS: Record<'sent' | 'received' | 'swap', string> = {
+  sent: 'M12 19V5 M5 12l7-7 7 7',
+  received: 'M12 5v14 M19 12l-7 7-7-7',
+  swap: 'M7 16V4 M3 8l4-4 4 4 M17 8v12 M13 16l4 4 4-4',
+};
+
+/** Tiny direction glyph for activity badges (crisp SVG instead of unicode arrows). */
+export function KindIcon({ kind, size = 9, color }: { kind: 'sent' | 'received' | 'swap' | 'app'; size?: number; color: string }) {
+  if (kind === 'app') {
+    return (
+      <svg width={size} height={size} viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4.5" fill={color} />
+      </svg>
+    );
+  }
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+      <path d={KIND_ICON_PATHS[kind]} />
+    </svg>
+  );
+}
+
 /** Shimmering placeholder rows shaped like asset/activity cards. */
 export function SkeletonRows({ count = 3 }: { count?: number }) {
   return (

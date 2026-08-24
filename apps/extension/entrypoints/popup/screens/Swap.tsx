@@ -18,7 +18,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { usePrefs } from '../lib/prefs';
 import { getMetaCache, putMetaCache } from '../lib/storage';
 import { useWallet, type TokenRow } from '../lib/wallet';
-import { fmtUsd, TokenIcon, WaitState } from '../lib/ui';
+import { fmtUsd, StatusBadge, TokenIcon, WaitState } from '../lib/ui';
 
 const SWAP_SOL_FEE_BUFFER = 3_000_000n; // fee + temp wSOL wrap rent
 
@@ -190,21 +190,10 @@ export default function Swap({ onBack, presetFrom }: { onBack: () => void; prese
     );
   }
   if (result) {
-    const circle = (border: string, bg: string, inner: React.ReactNode) => (
-      <span className="flex h-[78px] w-[78px] items-center justify-center rounded-full" style={{ background: bg, border }}>
-        {inner}
-      </span>
-    );
     return (
       <div className="screen-in flex h-full flex-col items-center gap-4 px-5 pb-4 pt-10">
-        {result.phase === 'success' &&
-          circle('2px solid #9FE8C1', 'rgba(159,232,193,0.08)', (
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#9FE8C1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12.5l5 5 11-11" /></svg>
-          ))}
-        {result.phase === 'fail' &&
-          circle('2px solid #FF7A8A', 'rgba(255,122,138,0.08)', (
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FF7A8A" strokeWidth="2.5" strokeLinecap="round"><path d="M6 6l12 12 M18 6L6 18" /></svg>
-          ))}
+        {result.phase === 'success' && <StatusBadge kind="success" />}
+        {result.phase === 'fail' && <StatusBadge kind="fail" />}
 
         <div className="flex flex-col items-center gap-1.5">
           <span className="font-display text-[22px] text-center">

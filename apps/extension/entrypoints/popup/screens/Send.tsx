@@ -38,7 +38,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { usePrefs } from '../lib/prefs';
 import { getUserMarks, setUserMark } from '../lib/storage';
 import { useWallet, type TokenRow } from '../lib/wallet';
-import { ErrorNote, FindingBadge, Header, Spinner, WaitState } from '../lib/ui';
+import { ErrorNote, FindingBadge, Header, ShieldIcon, Spinner, StatusBadge, WaitState } from '../lib/ui';
 
 const matrix = matrixJson as unknown as SupportMatrix;
 const labels = labelsJson as unknown as LabelSet;
@@ -476,8 +476,8 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
             {blocked ? (
               <div className="mt-auto flex flex-col gap-2">
                 {rescueMint && (
-                  <button className="btn btn-primary" disabled={!composeReady} onClick={startRescue}>
-                    🛟 Swap to USDC & send safely
+                  <button className="btn btn-primary flex items-center justify-center gap-1.5" disabled={!composeReady} onClick={startRescue}>
+                    <ShieldIcon size={15} color="#14090E" /> Swap to USDC & send safely
                   </button>
                 )}
                 <label className="flex items-center gap-2 text-[11px] text-zinc-500">
@@ -565,7 +565,9 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
         {step === 'rescue' && token && (
           <>
             <div className="card">
-              <div className="text-sm font-bold">🛟 Rescue swap</div>
+              <div className="flex items-center gap-1.5 text-sm font-bold">
+                <ShieldIcon size={15} color="var(--gold)" /> Rescue swap
+              </div>
               <p className="mt-1 text-[11px] text-zinc-400 leading-relaxed">
                 Instead of losing your {token.symbol}, Marani swaps it to USDC on Jupiter and sends USDC — which{' '}
                 {destState?.kind === 'cex' ? EXCHANGE_NAMES[destState.exchange] : 'the exchange'} does support.
@@ -607,7 +609,7 @@ export default function Send({ onBack, preset }: { onBack: () => void; preset: T
         {step === 'result' && result && (
           <>
             <div className="m-auto flex flex-col items-center gap-3 text-center">
-              <div className="text-4xl">✅</div>
+              <StatusBadge kind="success" size={64} />
               <div className="text-sm font-bold">{result.title}</div>
               <div className="flex flex-col gap-2 w-full">
                 {result.sigs.map((s) => (

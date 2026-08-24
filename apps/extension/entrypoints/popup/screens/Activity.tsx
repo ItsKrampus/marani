@@ -10,7 +10,7 @@ import React, { useEffect, useState } from 'react';
 import { usePrefs } from '../lib/prefs';
 import { getActivityCache, getMetaCache, putActivityCache, type CachedTokenMeta } from '../lib/storage';
 import { useWallet } from '../lib/wallet';
-import { SkeletonRows, TokenIcon } from '../lib/ui';
+import { KindIcon, SkeletonRows, TokenIcon } from '../lib/ui';
 
 const KIND_LABEL: Record<ParsedActivity['kind'], string> = {
   sent: 'Sent',
@@ -95,10 +95,14 @@ export default function Activity() {
             <div className="relative">
               <TokenIcon symbol={primary ? symbolFor(primary.mint) : '·'} logoUri={primary ? logoFor(primary.mint) : null} size={30} />
               <span
-                className="absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full text-[9px] font-bold"
-                style={{ background: 'var(--bg)', color: it.kind === 'received' ? 'var(--green)' : it.kind === 'swap' ? 'var(--gold)' : 'var(--text-2)' }}
+                className="absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full"
+                style={{ background: 'var(--bg)', border: '1px solid var(--border)' }}
               >
-                {it.kind === 'received' ? '↓' : it.kind === 'sent' ? '↑' : it.kind === 'swap' ? '⇄' : '•'}
+                <KindIcon
+                  kind={it.kind}
+                  size={9}
+                  color={it.kind === 'received' ? 'var(--green)' : it.kind === 'swap' ? 'var(--gold)' : 'var(--text-2)'}
+                />
               </span>
             </div>
             <div className="flex min-w-0 flex-1 flex-col">
