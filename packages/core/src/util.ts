@@ -52,3 +52,20 @@ export function shortAddress(addr: string, chars = 4): string {
 export function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+/**
+ * Retry an idempotent async operation (RPC reads, rebroadcasts) with backoff.
+ * Free public RPC tiers throw 429s on small bursts — this smooths them over.
+ */
+export async function withRetry<T>(fn: () => Promise<T>, attempts = 3, baseMs = 600): Promise<T> {
+  let lastError: unknown;
+  for (let i = 0; i < attempts; i++) {
+    try {
+      return await fn();
+    } catch (e) {
+      lastError = e;
+      if (i < attempts - 1) await sleep(baseMs * (i + 1));
+    }
+  }
+  throw lastError;
+}

@@ -23,7 +23,7 @@ import {
 } from '@solana/kit';
 import type { TokenProgramKind } from './balances.js';
 import type { SolanaRpc } from './rpc.js';
-import { sleep } from './util.js';
+import { sleep, withRetry } from './util.js';
 
 export interface TransferSpec {
   signer: KeyPairSigner;
@@ -139,13 +139,17 @@ export async function simulateTransfer(rpc: SolanaRpc, spec: TransferSpec): Prom
 async function pollConfirmation(rpc: SolanaRpc, signature: Signature, timeoutMs = 60_000): Promise<SendResult> {
   const startedAt = Date.now();
   while (Date.now() - startedAt < timeoutMs) {
-    const { value } = await rpc.getSignatureStatuses([signature]).send();
-    const status = value[0];
-    if (status) {
-      if (status.err) return { signature, confirmed: false, err: status.err };
-      if (status.confirmationStatus === 'confirmed' || status.confirmationStatus === 'finalized') {
-        return { signature, confirmed: true, err: null };
+    try {
+      const { value } = await rpc.getSignatureStatuses([signature]).send();
+      const status = value[0];
+      if (status) {
+        if (status.err) return { signature, confirmed: false, err: status.err };
+        if (status.confirmationStatus === 'confirmed' || status.confirmationStatus === 'finalized') {
+          return { signature, confirmed: true, err: null };
+        }
       }
+    } catch {
+      // transient RPC hiccup (429 etc.) — keep polling; the tx may still land
     }
     await sleep(1500);
   }
@@ -157,18 +161,22 @@ export async function sendTransfer(rpc: SolanaRpc, spec: TransferSpec): Promise<
   const message = await buildMessage(rpc, spec);
   const signed = await signTransactionMessageWithSigners(message);
   const wire = getBase64EncodedWireTransaction(signed);
-  const signature = await rpc.sendTransaction(wire, { encoding: 'base64', maxRetries: 3n }).send();
+  const signature = await withRetry(() =>
+    rpc.sendTransaction(wire, { encoding: 'base64', maxRetries: 3n }).send(),
+  );
   return pollConfirmation(rpc, signature);
 }
 
 /** Broadcast an already-signed wire transaction (base64) and poll for confirmation. */
 export async function sendWireTransaction(rpc: SolanaRpc, wireBase64: string): Promise<SendResult> {
-  const signature = await rpc
-    .sendTransaction(wireBase64 as Parameters<SolanaRpc['sendTransaction']>[0], {
-      encoding: 'base64',
-      maxRetries: 3n,
-    })
-    .send();
+  const signature = await withRetry(() =>
+    rpc
+      .sendTransaction(wireBase64 as Parameters<SolanaRpc['sendTransaction']>[0], {
+        encoding: 'base64',
+        maxRetries: 3n,
+      })
+      .send(),
+  );
   return pollConfirmation(rpc, signature);
 }
 

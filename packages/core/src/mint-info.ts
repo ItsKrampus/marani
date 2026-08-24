@@ -3,6 +3,7 @@ import { TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022';
 import { address, type Address } from '@solana/kit';
 import type { TokenProgramKind } from './balances.js';
 import type { SolanaRpc } from './rpc.js';
+import { withRetry } from './util.js';
 
 export interface MintInfo {
   mint: string;
@@ -32,7 +33,7 @@ interface ParsedMintAccount {
 
 /** Fetch and parse a mint account. Returns null when the address is not a mint. */
 export async function getMintInfo(rpc: SolanaRpc, mint: string): Promise<MintInfo | null> {
-  const res = await rpc.getAccountInfo(address(mint), { encoding: 'jsonParsed' }).send();
+  const res = await withRetry(() => rpc.getAccountInfo(address(mint), { encoding: 'jsonParsed' }).send());
   const acc = res.value as ParsedMintAccount | null;
   const parsed = acc?.data?.parsed;
   if (!acc || parsed?.type !== 'mint' || typeof parsed?.info?.decimals !== 'number') return null;

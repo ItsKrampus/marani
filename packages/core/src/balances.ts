@@ -2,6 +2,7 @@ import { TOKEN_PROGRAM_ADDRESS } from '@solana-program/token';
 import { TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022';
 import type { Address } from '@solana/kit';
 import type { SolanaRpc } from './rpc.js';
+import { withRetry } from './util.js';
 
 export type TokenProgramKind = 'token' | 'token-2022';
 
@@ -51,11 +52,14 @@ function extractBalances(list: readonly unknown[], program: TokenProgramKind): T
 }
 
 export async function getPortfolio(rpc: SolanaRpc, owner: Address): Promise<Portfolio> {
-  const [sol, classic, t22] = await Promise.all([
-    rpc.getBalance(owner).send(),
+  // Sequential + retried: free public RPC tiers 429 on parallel bursts.
+  const sol = await withRetry(() => rpc.getBalance(owner).send());
+  const classic = await withRetry(() =>
     rpc.getTokenAccountsByOwner(owner, { programId: TOKEN_PROGRAM_ADDRESS }, { encoding: 'jsonParsed' }).send(),
+  );
+  const t22 = await withRetry(() =>
     rpc.getTokenAccountsByOwner(owner, { programId: TOKEN_2022_PROGRAM_ADDRESS }, { encoding: 'jsonParsed' }).send(),
-  ]);
+  );
   const tokens = [
     ...extractBalances(classic.value as readonly unknown[], 'token'),
     ...extractBalances(t22.value as readonly unknown[], 'token-2022'),

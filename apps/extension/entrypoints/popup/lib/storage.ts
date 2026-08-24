@@ -63,6 +63,10 @@ export const putMetaCache = async (mint: string, meta: CachedTokenMeta) => {
   await setKey(local, 'tokenMeta', cache);
 };
 
+/** Session-cached RPC endpoint pick so we don't re-probe on every popup open. */
+export const getRpcPick = () => getKey<{ url: string; at: number }>(session, 'rpcPick');
+export const setRpcPick = (url: string) => setKey(session, 'rpcPick', { url, at: Date.now() });
+
 /** Decrypted mnemonic parked in session storage: memory-only, cleared when the browser closes. */
 export const getSessionMnemonic = () => getKey<string>(session, 'mnemonic');
 export const setSessionMnemonic = (m: string) => setKey(session, 'mnemonic', m);

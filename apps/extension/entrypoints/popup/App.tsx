@@ -1,7 +1,7 @@
 import { pickRpcUrl, signerFromMnemonic, type KeyPairSigner } from '@marani/core';
 import React, { useEffect, useState } from 'react';
 import { WalletProvider } from './lib/wallet';
-import { getSessionMnemonic, getSettings, getVault, clearSessionMnemonic } from './lib/storage';
+import { getRpcPick, getSessionMnemonic, getSettings, getVault, clearSessionMnemonic, setRpcPick } from './lib/storage';
 import { Spinner, Logo } from './lib/ui';
 import Onboard from './screens/Onboard';
 import Unlock from './screens/Unlock';
@@ -18,7 +18,17 @@ export default function App() {
 
   const unlockWith = async (mnemonic: string) => {
     const [signer, settings] = await Promise.all([signerFromMnemonic(mnemonic), getSettings()]);
-    const rpcUrl = await pickRpcUrl(settings.rpcUrl || undefined);
+    let rpcUrl = settings.rpcUrl.trim();
+    if (!rpcUrl) {
+      // auto mode: probe once, then reuse the pick for 10 minutes across popup opens
+      const cached = await getRpcPick();
+      if (cached && Date.now() - cached.at < 10 * 60_000) {
+        rpcUrl = cached.url;
+      } else {
+        rpcUrl = await pickRpcUrl();
+        await setRpcPick(rpcUrl);
+      }
+    }
     setPhase({ t: 'ready', signer, mnemonic, rpcUrl });
   };
 
